@@ -16,7 +16,14 @@ body {
     box-sizing: border-box;
     font-family: Mulish, sans-serif;
 }
-
+.p-bold{
+    padding: 10px;
+    font-weight: bold;
+}
+.p-light{
+    font-weight: lighter;
+    font-size: 18px;
+}
 /* Imagen del Login */
 .info-side {
     width: 55%;
@@ -25,14 +32,16 @@ body {
     left: 0;
     top: 0;
     overflow: hidden;
-    object-fit: cover;
+    background-image: url(/src/resources/img/another-login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .info-side img{
     width: 100%;
     height: 100%;
 }
 
-/* Formulario Loging */
+/* Formulario Login */
 .logo-title{
     width: 45%;
     height: 100%;
@@ -46,15 +55,6 @@ body {
 }
 .logo-title h1{
     font-size: 30px;
-}
-.p-bold{
-    padding: 10px;
-    font-weight: bold;
-}
-.p-light{
-    font-weight: lighter;
-    font-size: 18px;
-
 }
 
 /* Parte formulario */
@@ -71,6 +71,7 @@ body {
 }
 .password-label a{
     color: #111;
+    font-size: 14px;
     text-decoration: none;
 }
 .password-label button{
@@ -90,7 +91,7 @@ body {
     padding-left: 15px;
     color: #F4F1FF;
     border: none;
-    box-shadow: 5px 5px 5px 5px;
+    box-shadow: 2px 4px 3px 2px;
 }
 .text-field input::placeholder{
     color: #F4F1FF;
