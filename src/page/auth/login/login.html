@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8" />
+    <meta name="autor" content="john doe" />
+    <meta name="description" content="verification-code" />
+    <meta name="keywords" content="transferencia, wibond, verificacion" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Titulo e iconos -->
+    <title>Login | Serviplace</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/src/resources/logos/logo_web_2.png"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles/login_styles.css" />
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- --------------- -->
+      <!-- LADO IMAGEN -->
+      <!-- --------------- -->
+      <div class="info-side">
+        <img src="/src/resources/img/another-login.jpg" alt="login_image" />
+      </div>
+
+      <!-- --------------- -->
+      <!-- LADO FORMULARIO -->
+      <!-- --------------- -->
+
+      <!-- Logo -->
+      <div class="logo-title d-flex align-items-center flex-column">
+        <div class="d-flex justify-content-center align-items-center">
+          <img
+            src="/src/resources/logos/logo_web_2.png"
+            alt="logo_serviplace"
+            width="100"
+          />
+          <h1 class="p-bold">SERVIPLACE</h1>
+        </div>
+
+        <!-- Formulario -->
+        <form class="my-form container">
+          <label for="email">Email</label>
+          <div class="text-field">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Ingresa tu mail"
+              required
+            />
+          </div>
+          <div class="password-label d-flex justify-content-between">
+            <div>
+              <label for="password">Contraseña</label>
+              <span
+                class="d-inline-block"
+                tabindex="0"
+                data-bs-toggle="popover"
+                data-bs-trigger="hover focus"
+                data-bs-html="true"
+                data-bs-content="Debe tener mayúsculas y minúsculas <br> Debe tener al menos 6 carácteres <br> Debe tener al menos un número"
+              >
+                <i class="bi-question-circle-fill"></i>
+              </span>
+            </div>
+            <a href="#" class="p-light">¿Has olvidado tu constraseña?</a>
+          </div>
+          <div class="text-field">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Ingresa tu contraseña"
+              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+              required
+            />
+          </div>
+          <input type="submit" class="my-form__button" value="Iniciar Sesion" />
+          <div class="my-form__actions d-flex justify-content-center">
+            <p class="p-light">O inicia sesión con</p>
+          </div>
+          <div class="my-form-methods d-flex justify-content-between">
+            <button class="d-flex justify-content-center">
+              <i class="bi-google"></i>
+              <p>Google</p>
+            </button>
+            <button class="d-flex justify-content-center">
+              <i class="bi-facebook"></i>
+              <p>Facebook</p>
+            </button>
+          </div>
+          <div class="my-form__actions d-flex justify-content-center">
+            <p class="p-light">
+              ¿No tenés una cuenta? -
+              <a href="#" class="fw-bold text-decoration-underline"
+                >Registrate</a
+              >
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Parte de Bootstrap de .js (no tocar porque no sé que hace) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const popoverTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="popover"]'
+      );
+      const popoverList = [...popoverTriggerList].map(
+        (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+      );
+    </script>
+  </body>
+</html>
