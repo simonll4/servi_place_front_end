@@ -1,5 +1,6 @@
 import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
 
+
 const userId1 = document.getElementById('inputname1');
 const userId2 = document.getElementById('inputname2');
 //let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ1c3VhcmlvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzE1Njg5NjA3LCJleHAiOjE3MTU3NzYwMDd9.qVOXslyjISBIvp_g4UUhjtjMQUv8YGfRc8opN7Ee0xU'
@@ -28,14 +29,14 @@ const socket = io('http://localhost:5050', {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-
   if (input.value) {
-    socket.emit('chat message', input.value, token, num2);
+    socket.emit('new message', input.value, num2);
     input.value = '';
   }
+
 });
 
-socket.on('chat message', (msg) => {
+socket.on('set message', (msg) => {
   const item = document.createElement('li');
   item.textContent = msg;
   messages.appendChild(item);
@@ -46,7 +47,7 @@ socket.on('chat message', (msg) => {
 // hago click sobre el boton de mensaje para abrir el chat, esto deberia ser en una pantalla anterior al chat
 const button = document.getElementById('myStyledButton');
 button.addEventListener('click', () => {
-  socket.emit('chat history', token, num2);
+  socket.emit('chat history', num2);
 });
 
 // si hay un historial de mensajes, los muestro en el chat
@@ -59,10 +60,17 @@ socket.on('set chat history', (msgs) => {
   window.scrollTo(0, document.body.scrollHeight);
 });
 
-// evento manejo de errores en los sockets
-socket.on('scoket error', (errorMessage) => {
-  console.error('An error occurred:', errorMessage);
-  // Aquí puedes manejar el error como quieras, por ejemplo, mostrando un mensaje al usuario
+// // evento manejo de errores en los sockets
+// socket.on('socket error', (errorMessage) => {
+//   console.error('An error occurred:', JSON.stringify(errorMessage));
+//   // Aquí puedes manejar el error como quieras, por ejemplo, mostrando un mensaje al usuario
+// });
+
+socket.on('socket error', (error) => {
+  console.error('An error occurred:', error.message);
+  // Aquí puedes manejar el error como quieras
+  // Por ejemplo, puedes mostrar un mensaje de error al usuario
+  //alert('An error occurred: ' + error);
 });
 
 
