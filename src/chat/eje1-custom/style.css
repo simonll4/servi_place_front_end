@@ -413,13 +413,13 @@ a.add img {
     margin: 15px 0;
 }
 
-.msg-body ul li.sender {
+.sender {
     display: block;
     width: 100%;
     position: relative;
 }
 
-.msg-body ul li.sender:before {
+.sender:before {
     display: block;
     clear: both;
     content: '';
@@ -436,7 +436,7 @@ a.add img {
     transform: rotate(-37deg);
 }
 
-.msg-body ul li.sender p {
+.sender p {
     color: #000;
     font-size: 14px;
     line-height: 1.5;
