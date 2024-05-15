@@ -28,9 +28,10 @@
     <link rel="stylesheet" href="./styles/navBar.css" />
   </head>
   <body>
-    <header>
+    <header class="container-fluid">
       <span class="navigation__group">
-        <div class="icon d-flex align-items-center">
+        <!-- Logo y Titulo -->
+        <div class="logo-company d-flex align-items-center">
           <img
             src="/src/resources/logos/logo_web_2.png"
             alt="logo-serviplace"
@@ -38,14 +39,14 @@
           />
           <h2 class="icon-title">SERVIPLACE</h2>
         </div>
+        <!-- Perfil y Chat -->
         <div class="profile-group d-flex">
-            <img class="icon" src="assets/message.svg" alt="Message" />
-            <img class="icon" src="assets/notification.svg" alt="Notification" />
-            <img
-              class="profile"
-              src="assets/joe-doe-profile.png"
-              alt="Joe Doe Picture"
-            />
+          <i class="icon bi-chat-dots-fill"></i>
+          <img
+            class="profile"
+            src="/src/resources/img/random-guy.jpg"
+            alt="Joe Doe Picture"
+          />
         </div>
       </span>
       <div class="dropdown__wrapper hide dropdown__wrapper--fade-in none">
@@ -56,20 +57,17 @@
         <hr class="divider" />
         <nav>
           <ul>
-            <li><img src="assets/profile.svg" alt="Profile" /> My Profile</li>
-            <li><img src="assets/settings.svg" alt="Settings" /> Settings</li>
+            <li><img src="/src/resources/navBar/profile.svg" alt="Profile" /> Mi Pefil</li>
+            <li><img src="/src/resources/navBar/settings.svg" alt="Settings" /> Configuración</li>
           </ul>
           <hr class="divider" />
           <ul>
-            <li>
-              <img src="assets/tutorials.svg" alt="Tutorials" /> Tutorials
-            </li>
-            <li><img src="assets/help.svg" alt="Help" /> Help Center</li>
+            <li><img src="/src/resources/navBar/help.svg" alt="Help" /> Ayuda</li>
           </ul>
           <hr class="divider" />
           <ul>
             <li style="color: #e3452f">
-              <img src="assets/logout.svg" alt="Log Out" />Log out
+              <img src="/src/resources/navBar/logout.svg" alt="Log Out" />Log out
             </li>
           </ul>
         </nav>
