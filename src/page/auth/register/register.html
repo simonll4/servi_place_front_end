@@ -131,12 +131,48 @@
           </div>
           <div class="cuenta-dropdown text-field">
             <label for="tipo-cuenta" class="fw-bold">Tipo de cuenta</label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" name="tipo-cuenta" aria-label="Default select example">
               <option selected>Selecciona una opcion</option>
-              <option value="tipo-cuenta">Especialista</option>
-              <option value="tipo-cuenta">Cliente</option>
+              <option value="especialista">Especialista</option>
+              <option value="cliente">Cliente</option>
             </select>
           </div>
+          <!-- Carga de Imagen -->
+          <div>
+            <p class="text-field fw-bold">Tu Foto de Perfil</p>
+            <div class="dropzone-area">
+              <div class="file-upload-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                  <path
+                    d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
+                  />
+                </svg>
+                <p>Hace Clic para subir o arrastrá tu imagen</p>
+              </div>
+              <input
+                type="file"
+                required
+                id="upload-file"
+                name="uploaded-file"
+              />
+              <img id="image-preview"/>
+              <p class="message">No hay archivos seleccionados</p>
+            </div>
+          </div>
+
+          <!-- Boton Submit -->
           <div class="button-field">
             <input
               type="submit"
@@ -163,6 +199,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <!-- Cambiar Script -->
     <script>
       const popoverTriggerList = document.querySelectorAll(
         '[data-bs-toggle="popover"]'
@@ -171,5 +208,7 @@
         (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
       );
     </script>
+    <script src="dropzone.js"></script>
+    <script src="password-validation.js"></script>
   </body>
 </html>
