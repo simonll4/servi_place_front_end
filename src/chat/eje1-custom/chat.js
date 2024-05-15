@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const token = localStorage.getItem('token');
   console.log('hola:', token);
 
+  let sesionId
+  let receiverId
+
 
   const form = document.getElementById('formMsg');
   const input = document.getElementById('inputMsg');
@@ -27,19 +30,20 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('id articulo: ', idArticle);
   })();
 
-    let sesionId
-   // obtengo id de la sesión
-   socket.on('send sesionId', (idSesion) => {
+
+  // obtengo id de la sesión
+  socket.on('send sesionId', (idSesion) => {
     sesionId = idSesion;
     console.log('idSesion:', sesionId);
   });
 
- 
+
 
   // si hay un historial de mensajes, los muestro en el chat
   socket.on('set chat history', (msgs, id) => {
     console.log(msgs);
-    console.log(id);
+
+    receiverId = id;
 
     msgs.forEach(msg => {
       const item = document.createElement('li');
@@ -73,10 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
   //   window.scrollTo(0, document.body.scrollHeight);
   // });
 
-  socket.on('set message', (msg, id) => {
-    console.log('set mensaje:', id);
+  socket.on('set message', (msg) => {
     console.log('set mensaje:', msg);
-    
+
     const item = document.createElement('li');
     item.textContent = msg.content;
 
@@ -84,27 +87,23 @@ document.addEventListener('DOMContentLoaded', function () {
     // item.classList.add('sender');
 
     console.log('idSesion:', sesionId);
-    console.log('id:', id);
+    console.log('id:', receiverId);
     if (msg.authorId == sesionId) {
       item.classList.add('repaly');
+      messages.appendChild(item);
     }
-    else if (msg.authorId == id) {
+    else if (msg.authorId == receiverId) {
       item.classList.add('sender');
+      messages.appendChild(item);
     }
-
-    messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
   });
-
-
-
 
 
   // evento de error
   socket.on('socket error', (error) => {
     //console.log('Error received from server: ', error.message);
     console.error('An error occurred:', JSON.stringify(error, null, 2));
-    // Aquí puedes manejar el error, por ejemplo mostrando un mensaje de error al usuario
   });
 
 });
