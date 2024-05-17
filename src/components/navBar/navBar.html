@@ -27,21 +27,25 @@
   <nav>
     <ul>
       <li>
-        <img src="/src/resources/navBar/profile.svg" alt="Profile" /> Mi Pefil
+        <img src="/src/resources/navBar/profile.svg" alt="Profile" />
+        <a href="#">Mi Perfil</a>
       </li>
       <li>
         <img src="/src/resources/navBar/settings.svg" alt="Settings" />
-        Configuración
+        <a href="#">Configuración</a>
       </li>
     </ul>
     <hr class="divider" />
     <ul>
-      <li><img src="/src/resources/navBar/help.svg" alt="Help" /> Ayuda</li>
+      <li><img src="/src/resources/navBar/help.svg" alt="Help" />
+        <a href="#">Ayuda</a>
+      </li>
     </ul>
     <hr class="divider" />
     <ul>
       <li style="color: #e3452f">
-        <img src="/src/resources/navBar/logout.svg" alt="Log Out" />Log out
+        <img src="/src/resources/navBar/logout.svg" alt="Log Out" />
+        <a href="#">Log Out</a>
       </li>
     </ul>
   </nav>
@@ -130,16 +134,17 @@
 
   /* Dropdown */
   .dropdown__wrapper {
-    width: 240px;
+    width: 10px;
     top: 88px;
-    right: 16px;
+    right: 10px;
     position: absolute;
     border-radius: 8px;
     border: 1px solid var(--text-gray);
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     gap: 4px;
     animation: fadeOutAnimation ease-in-out 0.3s forwards;
+    background-color: #fff;
   }
 
   .dropdown__wrapper--fade-in {
@@ -216,3 +221,12 @@
     cursor: pointer;
     text-decoration: underline;
   }
+  li > a {
+    text-decoration: none;
+    color: var(--text);
+  }
+  li > a:hover {
+    text-decoration: none;
+    color: var(--gray);
+  }
+</style>

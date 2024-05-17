@@ -8,8 +8,8 @@ window.onload = async function () {
   document.querySelector("#sidebar-container").innerHTML = dataSideBar;
 
   const responseFooter = await fetch("../footer/footer.html");
-  const dataFooter = await responseSideBar.text();
-  document.querySelector("#footer").innerHTML = dataSideBar;
+  const dataFooter = await responseFooter.text();
+  document.querySelector("#footer").innerHTML = dataFooter;
 
   // Cargar los scripts después de que el contenido se haya insertado
   const scriptSideBar = document.createElement("script");

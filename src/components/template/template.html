@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>SideBar</title>
+    <title>Template</title>
 
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,28 +25,23 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/side_nav_styles.css" />
+    <link rel="stylesheet" href="styles/template_styles.css" />
   </head>
   <body>
     <!-- Header (Navbar) -->
     <header id="header-container" class="container-fluid"></header>
 
-    <div class="d-flex">
-      <!-- SideBar -->
-      <nav id="sidebar-container"></nav>
+    <!-- Contenedor principal -->
+    <div id="page-container" class="container-fluid">
+      <!-- Sidebar -->
+      <nav id="sidebar-container" class="navbar-header"></nav>
 
       <!-- Main Content -->
-      <div id="main-container"></div>
+      <div id="main-container" class="container"></div>
     </div>
 
     <!-- Footer -->
-    <div>
-      <footer id="#footer"></footer>
-    </div>
-
-
-
-
+    <div id="footer" class="container-fluid"></div>
 
     <!-- Bootstrap & JS -->
     <script
@@ -54,6 +49,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="script-todojunto.js"></script>
+    <script src="script-template.js"></script>
+    <script src="script-ventana.js"></script>
   </body>
 </html>
