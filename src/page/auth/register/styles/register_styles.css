@@ -1,0 +1,168 @@
+/* Estilos generales */
+:root {
+  --primary: #4978f0;
+  --primary-light: #e1eef5;
+  --secondary: #1d1d1d;
+  --background: #f4f1ff;
+  --text: #111;
+  --white: #fff;
+}
+body {
+  font-size: 15rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Mulish, sans-serif;
+}
+
+/* Formulario Register */
+.logo-title {
+  width: 60%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to bottom, #fff, #e8e8e8);
+  overflow: scroll;
+}
+.logo-title img {
+  padding: 10px;
+}
+.formulario-register {
+  font-size: 16px;
+}
+.text-field {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+.button-field {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+.text-field input {
+  border-radius: 5px;
+  width: 250px;
+  height: 60px;
+  background-color: #9c9fa5;
+  padding-left: 15px;
+  color: #f4f1ff;
+  border: none;
+  box-shadow: 2px 2px 2px 2px;
+}
+.email-field input {
+  width: 100%;
+}
+.text-field input::placeholder {
+  color: #f4f1ff;
+  padding: 5px;
+  font-weight: lighter;
+  font-size: 16px;
+}
+.text-field input:focus {
+  outline: none;
+}
+.cuenta-dropdown select {
+  border-radius: 5px;
+  width: 100%;
+  height: 60px;
+  background-color: #9c9fa5;
+  padding-left: 15px;
+  color: #f4f1ff;
+  border: none;
+  box-shadow: 2px 2px 2px 2px;
+}
+.my-form__button {
+  font-family: Mulish, sans-serif;
+  padding: 15px;
+  color: white;
+  background-image: linear-gradient(to right, #6489f8, #2a49ff);
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+.informative-text {
+  padding-top: 20px;
+  color: #777676;
+  font-weight: lighter;
+  font-size: 15px;
+}
+.informative-text a {
+  color: #777676;
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* Imagen del Login */
+.info-side {
+  width: 40%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  background-image: url(/src/resources/img/prueba-posteo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -250px;
+}
+
+/* Subir imagen */
+.dropzone-box {
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--white);
+}
+
+.dropzone-area {
+  padding: 1rem;
+  position: relative;
+  margin-top: 1rem;
+  min-height: 16rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px dashed var(--primary);
+  border-radius: 1rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.dropzone-area [type="file"] {
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.file-upload-icon{
+  display: block;
+}
+
+.dropzone-area .file-upload-icon svg {
+  height: 5rem;
+  width: 5rem;
+  margin-bottom: 0.5rem;
+  stroke: var(--primary);
+}
+
+.dropzone--over {
+  border-style: solid;
+  background-color: var(--background);
+}
+#image-preview {
+  display: none;
+  width: 100px; /* Ajusta este valor a lo que necesites */
+  height: 100px; /* Ajusta este valor a lo que necesites */
+  object-fit: cover; /* Esto asegura que la imagen se redimensione correctamente */
+}

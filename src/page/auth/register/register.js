@@ -1,0 +1,70 @@
+
+document.addEventListener('DOMContentLoaded', (event) => {
+
+  // upload the profile picture to imgur
+  async function uploadProfilePicture(profilePicture) {
+    const formData = new FormData();
+    formData.append("image", profilePicture.files[0]);
+
+    const response = await fetch("https://api.imgur.com/3/image", {
+      method: "POST",
+      headers: {
+        Authorization: "Client-ID cc588f3c8316e27",
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const { data } = await response.json();
+    return data.link;
+  }
+
+  // send the register form data to the server
+  document.querySelector('form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    let data = {};
+    let formElements = document.querySelectorAll('form input');
+
+    for (let input of formElements) {
+      if (input.name === 'password-confirm' || input.type === 'submit') {
+        continue;
+      }
+      if (input.id === 'profilePhoto') {
+        data['profilePhoto'] = await uploadProfilePicture(input);
+      } else {
+        data[input.name] = input.value;
+      }
+    }
+
+    // set the enum role
+    let role = document.querySelector('select[name="role"]').value;
+    if (role === 'especialista') {
+      data['role'] = 'SPECIALIST';
+    } else if (role === 'cliente') {
+      data['role'] = 'CUSTOMER';
+    }
+
+    // send the register form data to the server
+    fetch('http://127.0.0.1:5016/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+  });
+
+});
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
