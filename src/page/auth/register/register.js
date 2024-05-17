@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       if (input.name === 'password-confirm' || input.type === 'submit') {
         continue;
       }
-      if (input.id === 'profilePhoto') {
+      if (input.id === 'profilePhoto' && input.files.length > 0) {
         data['profilePhoto'] = await uploadProfilePicture(input);
       } else {
         data[input.name] = input.value;
@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
       .then(data => console.log(data))
       .catch((error) => {
         console.error('Error:', error);
+        if (error.status === 409) {
+          alert('El correo ya está registrado')
+        }
       });
 
   });
