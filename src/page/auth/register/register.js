@@ -1,16 +1,52 @@
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
+  // upload the profile picture to imgur
+  async function uploadProfilePicture(profilePicture) {
+    const formData = new FormData();
+    formData.append("image", profilePicture.files[0]);
 
-  document.querySelector('form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    let data = {};
-    let formElements = document.querySelectorAll('form input:not([type="file"])');
-
-    formElements.forEach(function (input) {
-      data[input.name] = input.value;
+    const response = await fetch("https://api.imgur.com/3/image", {
+      method: "POST",
+      headers: {
+        Authorization: "Client-ID cc588f3c8316e27",
+      },
+      body: formData,
     });
 
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const { data } = await response.json();
+    return data.link;
+  }
+
+  // send the register form data to the server
+  document.querySelector('form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    let data = {};
+    let formElements = document.querySelectorAll('form input');
+
+    for (let input of formElements) {
+      if (input.name === 'password-confirm' || input.type === 'submit') {
+        continue;
+      }
+      if (input.id === 'profilePhoto') {
+        data['profilePhoto'] = await uploadProfilePicture(input);
+      } else {
+        data[input.name] = input.value;
+      }
+    }
+
+    // set the enum role
+    let role = document.querySelector('select[name="role"]').value;
+    if (role === 'especialista') {
+      data['role'] = 'SPECIALIST';
+    } else if (role === 'cliente') {
+      data['role'] = 'CUSTOMER';
+    }
+
+    // send the register form data to the server
     fetch('http://127.0.0.1:5016/auth/register', {
       method: 'POST',
       headers: {
@@ -23,59 +59,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
       .catch((error) => {
         console.error('Error:', error);
       });
+
   });
 
-
-
-
-  // document.querySelector('form').addEventListener('submit', function (event) {
-  //   event.preventDefault();
-
-  //   var reader = new FileReader();
-  //   reader.readAsDataURL(document.querySelector('#upload-file').files[0]);
-
-  //   reader.onload = function () {
-  //     var imageBase64 = reader.result;
-
-  //     var name = document.querySelector('#name').value;
-  //     var lastname = document.querySelector('#lastname').value;
-  //     var email = document.querySelector('#email').value;
-  //     var password = document.querySelector('#password').value;
-  //     var passwordConfirm = document.querySelector('#password-confirm').value;
-  //     var tipoCuenta = document.querySelector('[name="tipo-cuenta"]').value;
-
-  //     var data = {
-  //       name: name,
-  //       lastname: lastname,
-  //       email: email,
-  //       password: password,
-  //       passwordConfirm: passwordConfirm,
-  //       tipoCuenta: tipoCuenta,
-  //       image: imageBase64
-  //     };
-
-  //     fetch('http://127.0.0.1:5016/auth/register', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(data)
-  //     })
-  //       .then(response => {
-  //         if (!response.ok) {
-  //           return response.text().then(text => {
-  //             throw new Error(text);
-  //           });
-  //         }
-  //         return response.json();
-  //       })
-  //       .then(data => console.log(data))
-  //       .catch(error => console.error('Error:', error));
-  //   };
-
-  // });
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 

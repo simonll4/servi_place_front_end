@@ -52,7 +52,7 @@
           <div class="text-field">
             <label for="lastname" class="fw-bold">Apellido</label>
             <br />
-            <input type="text" id="lastname" name="lastname" placeholder="Ingresa tu apellido" required />
+            <input type="text" id="lastName" name="lastName" placeholder="Ingresa tu apellido" required />
           </div>
         </div>
         <div class="text-field email-field">
@@ -71,18 +71,18 @@
               </span>
             </div>
             <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña"
-              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required />
+              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required minlength="8" />
           </div>
           <div class="text-field">
             <label for="lastname" class="fw-bold">Confirmar contraseña</label>
             <br />
             <input type="password" id="password-confirm" name="password-confirm" placeholder="Repetí tu contraseña"
-              required />
+              required minlength="8"/>
           </div>
         </div>
         <div class="cuenta-dropdown text-field">
-          <label for="tipo-cuenta" class="fw-bold">Tipo de cuenta</label>
-          <select class="form-select" name="tipo-cuenta" aria-label="Default select example">
+          <label for="role" class="fw-bold">Tipo de cuenta</label>
+          <select class="form-select" name="role" aria-label="Default select example">
             <option selected>Selecciona una opcion</option>
             <option value="especialista">Especialista</option>
             <option value="cliente">Cliente</option>
@@ -101,7 +101,7 @@
               </svg>
               <p>Hace Clic para subir o arrastrá tu imagen</p>
             </div>
-            <input type="file"  id="upload-file" name="uploaded-file" />
+            <input type="file"  id="profilePhoto" name="profilePhoto" />
             <img id="image-preview" />
             <p class="message">No hay archivos seleccionados</p>
           </div>

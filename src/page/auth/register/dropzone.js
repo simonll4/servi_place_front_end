@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document
-    .getElementById("upload-file")
+    .getElementById("profilePhoto")
     .addEventListener("change", function (e) {
       var file = e.target.files[0];
       var reader = new FileReader();
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   dropzoneBox.addEventListener("submit", (e) => {
     e.preventDefault();
-    const myFiled = document.getElementById("upload-file");
+    const myFiled = document.getElementById("profilePhoto");
     console.log(myFiled.files[0]);
   });
 
