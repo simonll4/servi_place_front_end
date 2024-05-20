@@ -1,17 +1,14 @@
-document.addEventListener("DOMContentLoaded", async function () {
-  const allLinks = document.querySelectorAll(".sidebar-links a");
+const allLinks = document.querySelectorAll(".sidebar-links a");
 
-  allLinks.forEach((elem) => {
-    elem.addEventListener("click", function () {
-      const hrefLinkClick = elem.href;
+allLinks.forEach((elem) => {
+  const href = new URL(elem.href);
 
-      allLinks.forEach((link) => {
-        if (link.href == hrefLinkClick) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
-        }
-      });
-    });
-  });
+  // Comprueba si la ruta del enlace coincide con la ruta actual
+  if (href.pathname === window.location.pathname) {
+    // Si la ruta del enlace coincide con la ruta actual, agrega la clase "active"
+    elem.classList.add("active");
+  } else {
+    // Si no coincide, remueve la clase "active"
+    elem.classList.remove("active");
+  }
 });

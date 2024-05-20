@@ -81,7 +81,7 @@
                 <img src="/src/resources/img/file_upload.svg" alt="file-pic" />
                 <p>Hace Clic para subir o arrastrá tu imagen</p>
               </div>
-              <input type="file" id="profilePhoto" name="profilePhoto" />
+              <input type="file" id="profilePhoto" name="profilePhoto" required />
               <img id="image-preview" />
               <p class="message">No hay archivos seleccionados</p>
             </div>
@@ -92,6 +92,7 @@
                   class="form-select"
                   name="service"
                   aria-label="service selection"
+                  required
                 >
                   <option selected>Selecciona una opcion</option>
                   <option value="albañil">Albañil</option>
@@ -110,6 +111,7 @@
                   placeholder="Describe tu problema de forma breve..."
                   required
                   maxlength="360"
+                  aria-required="true"
                 ></textarea>
               </div>
               <button type="submit" id="submit-publication-button" disabled>
