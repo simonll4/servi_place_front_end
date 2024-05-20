@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8" />
+    <meta name="autor" content="john doe" />
+    <meta name="description" content="profile" />
+    <meta name="keywords" content="profile, serviplace, trabajos" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Titulo e iconos -->
+    <title>Mis trabajos | Serviplace</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/src/resources/logos/logo_web_2.png"
+    />
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="/src/components/template/styles/template_styles.css"
+    />
+    <link rel="stylesheet" href="styles/myjobs_styles.css" />
+  </head>
+  <body>
+    <!-- Header (Navbar) -->
+    <header id="header-container" class="container-fluid"></header>
+
+    <!-- Contenedor principal -->
+    <div
+      id="page-container"
+      class="container-fluid justify-content-between d-flex"
+    >
+      <!-- Sidebar -->
+      <nav id="sidebar-container" class="navbar-header"></nav>
+
+      <!-- Main Content -->
+      <div id="main-container" class="container-fluid p-0 bg-transparent">
+        <!-- Mis trabajos -->
+        <div class="section-container">
+          <h2 class="fw-bold">Mis trabajos</h2>
+          <hr />
+          <!-- Trabajos en curso -->
+          <div class="jobs-in-progress" id="jobs-in-progress">
+            <h3>Trabajos en curso</h3>
+            <div class="jobs-container">
+              <h4 id="date" class="fs-6">6 de mayo</h4>
+              <hr />
+              <!-- /////////////////////////////////// -->
+              <!-- Informacion del trabajo (En curso) -->
+              <!-- /////////////////////////////////// -->
+              <div class="jobs-data row" id="job-data">
+                <div class="col client-profile">
+                  <!-- Perfil del Cliente -->
+                  <div
+                    class="client-profile d-flex justify-content-between align-items-center"
+                    id="id_user"
+                  >
+                    <div class="profile-info d-flex">
+                      <div class="profile-image d-flex">
+                        <img
+                          src="/src/resources/img/random-guy.jpg"
+                          alt="profile_image"
+                          class="rounded-5"
+                        />
+                      </div>
+                      <div class="profile-details">
+                        <h4 class="job-in-progress" id="job-status">
+                          En curso
+                        </h4>
+                        <p class="fw-bolder fs-5">
+                          <span id="name">Juan</span>,
+                          <span id="lastname"></span>Perez
+                        </p>
+                        <p class="fw-light">
+                          <span id="location">Córdoba, Argentina</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col contact-section">
+                  <div
+                    class="d-flex align-items-start justify-content-start flex-column"
+                  >
+                    <p>Contactar</p>
+                    <a href="">Ver mensajes</a>
+                  </div>
+                </div>
+                <div class="col job-actions">
+                  <div
+                    class="d-flex align-items-start justify-content-start flex-column"
+                  >
+                    <!-- ACEPTAR TRABAJO -->
+                    <button type="button" class="btn btn-success btn-accept">
+                      Marcar completado
+                    </button>
+                    <!-- CANCELAR TRABAJO (Button trigger modal) -->
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-reject"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="problem-description row">
+                <h6 class="fw-bolder">Descripción del problema</h6>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
+                  quia alias molestias perferendis magni atque ipsam sapiente,
+                  ipsum consequatur, corporis doloribus ipsa eveniet voluptas
+                  aut modi nesciunt. Ex, aspernatur ullam.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Historial de trabajos -->
+          <div class="jobs-history" id="jobs-history">
+            <h3 class="mt-3 mb-2 history-title">Historial de Trabajos</h3>
+            <div class="jobs-container">
+              <h4 id="date" class="fs-6">6 de mayo</h4>
+              <hr />
+              <!-- /////////////////////////////////// -->
+              <!-- Informacion del trabajo (Completado) -->
+              <!-- /////////////////////////////////// -->
+              <div class="jobs-data row" id="job-data">
+                <div class="col client-profile">
+                  <!-- Perfil del Cliente -->
+                  <div
+                    class="client-profile d-flex justify-content-between align-items-center"
+                    id="id_user"
+                  >
+                    <div class="profile-info d-flex">
+                      <div class="profile-image d-flex">
+                        <img
+                          src="/src/resources/img/random-guy.jpg"
+                          alt="profile_image"
+                          class="rounded-5"
+                        />
+                      </div>
+                      <div class="profile-details">
+                        <h4 class="job-completed" id="job-status">
+                          Completado
+                        </h4>
+                        <p class="fw-bolder fs-5">
+                          <span id="name">Juan</span>,
+                          <span id="lastname"></span>Perez
+                        </p>
+                        <p class="fw-light">
+                          <span id="location">Córdoba, Argentina</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col contact-section">
+                  <div
+                    class="d-flex align-items-start justify-content-start flex-column"
+                  >
+                    <p>Contactar</p>
+                    <a href="">Ver mensajes</a>
+                  </div>
+                </div>
+                <div class="col job-actions">
+                  <div
+                    class="d-flex align-items-center justify-content-start flex-column"
+                  >
+                    <div class="d-flex align-items-center">
+                      <i class="bi-check-circle-fill icon-completed"></i>
+                      <p>¡Trabajo completado con éxito!</p>
+                    </div>
+                    <!-- Boton opinar -->
+                    <button type="button" class="btn btn-primary btn-opinion">
+                      Opinar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="problem-description row">
+                <h6 class="fw-bolder">Descripción del problema</h6>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
+                  quia alias molestias perferendis magni atque ipsam sapiente,
+                  ipsum consequatur, corporis doloribus ipsa eveniet voluptas
+                  aut modi nesciunt. Ex, aspernatur ullam.
+                </p>
+              </div>
+            </div>
+            <!-- ////////////////////////////////// -->
+            <div class="jobs-container">
+              <h4 id="date" class="fs-6">6 de mayo</h4>
+              <hr />
+              <!-- /////////////////////////////////// -->
+              <!-- Informacion del trabajo (Cancelado) -->
+              <!-- /////////////////////////////////// -->
+              <div class="jobs-data row" id="job-data">
+                <div class="col client-profile">
+                  <!-- Perfil del Cliente -->
+                  <div
+                    class="client-profile d-flex justify-content-between align-items-center"
+                    id="id_user"
+                  >
+                    <div class="profile-info d-flex">
+                      <div class="profile-image d-flex">
+                        <img
+                          src="/src/resources/img/random-guy.jpg"
+                          alt="profile_image"
+                          class="rounded-5"
+                        />
+                      </div>
+                      <div class="profile-details">
+                        <h4 class="job-canceled" id="job-status">Cancelado</h4>
+                        <p class="fw-bolder fs-5">
+                          <span id="name">Juan</span>,
+                          <span id="lastname"></span>Perez
+                        </p>
+                        <p class="fw-light">
+                          <span id="location">Córdoba, Argentina</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col contact-section">
+                  <div
+                    class="d-flex align-items-start justify-content-start flex-column"
+                  >
+                    <p>Contactar</p>
+                    <a href="">Ver mensajes</a>
+                  </div>
+                </div>
+                <div class="col job-actions">
+                  <div
+                    class="d-flex align-items-center justify-content-start flex-row"
+                  >
+                    <i class="bi-x-circle-fill icon-canceled"></i>
+                    <p>El trabajo fue cancelado</p>
+                  </div>
+                </div>
+              </div>
+              <div class="problem-description row">
+                <h6 class="fw-bolder">Descripción del problema</h6>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
+                  quia alias molestias perferendis magni atque ipsam sapiente,
+                  ipsum consequatur, corporis doloribus ipsa eveniet voluptas
+                  aut modi nesciunt. Ex, aspernatur ullam.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ///////////////////////////////////////////////////////////////////////// -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="container-fluid"></div>
+
+    <!-- Modal Cancelar (la cosa que se abre al apretar cancelar)-->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              Cancelar trabajo
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>¿Estás seguro que deseas cancelar el trabajo?</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Volver
+            </button>
+            <button type="button" class="btn btn-danger">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap & JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Scripts generales -->
+    <script src="/src/components/template/script-template-client.js"></script>
+    <script src="/src/components/template/script-ventana.js"></script>
+
+    <!-- Scripts internos -->
+    <script src="scripts/modal.js"></script>
+  </body>
+</html>

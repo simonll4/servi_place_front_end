@@ -1,0 +1,180 @@
+<div class="sidebar-links">
+  <ul>
+    <li>
+      <p class="text-title">Mi Perfil</p>
+      <a href="/src/page/specialist/profile/myprofile.html" class="active" title="profile">
+        <div class="icon">
+          <i class="bi-person"></i>
+        </div>
+        <span class="link">Ir a mi Perfil</span>
+      </a>
+    </li>
+    <p class="text-title">Mis Publicaciones</p>
+    <li>
+      <a href="/src/page/specialist/profile/mypublications.html" title="mis publicaciones">
+        <div class="icon">
+          <i class="bi-book"></i>
+        </div>
+        <span class="link">Ir a Mis Publicaciones</span>
+      </a>
+    </li>
+    <li>
+      <a href="/src/page/specialist/profile/create_publication.html" title="Crear publicacion">
+        <div class="icon">
+          <i class="bi-journal-bookmark"></i>
+        </div>
+        <span class="link">Crear Publicación</span>
+      </a>
+    </li>
+    <p class="text-title">Mis Trabajos</p>
+    <li>
+      <a href="/src/page/specialist/jobs/myjobs.html" title="Mis trabajos">
+        <div class="icon">
+          <i class="bi-tools"></i>
+        </div>
+        <span class="link">Ver Mis Trabajos</span>
+      </a>
+    </li>
+    <li>
+      <a href="/src/page/specialist/dashboard/dashboard_specialist.html" title="buscar trabajos">
+        <div class="icon">
+          <i class="bi-search"></i>
+        </div>
+        <span class="link">Buscar Trabajos</span>
+      </a>
+    </li>
+    <li>
+      <a href="#opinions" title="opiniones">
+        <div class="icon">
+          <i class="bi-people"></i>
+        </div>
+        <span class="link">Opiniones</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<style>
+  /* Estilos generales */
+  :root {
+    --primary-color: #fff;
+    --primary-color-dark: #3eaeff;
+    --button-color: #5433ff;
+    --button-color-shadow: #5433ff30;
+    --text-color: #000;
+  }
+
+  * {
+    padding: 0;
+    box-sizing: border-box;
+    position: sticky;
+  }
+
+  body {
+    font-family: Mulish, sans-serif;
+  }
+
+  .background {
+    content: "";
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    opacity: 0.5;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+  /* Barra de navegacion */
+  .navbar-header {
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: var(--primary-color);
+    width: 18rem;
+    padding: 1.2rem 0.85rem;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.5s ease-in-out;
+    box-shadow: 10px 0 15px -10px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .sidebar-top .home {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 3rem;
+    margin-right: 1rem;
+    font-size: 30px;
+    left: -0.125rem;
+  }
+  .sidebar-top h3 {
+    margin-top: 10px;
+    padding-left: 0.5rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+  .text-title {
+    color: gray;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+  .sidebar-links ul {
+    list-style-type: none;
+    position: relative;
+  }
+
+  .sidebar-links li {
+    position: relative;
+  }
+
+  .sidebar-links li a {
+    padding: 0.75rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    height: 3.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: 0.625rem;
+  }
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon i {
+    width: 1.625rem;
+    height: 1.625rem;
+    margin: auto;
+    font-size: 1.5rem;
+  }
+
+  .sidebar-links .link {
+    margin-left: 2.5rem;
+  }
+
+  .sidebar-links .active {
+    width: 100%;
+    text-decoration: none;
+    /* background-color: var(--primary-color-dark); */
+    background: linear-gradient(to right, #fff, #3eaeff);
+    transition: all 300ms ease-in;
+    border-radius: 0.625rem;
+  }
+</style>
