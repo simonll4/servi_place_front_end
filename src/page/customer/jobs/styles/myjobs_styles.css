@@ -1,0 +1,134 @@
+/* Estilos generales */
+
+body {
+  font-family: Mulish, sans-serif;
+}
+[hidden] {
+  display: none !important;
+}
+
+.section-container {
+  margin-top: 5px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #aeaeae;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* //////////////////////////////////////////// */
+/* ///////// Perfil del especialista  ///////// */
+/* //////////////////////////////////////////// */
+.jobs-container {
+  margin-top: 5px;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #aeaeae;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Perfil del cliente */
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.client-profile {
+  padding: 5px;
+}
+.profile-details h4 {
+  margin-bottom: 0;
+  margin-left: 9px;
+}
+/* Estados de los trabajos */
+.job-in-progress {
+  color: #ff9900;
+}
+.job-waiting {
+  color: #7b7979;
+}
+.job-completed {
+  color: #00ff00;
+}
+.job-canceled {
+  color: #ff0000;
+}
+/* Columnas */
+.profile-details p {
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+.contact-section div {
+  padding-top: 13px;
+  padding-left: 50px;
+}
+.problem-description {
+  padding-top: 20px;
+}
+/* Boton */
+.job-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.job-actions div {
+  width: 100%;
+}
+.job-actions button {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  background-color: white;
+}
+.btn-reject {
+  margin-top: 10px;
+  color: red;
+  border: 1px solid red;
+}
+.btn-accept {
+  color: #00ff00;
+  border: 1px solid #00ff00;
+}
+.btn-opinion {
+  color: #3eaeff;
+  border: 1px solid #3eaeff;
+}
+.btn-reject:hover {
+  background-color: red;
+  color: white;
+  outline: none;
+  border: 1px solid red;
+}
+.btn-accept:hover {
+  background-color: #00ff00;
+  color: white;
+  outline: none;
+  border: 1px solid #00ff00;
+}
+.btn-opinion:hover {
+  background-color: #3eaeff;
+  color: white;
+  outline: none;
+  border: 1px solid #3eaeff;
+}
+/* Iconos */
+.job-actions i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+.icon-completed {
+  color: #00ff00;
+}
+.icon-canceled {
+  color: #ff0000;
+}
+.job-actions p {
+  margin-top: 10px;
+}
