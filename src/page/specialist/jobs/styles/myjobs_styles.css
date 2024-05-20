@@ -50,6 +50,9 @@ body {
 .job-in-progress{
     color: #FF9900;
 }
+.job-waiting{
+    color: #7b7979;
+}
 .job-completed{
     color: #00FF00;
 }
@@ -83,14 +86,28 @@ body {
     padding: 10px;
     font-weight: bold;
     background-color: white;
-    color: red;
-    border: 1px solid red;
-    box-shadow: 0 0 10px rgba(110, 48, 48, 0.5);
+    
 }
-.job-actions button:hover{
+.btn-reject{
+  margin-top: 10px;
+  color: red;
+  border: 1px solid red;
+}
+.btn-accept{
+  color: #00FF00;
+  border: 1px solid #00FF00;
+}
+.btn-reject:hover{
     background-color: red;
     color: white;
     outline: none;
+    border: 1px solid red;
+}
+.btn-accept:hover{
+    background-color: #00FF00;
+    color: white;
+    outline: none;
+    border: 1px solid #00FF00;
 }
 /* Iconos */
 .job-actions i{
