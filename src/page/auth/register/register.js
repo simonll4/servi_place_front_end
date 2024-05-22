@@ -54,9 +54,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
       },
       body: JSON.stringify(data)
     })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch((error) => {
+      .then(response => {
+
+        const authHeader = response.headers.get('Authorization');
+        if (authHeader) {
+          const token = authHeader.replace('Bearer ', '');
+          localStorage.setItem('token', token);
+          console.log(localStorage.getItem('token'));
+        } else {
+          console.error('No Authorization header in response');
+        }
+        return response.json();
+
+      }).then(data => {
+
+        localStorage.setItem('role', data.role);
+        console.log(localStorage.getItem('role'));
+
+        if (data.role === 'SPECIALIST') {
+          window.location.href = '../../specialist/dashboard/dashboard_specialist.html';
+        } else if (data.role === 'CUSTOMER') {
+          window.location.href = '../../customer/dashboard/explore_posts.html';
+        }
+
+      }).catch((error) => {
         console.error('Error:', error);
         if (error.status === 409) {
           alert('El correo ya está registrado')

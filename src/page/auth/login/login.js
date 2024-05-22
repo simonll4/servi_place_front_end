@@ -22,9 +22,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       body: jsonString
     }).then(response => {
 
-      // Guarda el token en localStorage
       const authHeader = response.headers.get('Authorization');
-
       if (authHeader) {
         const token = authHeader.replace('Bearer ', '');
         localStorage.setItem('token', token);
@@ -33,9 +31,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         console.error('No Authorization header in response');
       }
       return response.json();
+
     }).then(data => {
-      // Imprime el mensaje en la consola
-      console.log(data.message);
+  
+      localStorage.setItem('role', data.role);
+      console.log(localStorage.getItem('role'));
+
+      if (data.role === 'SPECIALIST') {
+        window.location.href = '../../specialist/dashboard/dashboard_specialist.html';
+      } else if (data.role === 'CUSTOMER') {
+        window.location.href = '../../customer/dashboard/explore_posts.html';
+      }
+
     }).catch(error => {
       console.error('Error:', error);
     });
