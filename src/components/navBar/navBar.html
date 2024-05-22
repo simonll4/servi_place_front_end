@@ -13,15 +13,16 @@
     <i class="icon bi-chat-dots-fill"></i>
     <img
       class="profile"
+      id="user-profile-photo"
       src="/src/resources/img/profile-blank.svg"
-      alt="Joe Doe Picture"
+      alt="Profile"
     />
   </div>
 </span>
 <div class="dropdown__wrapper hide dropdown__wrapper--fade-in none">
   <div class="dropdown__group">
-    <div class="user-name">Matias Capo</div>
-    <div class="email">matias@gmail.com</div>
+    <div class="user-name" id="username">Cargando...</div>
+    <div class="email" id="useremail"></div>
   </div>
   <hr class="divider" />
   <nav>
@@ -39,6 +40,8 @@
     </ul>
   </nav>
 </div>
+
+
 <style>
   /* Estilos generales */
   :root {
