@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   //token (esto se deberia obtener del localStorage)
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJTUEVDSUFMSVNUIiwiaWF0IjoxNzE2NDg2NTI0LCJleHAiOjE3MTY1NzI5MjR9.6TOE-SU_SHggfRTXkkqLKIGKwi9kAXkzU-07zhyChUs'
+  //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJTUEVDSUFMSVNUIiwiaWF0IjoxNzE2NDg2NTI0LCJleHAiOjE3MTY1NzI5MjR9.6TOE-SU_SHggfRTXkkqLKIGKwi9kAXkzU-07zhyChUs'
+  const token = localStorage.getItem('token');
+
 
   //funcion para obtener los datos del usuario (nombre, apellido, imagen de perfil)
   //se obtiene el id del especialista y el contenedor donde se insertaran los datos

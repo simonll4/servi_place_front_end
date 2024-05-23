@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   //token (esto se deberia obtener del localStorage)
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzE2NDIxMTYxLCJleHAiOjE3MTY1MDc1NjF9.ma15hbXlBwC-ImUquWhJm9XEjRvkATPFAe72MJ7nAKU'
+  //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzE2NDIxMTYxLCJleHAiOjE3MTY1MDc1NjF9.ma15hbXlBwC-ImUquWhJm9XEjRvkATPFAe72MJ7nAKU'
+  //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzE2NDk1NzYyLCJleHAiOjE3MTY1ODIxNjJ9.qIvMIGb55rWfS2oQZ1Ac5H_-kI_vZUYfsR2muJzdt4E';
+
+  const token = localStorage.getItem('token');
 
   //funcion para obtener los datos del usuario (nombre, apellido, imagen de perfil)
   //se obtiene el id del especialista y el contenedor donde se insertaran los datos
@@ -72,16 +75,24 @@ document.addEventListener("DOMContentLoaded", function () {
         for (const job of data.jobs) {
           const newContainer = jobContainers[job.state].cloneNode(true);
 
-          newContainer.dataset.jobId = job.id; // se guarda el id del trabajo en el contenedor como id del container-job id="data-job-id"
-          getUserData(job.idSpecialist, newContainer);
-          newContainer.querySelector('.problem_title.row h5').textContent = job.name;
-          newContainer.querySelector('.problem-description p').textContent = job.description;
-
-          // se agrega evento a al boton de cancelar el trabajo, si es que existe
+          //EVENTOS para lops botones dentro del jopbs (solo se agregan los eventos para usarlos en el futuro)
           const rejectButton = newContainer.querySelector('.btn-reject');
           if (rejectButton) {
             rejectButton.addEventListener('click', async (event) => { });
           }
+          const acceptButton = newContainer.querySelector('.btn-accept');
+          if (acceptButton) {
+            acceptButton.addEventListener('click', async (event) => { });
+          }
+          const opinionButton = newContainer.querySelector('.btn-opinion');
+          if (opinionButton) {
+            opinionButton.addEventListener('click', async (event) => { });
+          }
+
+          newContainer.dataset.jobId = job.id; // se guarda el id del trabajo en el contenedor como id del container-job id="data-job-id"
+          getUserData(job.idSpecialist, newContainer);
+          newContainer.querySelector('.problem_title.row h5').textContent = job.name;
+          newContainer.querySelector('.problem-description p').textContent = job.description;
 
 
           const statusText = {
@@ -104,8 +115,39 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(error => console.error('Error:', error));
 
 
-  let rejectUrl = `http://127.0.0.1:5016/customer/jobs/reject-job/`;
+  ////////////////////////////////EVENTOS//////////////////////////////////////////////////////
+
+  document.addEventListener('click', async (event) => {
+    if (event.target.matches('.btn-accept')) {
+      const jobElement = event.target.closest('[data-job-id]');
+      if (!jobElement) {
+        console.error('No job container found');
+        return;
+      }
+      const jobId = jobElement.dataset.jobId;
+      console.log(jobId);
+
+      try {
+        const response = await fetch(`http://127.0.0.1:5016/customer/jobs/finish-job/${jobId}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        location.reload();
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
+
+    }
+  });
+
   // boton para cancelar trabajo, se inserta el idJob en la url
+  let rejectUrl = `http://127.0.0.1:5016/customer/jobs/reject-job/`;
   document.addEventListener('click', async (event) => {
     if (event.target.matches('.btn-reject')) {
       const jobElement = event.target.closest('[data-job-id]');
@@ -141,9 +183,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.querySelector('.btn.btn-secondary').addEventListener('click', function () {
-    location.reload();
+
+  // evento opinar sobre el trabajo
+  document.addEventListener('click', async (event) => {
+    if (event.target.matches('.btn-opinion')) {
+      const jobElement = event.target.closest('[data-job-id]');
+      if (!jobElement) {
+        console.error('No job container found');
+        return;
+      }
+      const jobId = jobElement.dataset.jobId;
+      console.log(jobId);
+
+      // try {
+      //   const body = {
+      //     // Aquí van los datos que quieres enviar en el cuerpo de la solicitud
+      //   };
+
+      //   const response = await fetch('http://127.0.0.1:5016/customer/jobs/some-endpoint', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Authorization': `Bearer ${token}`,
+      //       'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify(body),
+      //   });
+
+      //   if (!response.ok) {
+      //     throw new Error(`HTTP error! status: ${response.status}`);
+      //   }
+      //   location.reload();
+      // } catch (error) {
+      //   console.error('An error occurred:', error);
+      // }
+    }
   });
+
+
+
+  // document.querySelector('.btn.btn-secondary').addEventListener('click', function () {
+  //   location.reload();
+  // });
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });
