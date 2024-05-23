@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //token (esto se deberia obtener del localStorage)
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzE2NDIxMTYxLCJleHAiOjE3MTY1MDc1NjF9.ma15hbXlBwC-ImUquWhJm9XEjRvkATPFAe72MJ7nAKU'
 
+  //funcion para obtener los datos del usuario (nombre, apellido, imagen de perfil)
+  //se obtiene el id del especialista y el contenedor donde se insertaran los datos
   function getUserData(specialistId, newContainer) {
     const userUrl = `http://127.0.0.1:5016/customer/profile/user-information/${specialistId}`;
     fetch(userUrl, {
@@ -16,15 +18,18 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(data => {
         newContainer.querySelector('#name').textContent = data.name;
         newContainer.querySelector('#lastname').textContent = data.last_name;
+        if (data.profile_picture == '') {
+          data.profile_picture = `../../../resources/img/anonymous-user.jpg`;
+        }
         newContainer.querySelector('.profile-image img').src = data.profile_picture;
       })
       .catch(error => console.error('Error:', error));
   }
 
 
-  const existingContainer = [];
+  //funcion para obtener los contenedores para cada job state
+  let existingContainer = [];
   const templatePaths = ['models/pending-job.html', 'models/accepted-job.html', 'models/rejected-job.html', 'models/finished-job.html'];
-
   const fetchPromises = templatePaths.map((path) => {
     return fetch(path)
       .then((response) => response.text())
@@ -36,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  let jobContainers;
+  // mapea los contenedores de los trabajos a los estados de los jobs
   const getJobContainers = () => {
     return Promise.all(fetchPromises)
       .then(() => {
@@ -50,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
 
-
+  // se obtienen los trabajos del usuario y se insertan en los contenedores correspondientes
   const jobUrl = 'http://127.0.0.1:5016/customer/jobs/my-jobs';
   fetch(jobUrl, {
     method: 'GET',
@@ -63,13 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
 
       getJobContainers().then(jobContainers => {
+        // se reccorre el objeto job devuelvo por el servidor y se les insertan los datos correspondientes
         for (const job of data.jobs) {
           const newContainer = jobContainers[job.state].cloneNode(true);
 
-          newContainer.dataset.jobId = job.id; // Guardar el ID del trabajo en el contenedor
-
+          newContainer.dataset.jobId = job.id; // se guarda el id del trabajo en el contenedor como id del container-job id="data-job-id"
           getUserData(job.idSpecialist, newContainer);
-          newContainer.querySelector('.problem_title h5').textContent = job.title;
+          newContainer.querySelector('.problem_title.row h5').textContent = job.name;
           newContainer.querySelector('.problem-description p').textContent = job.description;
 
           // se agrega evento a al boton de cancelar el trabajo, si es que existe
@@ -77,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (rejectButton) {
             rejectButton.addEventListener('click', async (event) => { });
           }
+
 
           const statusText = {
             'PENDING': 'Pendiente',
@@ -97,95 +103,48 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch(error => console.error('Error:', error));
 
+
+  let rejectUrl = `http://127.0.0.1:5016/customer/jobs/reject-job/`;
+  // boton para cancelar trabajo, se inserta el idJob en la url
   document.addEventListener('click', async (event) => {
     if (event.target.matches('.btn-reject')) {
-      console.log('Reject button clicked');
       const jobElement = event.target.closest('[data-job-id]');
       if (!jobElement) {
         console.error('No job container found');
         return;
       }
       const jobId = jobElement.dataset.jobId;
-
-      console.log('Job ID:', jobId);
+      rejectUrl = `http://127.0.0.1:5016/customer/jobs/reject-job/${jobId}`;
+      console.log(rejectUrl);
     }
   });
 
+  // evento de confirmacion para cancelar trabajo
+  document.getElementById('rejected_btn').addEventListener('click', async function (event) {
+    try {
+      const response = await fetch(rejectUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-  // document.getElementById('reject_btn').addEventListener('click', async (event) => {
-  //   console.log('Reject button clicked');
-  //   const jobElement = event.target.closest('[data-job-id]');
-  //   if (!jobElement) {
-  //     console.error('No job container found');
-  //     return;
-  //   }
-  //   const jobId = jobElement.dataset.jobId;
+      //const result = await response.json();
+      location.reload();
+    } catch (error) {
+      console.error('Error:', error);
+    }
 
-  //   const url = `http://127.0.0.1:5016/customer/jobs/reject-job/${jobId}`;
-  //   const data = {}; // Reemplaza con los datos que quieres enviar
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  });
 
-  //   try {
-  //     const response = await fetch(url, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${token}` // Asegúrate de tener el token correcto
-  //       },
-  //       body: JSON.stringify(data)
-  //     });
+  document.querySelector('.btn.btn-secondary').addEventListener('click', function () {
+    location.reload();
+  });
 
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-
-  //     const result = await response.json();
-  //     console.log(result);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // });
-
-
-  //////////////////////////////////////////////////////////////////////////
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-// for (const job of data.jobs) {
-
-//   const newContainer = existingContainer.cloneNode(true);
-//   getUserData(job.idSpecialist, newContainer);
-//   newContainer.removeAttribute('hidden');
-//   newContainer.querySelector('.problem-description p').textContent = job.description;
-
-//   if (job.state === 'PENDING' || job.state === 'ACCEPTED') {
-//     if (job.state === 'PENDING') {
-//       newContainer.querySelector('#job-status').textContent = 'Pendiente';
-//     }
-//     if (job.state === 'ACCEPTED') {
-//       newContainer.querySelector('#job-status').textContent = 'Aceptado';
-//     }
-
-//     document.querySelector('.jobs-in-progress').appendChild(newContainer);
-//   } else if (job.state === 'REJECTED' || job.state === 'FINISHED') {
-//     if (job.state === 'REJECTED') {
-//       newContainer.querySelector('#job-status').textContent = 'Rechazado';
-//     }
-//     if (job.state === 'FINISHED') {
-//       newContainer.querySelector('#job-status').textContent = 'Finalizado';
-//     }
-
-//     document.querySelector('#jobs-history').appendChild(newContainer);
-//   }
-// }
