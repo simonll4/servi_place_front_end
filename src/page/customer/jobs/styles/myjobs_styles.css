@@ -68,8 +68,11 @@ body {
   padding-top: 13px;
   padding-left: 50px;
 }
-.problem-description {
+.title-description{
   padding-top: 20px;
+}
+.problem-description {
+  padding-top: 5px;
 }
 /* Boton */
 .job-actions {
