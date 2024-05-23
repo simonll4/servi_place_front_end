@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Titulo e iconos -->
-    <title>Configurar Perfil | Serviplace</title>
+    <title>Mi Perfil | Serviplace</title>
     <link
       rel="icon"
       type="image/x-icon"
@@ -71,7 +71,10 @@
         </div>
 
         <!-- Botones -->
-        <div class="section-container profile-buttons container-fluid" id="action-buttons">
+        <div
+          class="section-container profile-buttons container-fluid"
+          id="action-buttons"
+        >
           <h3>Tu perfil</h3>
           <div class="container-fluid d-flex flex-column button-container">
             <a href="#edit-profile" class="btn btn-primary">Editar Perfil</a>
@@ -81,12 +84,18 @@
             <a href="create_publication.html" class="btn btn-primary"
               >Crear Publicacion</a
             >
-            <a href="mypublications.html" class="btn btn-light">Ver Mis Publicaciones</a>
+            <a href="mypublications.html" class="btn btn-light"
+              >Ver Mis Publicaciones</a
+            >
           </div>
         </div>
 
         <!-- Editar perfil -->
-        <div class="section-container profile-buttons container-fluid" id="edit-profile" hidden>
+        <div
+          class="section-container profile-buttons container-fluid"
+          id="edit-profile"
+          hidden
+        >
           <div class="d-flex align-items-center">
             <a href="#" id="back-button">
               <i class="bi-arrow-left"></i>
@@ -94,30 +103,37 @@
             <h3>Editar Perfil</h3>
           </div>
           <hr />
-          <div class="profile-data d-flex">
-            <!-- Cambiar foto de perfil -->
-            <div
-              class="profile-image-config d-flex justify-content-center flex-column"
-            >
-              <h3>Foto de perfil</h3>
-              <img src="/src/resources/img/client-pic.jpg" alt="profile-pic" />
-              <!-- Boton cambiar foto -->
-              <input
-                type="file"
-                id="image-upload"
-                accept="image/*"
-                style="display: none"
-              />
+          <form
+            action="post"
+            class="basic-info container-fluid p-0"
+            id="basic-info-form"
+          >
+            <div class="profile-data row">
+              <!-- Cambiar foto de perfil -->
+              <div class="profile-image-config col-sm-12 col-md-6 text-center">
+                <div class="d-flex flex-column gap-5">
+                  <h3>Foto de perfil</h3>
+                  <img
+                    src="/src/resources/img/client-pic.jpg"
+                    alt="profile-pic"
+                  />
+                  <!-- Boton cambiar foto -->
+                  <input
+                    type="file"
+                    id="image-upload"
+                    accept="image/*"
+                    style="display: none"
+                  />
 
-              <!-- Botón para cargar la imagen -->
-              <button class="btn btn-light" id="upload-button">
-                Cargar imagen
-              </button>
-            </div>
-
-            <!-- Información básica -->
-            <form action="post" class="basic-info" id="basic-info-form">
-              <div class="container-fluid d-flex flex-column">
+                  <!-- Botón para cargar la imagen -->
+                  <button class="btn btn-light" id="upload-button">
+                    Cargar imagen
+                  </button>
+                </div>
+              </div>
+              <!-- Información básica -->
+              <!-- EL SCRIPT ESTÁ HECHO DE TAL FORMA QUE SI SE EDITA UN CAMPO HABILITE EL BOTON -->
+              <div class="col-sm-12 col-md-6">
                 <h3>Información básica</h3>
                 <hr />
                 <div class="row">
@@ -141,7 +157,7 @@
                   </div>
                 </div>
                 <div class="form-group d-flex flex-column">
-                  <label for="name">Email</label>
+                  <label for="email">Email</label>
                   <input
                     type="email"
                     class="form-control"
@@ -150,7 +166,7 @@
                   />
                 </div>
                 <div class="form-group d-flex flex-column">
-                  <label for="name">Ubicación</label>
+                  <label for="location">Ubicación</label>
                   <input
                     type="location"
                     class="form-control"
@@ -159,10 +175,14 @@
                     disabled
                   />
                 </div>
-                <button type="submit" id="submit-button" disabled>Aceptar</button>
+                <di class="d-flex justify-content-center">
+                  <button type="submit" id="submit-button" disabled>
+                    Aceptar
+                  </button>
+                </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
         <!-- ////////////////////////////////////////// -->
       </div>

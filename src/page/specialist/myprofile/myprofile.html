@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Titulo e iconos -->
-    <title>Configurar Perfil | Serviplace</title>
+    <title>Mi Perfil | Serviplace</title>
     <link
       rel="icon"
       type="image/x-icon"
@@ -108,6 +108,7 @@
             </div>
 
             <!-- Información básica -->
+            <!-- EL SCRIPT ESTÁ HECHO DE TAL FORMA QUE SI SE EDITA UN CAMPO HABILITE EL BOTON -->
             <form action="post" class="basic-info" id="basic-info-form">
               <div class="container-fluid d-flex flex-column">
                 <h3>Información básica</h3>
@@ -133,7 +134,7 @@
                   </div>
                 </div>
                 <div class="form-group d-flex flex-column">
-                  <label for="name">Email</label>
+                  <label for="email">Email</label>
                   <input
                     type="email"
                     class="form-control"
@@ -142,13 +143,23 @@
                   />
                 </div>
                 <div class="form-group d-flex flex-column">
-                  <label for="name">Ubicación</label>
+                  <label for="location">Ubicación</label>
                   <input
                     type="location"
                     class="form-control"
                     id="location"
                     placeholder="Córdoba, Argentina"
                     disabled
+                  />
+                </div>
+                <div class="form-group d-flex flex-column">
+                  <label for="aboutme">Acerca De Mí</label>
+                  <input
+                    type="location"
+                    class="form-control"
+                    id="aboutme"
+                    placeholder="Escribe un poco acerca de ti"
+                    maxlength="200"
                   />
                 </div>
                 <button type="submit" id="submit-button" disabled>
@@ -161,10 +172,10 @@
 
         <!-- Mi Perfil -->
         <div class="d-flex justify-content-between" id="my-profile-section">
-          <div class="about-and-opinions">
+          <div class="about-and-opinions-profile">
             <!-- Acerca de -->
             <div class="section-container about-me">
-              <h3 class="fs-5 fw-bold">Acerca de</h3>
+              <h3 class="d-flex align-items-center">Acerca de</h3>
               <hr />
               <p id="about-me">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
@@ -180,6 +191,17 @@
                 <p class="ms-2">Opiniones</p>
               </h3>
               <hr />
+              <div class="opinions_avg">
+                <iframe
+                  src="/src/components/opinions/opinions.html"
+                  frameborder="0"
+                ></iframe>
+              </div>
+              <div class="row all_opinions">
+                <a href="myopinions.html" class="btn btn-primary"
+                  >Ver todas las opiniones</a
+                >
+              </div>
             </div>
           </div>
           <!-- Mis posteos -->
