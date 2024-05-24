@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const token = localStorage.getItem('token');
 
+
   //funcion para obtener los datos del usuario (nombre, apellido, imagen de perfil)
   //se obtiene el id del especialista y el contenedor donde se insertaran los datos
   function getUserData(specialistId, newContainer) {

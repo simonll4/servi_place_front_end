@@ -1,206 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metadatos -->
-    <meta charset="UTF-8" />
-    <meta name="autor" content="john doe" />
-    <meta name="description" content="dashboard" />
-    <meta name="keywords" content="dashboard, serviplace, trabajos" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Titulo e iconos -->
-    <title>Dashboard | Serviplace</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/src/resources/logos/logo_web_2.png"
-    />
+<head>
+  <!-- Metadatos -->
+  <meta charset="UTF-8" />
+  <meta name="autor" content="john doe" />
+  <meta name="description" content="dashboard" />
+  <meta name="keywords" content="dashboard, serviplace, trabajos" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Titulo e iconos -->
+  <title>Dashboard | Serviplace</title>
+  <link rel="icon" type="image/x-icon" href="/src/resources/logos/logo_web_2.png" />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet" />
 
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="/src/components/template/styles/template_styles.css"
-    />
-    <link rel="stylesheet" href="styles/dashboard_styles.css" />
-  </head>
-  <body>
-    <!-- Header (Navbar) -->
-    <header id="header-container" class="container-fluid"></header>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <!-- Contenedor principal -->
-    <div id="page-container" class="container-fluid">
-      <!-- Sidebar -->
-      <nav id="sidebar-container" class="navbar-header"></nav>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/components/template/styles/template_styles.css" />
+  <link rel="stylesheet" href="styles/dashboard_styles.css" />
+</head>
 
-      <!-- Main Content -->
-      <div id="main-container" class="container d-flex flex-column">
-        <!-- Imagen principal -->
-        <div class="welcome-image">
-          <div class="container">
-            <p class="fw-bold principal-text">
-              ¿Estas listo para brindar tus servicios?
-            </p>
-            <p class="fw-light welcome-subtext">
-              Encontrá las últimas novedades de servicios requeridos por los
-              usuarios
-            </p>
-          </div>
-        </div>
-        <!-- Últimos servicios solicitados -->
-        <div class="container-fluid latest-services">
-          <!-- Filtrar por categorías -->
-          <h2>Últimos servicios solicitados</h2>
-          <div
-            class="btn-group category-filter"
-            role="group"
-            aria-label="filtro de categorias"
-          >
-            <input
-              type="checkbox"
-              class="btn-check"
-              id="filter-albañil"
-              autocomplete="off"
-            />
-            <label
-              class="btn btn-outline-primary rounded-5"
-              for="filter-albañil"
-              >Albañil</label
-            >
+<body>
+  <!-- Header (Navbar) -->
+  <header id="header-container" class="container-fluid"></header>
 
-            <input
-              type="checkbox"
-              class="btn-check"
-              id="filter-gasista"
-              autocomplete="off"
-            />
-            <label
-              class="btn btn-outline-primary rounded-5"
-              for="filter-gasista"
-              >Gasista</label
-            >
+  <!-- Contenedor principal -->
+  <div id="page-container" class="container-fluid">
+    <!-- Sidebar -->
+    <nav id="sidebar-container" class="navbar-header"></nav>
 
-            <input
-              type="checkbox"
-              class="btn-check"
-              id="filter-plomero"
-              autocomplete="off"
-            />
-            <label
-              class="btn btn-outline-primary rounded-5"
-              for="filter-plomero"
-              >Plomero</label
-            >
-
-            <input
-              type="checkbox"
-              class="btn-check"
-              id="filter-pintor"
-              autocomplete="off"
-            />
-            <label class="btn btn-outline-primary rounded-5" for="filter-pintor"
-              >Pintor</label
-            >
-
-            <input
-              type="checkbox"
-              class="btn-check"
-              id="filter-Electricista"
-              autocomplete="off"
-            />
-            <label
-              class="btn btn-outline-primary rounded-5"
-              for="filter-Electricista"
-              >Electricista</label
-            >
-          </div>
-          <hr />
-          <!-- Publicaciones -->
-          <div class="client-publication" id="article_id">
-            <!-- Perfil del Cliente -->
-            <div
-              class="client-profile d-flex justify-content-between align-items-center"
-              id="id_user"
-            >
-              <div class="profile-info d-flex">
-                <div class="profile-image d-flex">
-                  <img
-                    src="/src/resources/img/random-guy.jpg"
-                    alt="profile_image"
-                    class="rounded-5"
-                  />
-                </div>
-                <div class="profile-details">
-                  <p class="fw-bold">
-                    <span id="name">Juan</span>,
-                    <span id="lastname"></span>Perez
-                  </p>
-                  <p class="fw-light">
-                    <span id="location">Córdoba, Argentina</span>
-                  </p>
-                  <!-- Categoría requerida -->
-                  <div class="required-category">
-                    <span id="id_category">Albañil</span>
-                  </div>
-                </div>
-              </div>
-              <a class="btn btn-primary" id="contact" href="#" role="button"
-                >Contactar</a
-              >
-            </div>
-            <!-- Descripción del problema -->
-            <div class="problem-description" id="paragraph">
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Similique velit molestias facere unde voluptas mollitia
-                distinctio? Cum nam quas repudiandae id modi, autem fugit
-                mollitia doloribus consequatur delectus hic facere!
-              </p>
-            </div>
-            <!-- Imagen del Posteo -->
-            <div
-              class="post_image d-flex justify-content-center"
-              id="post_image"
-            >
-              <img
-                src="/src/resources/img/publication-image.jpg"
-                alt="publication-image"
-              />
-            </div>
-          </div>
+    <!-- Main Content -->
+    <div id="main-container" class="container d-flex flex-column">
+      <!-- Imagen principal -->
+      <div class="welcome-image">
+        <div class="container">
+          <p class="fw-bold principal-text">
+            ¿Estas listo para brindar tus servicios?
+          </p>
+          <p class="fw-light welcome-subtext">
+            Encontrá las últimas novedades de servicios requeridos por los
+            usuarios
+          </p>
         </div>
       </div>
+      <!-- Últimos servicios solicitados -->
+      <div class="container-fluid latest-services">
+        <!-- Filtrar por categorías -->
+        <h2>Últimos servicios solicitados</h2>
+        <div class="btn-group category-filter" role="group" aria-label="filtro de categorias">
+          <input type="checkbox" class="btn-check" id="1" autocomplete="off" />
+          <label class="btn btn-outline-primary rounded-5" for="1">Albañil</label>
+
+          <input type="checkbox" class="btn-check" id="2" autocomplete="off" />
+          <label class="btn btn-outline-primary rounded-5" for="2">Gasista</label>
+
+          <input type="checkbox" class="btn-check" id="3" autocomplete="off" />
+          <label class="btn btn-outline-primary rounded-5" for="3">Plomero</label>
+
+          <input type="checkbox" class="btn-check" id="4" autocomplete="off" />
+          <label class="btn btn-outline-primary rounded-5" for="4">Pintor</label>
+
+          <input type="checkbox" class="btn-check" id="5" autocomplete="off" />
+          <label class="btn btn-outline-primary rounded-5" for="5">Electricista</label>
+        </div>
+        <hr />
+        <!-- Publicaciones -->
+        <!--aca van las publicaciones de los customers-->
+      </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <div id="footer" class="container-fluid"></div>
+  <!-- Footer -->
+  <div id="footer" class="container-fluid"></div>
 
-    <!-- Bootstrap & JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="/src/components/template/script-template.js"></script>
-    <script src="/src/components/template/script-ventana.js"></script>
-  </body>
+  <!-- Bootstrap & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="/src/components/template/script-template.js"></script>
+  <script src="/src/components/template/script-ventana.js"></script>
+  <script src="scripts/dashboard_specialist.js"></script>
+</body>
+
 </html>
