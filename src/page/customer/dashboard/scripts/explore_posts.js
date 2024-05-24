@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
  
 function fetchArticles() {
   const activeIds = Array.from(document.querySelectorAll('.btn-check:checked')).map(checkbox => checkbox.id);
-  console.log(activeIds);
 
   // borra los articulos existentes para mostrar los nuevos
   const existingArticles = document.querySelectorAll('.specialist-publication');
@@ -59,7 +58,6 @@ function fetchArticles() {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
 
       if (Array.isArray(data.articles)) {
         data.articles.forEach((article, index) => {

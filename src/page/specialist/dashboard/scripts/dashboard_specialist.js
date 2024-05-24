@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const token = localStorage.getItem('token');
 
-
   //funcion para obtener el modelo de los articulos
   let existingArticle = [];
   const templatePaths = ['models/customer-articles.html',];
@@ -17,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 
+  // obtiene los datos del usuario y los guarda en el articulo
   function getUserData(customerId, newContainer) {
     const userUrl = `http://127.0.0.1:5016/specialist/profile/user-information/${customerId}`;
     fetch(userUrl, {
@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function fetchArticles() {
     const activeIds = Array.from(document.querySelectorAll('.btn-check:checked')).map(checkbox => checkbox.id);
-    console.log(activeIds);
 
     // borra los articulos existentes para mostrar los nuevos
     const existingArticles = document.querySelectorAll('.client-publication');
@@ -59,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
 
         if (Array.isArray(data.articles)) {
           data.articles.forEach((article) => {
