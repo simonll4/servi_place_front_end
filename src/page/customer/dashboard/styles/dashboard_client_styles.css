@@ -122,3 +122,11 @@ body {
   border-radius: 20px;
   color: black;
 }
+
+
+.article-title{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 20px;
+}

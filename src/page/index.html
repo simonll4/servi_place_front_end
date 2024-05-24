@@ -1,320 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metadatos -->
-    <meta charset="UTF-8" />
-    <meta name="autor" content="john doe" />
-    <meta name="description" content="profile" />
-    <meta name="keywords" content="welcome-site, serviplace, home" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Titulo e iconos -->
-    <title>Bienvenido | Serviplace</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/src/resources/logos/logo_web_2.png"
-    />
+<head>
+  <!-- Metadatos -->
+  <meta charset="UTF-8" />
+  <meta name="autor" content="john doe" />
+  <meta name="description" content="profile" />
+  <meta name="keywords" content="welcome-site, serviplace, home" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Titulo e iconos -->
+  <title>Bienvenido | Serviplace</title>
+  <link rel="icon" type="image/x-icon" href="/src/resources/logos/logo_web_2.png" />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet" />
 
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="/src/components/welcome_page/home_styles.css"
-    />
-  </head>
-  <body>
-    <!-- Header (Navbar) -->
-    <header class="container-fluid" id="navbar">
-      <span class="navigation__group">
-        <!-- Logo y Titulo -->
-        <div class="logo-company d-flex align-items-center">
-          <img
-            src="/src/resources/logos/logo_web_2.png"
-            alt="logo-serviplace"
-            width="50"
-          />
-          <h2 class="icon-title">SERVIPLACE</h2>
-        </div>
-        <!-- Secciones -->
-        <div class="home-pages">
-          <a href="#about-us">Acerca De</a>
-          <a href="#how-works">¿Cómo funciona?</a>
-          <a href="#specialist-section">Profesionales</a>
-          <a href="#reviews">Opiniones</a>
-        </div>
-        <!-- Botones -->
-        <div class="profile-group d-flex">
-          <a href="/src/page/auth/login/login.html" class="btn btn-light me-2"
-            >Ingresar</a
-          >
-          <a href="/src/page/auth/register/register.html" class="btn btn-dark"
-            >Registrarse</a
-          >
-        </div>
-      </span>
-    </header>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-text">
-        <h1>Tus mejores profesionales</h1>
-        <p>Al alcance de tu mano, en un solo sitio</p>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/components/welcome_page/home_styles.css" />
+</head>
+
+<body>
+  <!-- Header (Navbar) -->
+  <header class="container-fluid" id="navbar">
+    <span class="navigation__group">
+      <!-- Logo y Titulo -->
+      <div class="logo-company d-flex align-items-center">
+        <img src="/src/resources/logos/logo_web_2.png" alt="logo-serviplace" width="50" />
+        <h2 class="icon-title">SERVIPLACE</h2>
+        
       </div>
-    </section>
+      <!-- Secciones -->
+      <div class="home-pages">
+        <a href="#about-us">Acerca De</a>
+        <a href="#how-works">¿Cómo funciona?</a>
+        <a href="#specialist-section">Profesionales</a>
+        <a href="#reviews">Opiniones</a>
+      </div>
+      <!-- Botones -->
+      <div class="profile-group d-flex">
+        <a href="/src/page/auth/login/login.html" class="btn btn-light me-2">Ingresar</a>
+        <a href="/src/page/auth/register/register.html" class="btn btn-dark">Registrarse</a>
+      </div>
+    </span>
+  </header>
 
-    <!-- About us -->
-    <div class="about-us-section mt-3" id="about-us">
-      <div class="row">
-        <div class="col d-flex flex-column ms-4 p-4">
-          <h2 class="fw-bolder">¿Qué servicios necesitas hoy?</h2>
-          <p class="fw-light">Elegí tu mejor opción. Sin intermediarios.</p>
-          <p class="fw-bold">
-            Serviplace pone a tu disposición un lugar donde podes encontrar a
-            los mejores profesionales para todas tus necesidades, ya sea en tu
-            hogar o en tu negocio.
-          </p>
-        </div>
-        <div class="col side-image">
-          <img src="/src/resources/img/about-photo.jpg" alt=" about-photo" />
-        </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1>Tus mejores profesionales</h1>
+      <p>Al alcance de tu mano, en un solo sitio</p>
+    </div>
+  </section>
+
+  <!-- About us -->
+  <div class="about-us-section mt-3" id="about-us">
+    <div class="row">
+      <div class="col d-flex flex-column ms-4 p-4">
+        <h2 class="fw-bolder">¿Qué servicios necesitas hoy?</h2>
+        <p class="fw-light">Elegí tu mejor opción. Sin intermediarios.</p>
+        <p class="fw-bold">
+          Serviplace pone a tu disposición un lugar donde podes encontrar a
+          los mejores profesionales para todas tus necesidades, ya sea en tu
+          hogar o en tu negocio.
+        </p>
+      </div>
+      <div class="col side-image">
+        <img src="/src/resources/img/about-photo.jpg" alt=" about-photo" />
       </div>
     </div>
+  </div>
 
-    <!-- Como funciona -->
-    <div class="how-it-works-section mt-5" id="how-works">
-      <div class="row">
-        <div
-          class="d-flex justify-content-center align-items-center flex-column"
-        >
-          <h2 class="fw-bolder">¿Cómo funciona?</h2>
-          <p>
-            Podes contratar a los mejores profesionales en tres simples pasos.
+  <!-- Como funciona -->
+  <div class="how-it-works-section mt-5" id="how-works">
+    <div class="row">
+      <div class="d-flex justify-content-center align-items-center flex-column">
+        <h2 class="fw-bolder">¿Cómo funciona?</h2>
+        <p>
+          Podes contratar a los mejores profesionales en tres simples pasos.
+        </p>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="card col-md-1 m-5">
+        <img src="/src/resources/img/first-step-image.jpg" class="card-img-top" alt="first-step-image" />
+        <div class="card-body">
+          <h5 class="card-title">Contános tu problema</h5>
+          <p class="card-text">
+            Y te ofreceremos una lista de profesionales que puedan resolverlo.
           </p>
         </div>
       </div>
-      <div class="row d-flex justify-content-center">
-        <div class="card col-md-1 m-5">
-          <img
-            src="/src/resources/img/first-step-image.jpg"
-            class="card-img-top"
-            alt="first-step-image"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Contános tu problema</h5>
-            <p class="card-text">
-              Y te ofreceremos una lista de profesionales que puedan resolverlo.
-            </p>
-          </div>
+      <div class="card col-md-1 m-5">
+        <img src="/src/resources/img/second-step-image.jpg" class="card-img-top" alt="first-step-image" />
+        <div class="card-body">
+          <h5 class="card-title">Elegí entre los mejores</h5>
+          <p class="card-text">
+            Escogé entre una lista amplia de profesionales acorde a tu
+            necesidad.
+          </p>
         </div>
-        <div class="card col-md-1 m-5">
-          <img
-            src="/src/resources/img/second-step-image.jpg"
-            class="card-img-top"
-            alt="first-step-image"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Elegí entre los mejores</h5>
-            <p class="card-text">
-              Escogé entre una lista amplia de profesionales acorde a tu
-              necesidad.
-            </p>
-          </div>
-        </div>
-        <div class="card col-md-1 m-5">
-          <img
-            src="/src/resources/img/thir-step-image.jpg"
-            class="card-img-top"
-            alt="first-step-image"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Coordina el encuentro</h5>
-            <p class="card-text">
-              Hablá directamente con el profesional y elegí el lugar.
-            </p>
-          </div>
+      </div>
+      <div class="card col-md-1 m-5">
+        <img src="/src/resources/img/thir-step-image.jpg" class="card-img-top" alt="first-step-image" />
+        <div class="card-body">
+          <h5 class="card-title">Coordina el encuentro</h5>
+          <p class="card-text">
+            Hablá directamente con el profesional y elegí el lugar.
+          </p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Reviews -->
-    <div class="how-it-works-section mt-5" id="reviews">
-      <div class="row">
-        <div
-          class="d-flex justify-content-center align-items-center flex-column"
-        >
-          <h2 class="fw-bolder">
-            Nuestros clientes avalan a nuestros profesionales
-          </h2>
-          <p>Seguridad. Confiabilidad. Rapidez. En un solo lugar.</p>
+  <!-- Reviews -->
+  <div class="how-it-works-section mt-5" id="reviews">
+    <div class="row">
+      <div class="d-flex justify-content-center align-items-center flex-column">
+        <h2 class="fw-bolder">
+          Nuestros clientes avalan a nuestros profesionales
+        </h2>
+        <p>Seguridad. Confiabilidad. Rapidez. En un solo lugar.</p>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="card col-md-1 m-5">
+        <div class="card-body p-3 flex-column justify-content-center align-items-center text-center">
+          <div class="d-flex justify-content-center gap-2 stars mb-2">
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+          </div>
+          <h5 class="card-title fw-bold">Álvaro</h5>
+          <p class="card-text">
+            “El profesional que realizó el trabajo fue excepcional,
+            demostrando habilidad y atención al detalle en cada paso del
+            proceso.”
+          </p>
         </div>
       </div>
-      <div class="row d-flex justify-content-center">
-        <div class="card col-md-1 m-5">
-          <div
-            class="card-body p-3 flex-column justify-content-center align-items-center text-center"
-          >
-            <div class="d-flex justify-content-center gap-2 stars mb-2">
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-            </div>
-            <h5 class="card-title fw-bold">Álvaro</h5>
-            <p class="card-text">
-              “El profesional que realizó el trabajo fue excepcional,
-              demostrando habilidad y atención al detalle en cada paso del
-              proceso.”
-            </p>
+      <div class="card col-md-1 m-5">
+        <div class="card-body p-3 d-flex flex-column justify-content-center align-items-center text-center">
+          <div class="d-flex justify-content-center gap-2 stars mb-2">
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
           </div>
+          <h5 class="card-title fw-bold">Cecilia</h5>
+          <p class="card-text">
+            “A pesar del mal clima, el profesional se mantuvo en contacto
+            constante y mostró una notable atención.”
+          </p>
         </div>
-        <div class="card col-md-1 m-5">
-          <div
-            class="card-body p-3 d-flex flex-column justify-content-center align-items-center text-center"
-          >
-            <div class="d-flex justify-content-center gap-2 stars mb-2">
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-            </div>
-            <h5 class="card-title fw-bold">Cecilia</h5>
-            <p class="card-text">
-              “A pesar del mal clima, el profesional se mantuvo en contacto
-              constante y mostró una notable atención.”
-            </p>
+      </div>
+      <div class="card col-md-1 m-5">
+        <div class="card-body p-3 d-flex flex-column justify-content-center align-items-center text-center">
+          <div class="d-flex justify-content-center gap-2 stars mb-2">
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
+            <i class="bi-star-fill"></i>
           </div>
-        </div>
-        <div class="card col-md-1 m-5">
-          <div
-            class="card-body p-3 d-flex flex-column justify-content-center align-items-center text-center"
-          >
-            <div class="d-flex justify-content-center gap-2 stars mb-2">
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-              <i class="bi-star-fill"></i>
-            </div>
-            <h5 class="card-title fw-bold">Sergio</h5>
-            <p class="card-text">
-              “Muy bueno. Calidad extrema. La calidad del proceso repercute en
-              la calidad del producto.”
-            </p>
-          </div>
+          <h5 class="card-title fw-bold">Sergio</h5>
+          <p class="card-text">
+            “Muy bueno. Calidad extrema. La calidad del proceso repercute en
+            la calidad del producto.”
+          </p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Profesional Section -->
-    <section class="profesional-section" id="specialist-section">
-      <div class="profesional-text">
-        <h1>¿Eres un profesional?</h1>
-        <p>Regístrate y comenzá a prestar tus servicios de calidad.</p>
-        <a href="/src/page/auth/register/register.html" class="btn btn-dark p-3 fw-bold"
-          >Registrate como Especialista</a
-        >
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <div id="footer" class="container-fluid">
-      <footer>
-        <div class="footer-line"></div>
-        <div class="footer-wrapper">
-          <div class="footer-columns">
-            <section class="footer-logo">
-              <img
-                src="/src/resources/logos/logo_web_2.png"
-                alt="logo-serviplace"
-                width="100"
-              />
-              <h2 class="hide me-5">SERVIPLACE</h2>
-            </section>
-            <section>
-              <h3>Acerca De</h3>
-              <ul>
-                <li>
-                  <a href="#" title="about">Sobre nosotros</a>
-                </li>
-                <li>
-                  <a href="#" title="how-it-works">¿Cómo funciona?</a>
-                </li>
-                <li>
-                  <a href="#" title="faq">FAQ</a>
-                </li>
-              </ul>
-            </section>
-            <section>
-              <h3>Clientes</h3>
-              <ul>
-                <li>
-                  <a href="#" title="contact">Contacto</a>
-                </li>
-                <li>
-                  <a href="#" title="client-support">Atención al Cliente</a>
-                </li>
-                <li>
-                  <a href="#" title="payment-methods">Medios de pago</a>
-                </li>
-              </ul>
-            </section>
-            <section>
-              <h3>Especialistas</h3>
-              <ul>
-                <li>
-                  <a href="#" title="how-to-register">¿Cómo registrarse?</a>
-                </li>
-                <li>
-                  <a href="#" title="requeriments">Requisitos</a>
-                </li>
-                <li>
-                  <a href="#" title="advices">Consejos</a>
-                </li>
-              </ul>
-            </section>
-          </div>
-          <div class="footer-bottom">
-            <small>© Serviplace Ltd. 2024, All rights reserved</small>
-            <span class="social-links">
-              <a href="#" title="GitHub">
-                <img src="/src/resources/logos/github.svg" alt="GitHub" />
-              </a>
-            </span>
-          </div>
-        </div>
-      </footer>
+  <!-- Profesional Section -->
+  <section class="profesional-section" id="specialist-section">
+    <div class="profesional-text">
+      <h1>¿Eres un profesional?</h1>
+      <p>Regístrate y comenzá a prestar tus servicios de calidad.</p>
+      <a href="/src/page/auth/register/register.html" class="btn btn-dark p-3 fw-bold">Registrate como Especialista</a>
     </div>
+  </section>
 
-    <!-- Bootstrap & JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Scripts generales -->
+  <!-- Footer -->
+  <div id="footer" class="container-fluid">
+    <footer>
+      <div class="footer-line"></div>
+      <div class="footer-wrapper">
+        <div class="footer-columns">
+          <section class="footer-logo">
+            <img src="/src/resources/logos/logo_web_2.png" alt="logo-serviplace" width="100" />
+            <h2 class="hide me-5">SERVIPLACE</h2>
+          </section>
+          <section>
+            <h3>Acerca De</h3>
+            <ul>
+              <li>
+                <a href="#" title="about">Sobre nosotros</a>
+              </li>
+              <li>
+                <a href="#" title="how-it-works">¿Cómo funciona?</a>
+              </li>
+              <li>
+                <a href="#" title="faq">FAQ</a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Clientes</h3>
+            <ul>
+              <li>
+                <a href="#" title="contact">Contacto</a>
+              </li>
+              <li>
+                <a href="#" title="client-support">Atención al Cliente</a>
+              </li>
+              <li>
+                <a href="#" title="payment-methods">Medios de pago</a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Especialistas</h3>
+            <ul>
+              <li>
+                <a href="#" title="how-to-register">¿Cómo registrarse?</a>
+              </li>
+              <li>
+                <a href="#" title="requeriments">Requisitos</a>
+              </li>
+              <li>
+                <a href="#" title="advices">Consejos</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <div class="footer-bottom">
+          <small>© Serviplace Ltd. 2024, All rights reserved</small>
+          <span class="social-links">
+            <a href="#" title="GitHub">
+              <img src="/src/resources/logos/github.svg" alt="GitHub" />
+            </a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </div>
 
-    <!-- Scripts internos -->
-  </body>
+  <!-- Bootstrap & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- Scripts generales -->
+
+  <!-- Scripts internos -->
+</body>
+
 </html>
