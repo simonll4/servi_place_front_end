@@ -21,7 +21,7 @@ document.addEventListener("click", (event) => {
 // scroll to top
 const logoCompanyElement = document.querySelector('.logo-company');
 logoCompanyElement.addEventListener('click', () => {
-  window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 });
 
 
@@ -40,7 +40,6 @@ fetch(userUrl, {
 })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
 
         const userNameElement = document.querySelector('.user-name');
         const emailElement = document.querySelector('.email');
