@@ -8,6 +8,7 @@
   <meta name="description" content="profile" />
   <meta name="keywords" content="profile, serviplace, trabajos" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
 
   <!-- Titulo e iconos -->
   <title>Perfil | Serviplace</title>
@@ -53,7 +54,8 @@
         </div>
         <!-- Detalles del Especialista -->
         <div class="profile-details">
-          <h2 class="profile-name">Juan, Vasquez</h2>
+          <h2 class="profile-name">Juan,</h2>
+          <h2 class="profile-lastname">Vazquez</h2>
           <small>Córdoba, Argentina</small>
         </div>
       </div>
@@ -97,12 +99,13 @@
             <div class="my-profile d-flex justify-content-between align-items-center" id="id_user">
               <div class="profile-info d-flex">
                 <div class="publication-profile-image d-flex">
-                  <img src="/src/resources/img/worker1.jpg" alt="profile_image" class="rounded-5" />
+                  <img src="/src/resources/img/worker1.jpg" id="profile_picture_2" alt="profile_image"
+                    class="rounded-5" />
                 </div>
                 <div class="my-profile-details">
                   <p class="fw-bold">
-                    <span id="name">Juan</span>,
-                    <span id="lastname">Vazquez</span>
+                    <span id="name_2">Juan</span>,
+                    <span id="last_name_2">Vazquez</span>
                   </p>
                   <p class="fw-light">
                     <span id="location">Córdoba, Argentina</span>
@@ -124,12 +127,12 @@
               </p>
             </div>
             <!-- Imagen del Posteo -->
-            <div class="post_image d-flex justify-content-center" id="post_image">
-              <img src="/src/resources/img/publication-image.jpg" alt="publication-image" />
+            <div class="post_image d-flex justify-content-center">
+              <img src="/src/resources/img/publication-image.jpg" id="post_image" alt="publication-image" />
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <a href="/src/page/customer/profile/publications.html" class="btn btn-primary w-75 p-2">Ver más
+            <a href="#" id="publications-btn" class="btn btn-primary w-75 p-2">Ver más
               publicaciones</a>
           </div>
         </div>
@@ -156,12 +159,12 @@
           <form>
             <div class="mb-3">
               <label for="jobTitle" class="form-label fw-bold">Título del trabajo</label>
-              <input type="text" class="form-control" id="jobTitle" placeholder="Ingresa el título del trabajo" required
-                maxlength="30" />
+              <input type="text" class="form-control" id="job_title" placeholder="Ingresa el título del trabajo"
+                required maxlength="30" />
             </div>
             <div class="mb-3">
               <label for="jobDescription" class="form-label fw-bold">Descripción del trabajo</label>
-              <input type="text" class="form-control" id="jobDescription"
+              <input type="text" class="form-control" id="job_description"
                 placeholder="Ingresa la descripción del trabajo" required maxlength="160" />
             </div>
             <div class="modal-footer">
