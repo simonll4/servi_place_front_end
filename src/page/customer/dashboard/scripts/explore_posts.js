@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', (event) => {
 
-  const token = localStorage.getItem('token');
+const token = localStorage.getItem('token');
+if (!token) {
+  window.location.href = "../../index.html";
+  return;
+}
 
   //funcion para obtener el modelo de los articulos
   let existingArticle = [];

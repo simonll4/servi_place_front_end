@@ -1,21 +1,13 @@
 <span class="navigation__group">
   <!-- Logo y Titulo -->
   <div class="logo-company d-flex align-items-center">
-    <img
-      src="/src/resources/logos/logo_web_2.png"
-      alt="logo-serviplace"
-      width="50"
-    />
+    <img src="/src/resources/logos/logo_web_2.png" alt="logo-serviplace" width="50" />
     <h2 class="icon-title">SERVIPLACE</h2>
   </div>
   <!-- Perfil y Chat -->
   <div class="profile-group d-flex">
     <i class="icon bi-chat-dots-fill"></i>
-    <img
-      class="profile"
-      src="/src/resources/img/profile-blank.svg"
-      alt="Joe Doe Picture"
-    />
+    <img class="profile" src="/src/resources/img/profile-blank.svg" alt="Joe Doe Picture" />
   </div>
 </span>
 <div class="dropdown__wrapper hide dropdown__wrapper--fade-in none">
@@ -34,7 +26,7 @@
     <ul>
       <li style="color: #e3452f">
         <img src="/src/resources/navBar/logout.svg" alt="Log Out" />
-        <a href="#">Log Out</a>
+        <a id="log_out" href="#">Log Out</a>
       </li>
     </ul>
   </nav>
@@ -57,6 +49,7 @@
   * {
     box-sizing: border-box;
   }
+
   /* Barra */
   header {
     position: fixed;
@@ -69,15 +62,18 @@
     justify-content: space-between;
     filter: drop-shadow(-20px 0 10px rgba(0, 0, 0, 0.1));
   }
+
   .navigation__group {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
   }
+
   .profile-group {
     padding: 20px;
   }
+
   .icon {
     cursor: pointer;
     display: flex;
@@ -89,26 +85,32 @@
     transition: all 0.2s ease-in-out;
     font-size: 30px;
   }
-  .profile-group > .icon:hover {
+
+  .profile-group>.icon:hover {
     transform: scale(1.1);
   }
+
   .logo-company {
     margin-left: 15px;
     padding-left: 10px;
     transition: all 0.2s ease-in-out;
   }
+
   .logo-company:hover {
     transform: scale(1.1);
   }
+
   .icon-title {
     padding-left: 10px;
   }
+
   .user-name {
     font-size: 14px;
     font-weight: 700;
     text-align: left;
     color: var(--text);
   }
+
   .profile {
     display: block;
     width: 50px;
@@ -118,6 +120,7 @@
     border: 3px solid #f7f7f7;
     filter: drop-shadow(-20px 0 10px rgba(0, 0, 0, 0.1));
   }
+
   .email {
     color: var(--text-gray);
   }
@@ -140,6 +143,7 @@
   .dropdown__wrapper--fade-in {
     animation: fadeInAnimation ease-in-out 0.3s forwards;
   }
+
   .none {
     display: none;
   }
@@ -156,6 +160,7 @@
       visibility: hidden;
       width: 160px;
     }
+
     100% {
       opacity: 1;
       visibility: visible;
@@ -169,12 +174,14 @@
       width: 240px;
       visibility: visible;
     }
+
     100% {
       opacity: 0;
       width: 160px;
       visibility: hidden;
     }
   }
+
   .dropdown__group {
     padding: 12px;
   }
@@ -185,14 +192,14 @@
     margin: 0;
   }
 
-  nav > ul {
+  nav>ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     gap: 4px;
   }
 
-  nav > ul > li {
+  nav>ul>li {
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -202,20 +209,22 @@
     width: 100%;
   }
 
-  nav > ul > li > img {
+  nav>ul>li>img {
     height: 24px;
     width: 24px;
   }
 
-  nav > ul > li:hover {
+  nav>ul>li:hover {
     cursor: pointer;
     text-decoration: underline;
   }
-  li > a {
+
+  li>a {
     text-decoration: none;
     color: var(--text);
   }
-  li > a:hover {
+
+  li>a:hover {
     text-decoration: none;
     color: var(--gray);
   }
