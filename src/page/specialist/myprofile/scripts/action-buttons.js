@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // Agrega un evento de escucha al botón "edit-profile-button"
   editProfileButton.addEventListener("click", function () {
     // Muestra el contenedor "edit-profile" y oculta el contenedor "my-profile"
+    
     myProfile.hidden = true;
     editProfile.hidden = false;
   });
