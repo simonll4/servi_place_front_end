@@ -21,7 +21,7 @@ document.addEventListener("click", (event) => {
 // scroll to top
 const logoCompanyElement = document.querySelector('.logo-company');
 logoCompanyElement.addEventListener('click', () => {
-  window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 });
 
 
@@ -40,7 +40,6 @@ fetch(userUrl, {
 })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
 
         const userNameElement = document.querySelector('.user-name');
         const emailElement = document.querySelector('.email');
@@ -57,7 +56,16 @@ fetch(userUrl, {
 const logoutElement = document.querySelector('#log_out');
 logoutElement.addEventListener('click', (event) => {
     event.preventDefault();
-    localStorage.removeItem('token');
+
+    localStorage.clear();
+
+    if ('caches' in window) {
+        caches.keys().then(names => {
+            for (let name of names)
+                caches.delete(name);
+        });
+    }
+
     location.reload();
     window.location.href = "../../index.html";
 });

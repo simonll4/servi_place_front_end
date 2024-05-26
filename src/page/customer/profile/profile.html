@@ -1,267 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metadatos -->
-    <meta charset="UTF-8" />
-    <meta name="autor" content="john doe" />
-    <meta name="description" content="profile" />
-    <meta name="keywords" content="profile, serviplace, trabajos" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Titulo e iconos -->
-    <title>Perfil | Serviplace</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/src/resources/logos/logo_web_2.png"
-    />
+<head>
+  <!-- Metadatos -->
+  <meta charset="UTF-8" />
+  <meta name="autor" content="john doe" />
+  <meta name="description" content="profile" />
+  <meta name="keywords" content="profile, serviplace, trabajos" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Titulo e iconos -->
+  <title>Perfil | Serviplace</title>
+  <link rel="icon" type="image/x-icon" href="/src/resources/logos/logo_web_2.png" />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet" />
 
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="/src/components/template/styles/template_styles.css"
-    />
-    <link rel="stylesheet" href="styles/profile_styles.css" />
-  </head>
-  <body>
-    <!-- Header (Navbar) -->
-    <header id="header-container" class="container-fluid"></header>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <!-- Contenedor principal -->
-    <div
-      id="page-container"
-      class="container-fluid justify-content-between d-flex"
-    >
-      <!-- Sidebar -->
-      <nav id="sidebar-container" class="navbar-header"></nav>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/components/template/styles/template_styles.css" />
+  <link rel="stylesheet" href="styles/profile_styles.css" />
+</head>
 
-      <!-- Main Content -->
-      <div id="main-container" class="container-fluid p-0 bg-transparent">
-        <!-- Profile header -->
-        <div class="profile-header container-fluid p-0">
-          <img src="/src/resources/img/portada-esp2.jpg" alt="wallpaper" />
-          <div class="profile-image">
-            <img src="/src/resources/img/worker1.jpg" alt="profile-pic" />
-            <!-- Boton crear trabajo -->
-            <button
-              type="button"
-              class="btn btn-light border-0"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-            >
-              <i class="bi-wrench-adjustable"></i>
-              Solicitar trabajo
-            </button>
+<body>
+  <!-- Header (Navbar) -->
+  <header id="header-container" class="container-fluid"></header>
+
+  <!-- Contenedor principal -->
+  <div id="page-container" class="container-fluid justify-content-between d-flex">
+    <!-- Sidebar -->
+    <nav id="sidebar-container" class="navbar-header"></nav>
+
+    <!-- Main Content -->
+    <div id="main-container" class="container-fluid p-0 bg-transparent">
+      <!-- Profile header -->
+      <div class="profile-header container-fluid p-0">
+        <img src="/src/resources/img/portada-esp2.jpg" alt="wallpaper" />
+        <div class="profile-image">
+          <img src="/src/resources/img/worker1.jpg" alt="profile-pic" />
+          <!-- Boton crear trabajo -->
+          <button type="button" class="btn btn-light border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi-wrench-adjustable"></i>
+            Solicitar trabajo
+          </button>
+        </div>
+        <!-- Detalles del Especialista -->
+        <div class="profile-details">
+          <h2 class="profile-name">Juan,</h2>
+          <h2 class="profile-lastname">Vazquez</h2>
+          <small>Córdoba, Argentina</small>
+        </div>
+      </div>
+
+      <!-- Perfil del Especialista -->
+      <div class="d-flex justify-content-between" id="my-profile-section">
+        <div class="about-and-opinions-profile">
+          <!-- Acerca de -->
+          <div class="section-container about-me">
+            <h3 class="fs-5 fw-bold">Acerca de</h3>
+            <hr />
+            <p id="about-me">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+              architecto alias exercitationem vitae ipsam ratione quis esse
+              beatae assumenda veniam saepe nobis veritatis possimus, cumque
+              quam, animi amet? Fugit, distinctio!
+            </p>
           </div>
-          <!-- Detalles del Especialista -->
-          <div class="profile-details">
-            <h2 class="profile-name">Juan, Vasquez</h2>
-            <small>Córdoba, Argentina</small>
+          <!-- Opiniones -->
+          <div class="section-container opinions">
+            <h3 class="fs-5 fw-bold d-flex">
+              <i class="bi-stars"></i>
+              <p class="ms-2">Opiniones</p>
+            </h3>
+            <hr />
+            <div class="opinions_avg">
+              <iframe src="#" frameborder="0"></iframe>
+            </div>
+            <div class="row all_opinions">
+              <a href="#" class="btn btn-primary" id="opinions-btn">Ver todas las opiniones</a>
+            </div>
           </div>
         </div>
-
-        <!-- Perfil del Especialista -->
-        <div class="d-flex justify-content-between" id="my-profile-section">
-          <div class="about-and-opinions-profile">
-            <!-- Acerca de -->
-            <div class="section-container about-me">
-              <h3 class="fs-5 fw-bold">Acerca de</h3>
-              <hr />
-              <p id="about-me">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-                architecto alias exercitationem vitae ipsam ratione quis esse
-                beatae assumenda veniam saepe nobis veritatis possimus, cumque
-                quam, animi amet? Fugit, distinctio!
-              </p>
-            </div>
-            <!-- Opiniones -->
-            <div class="section-container opinions">
-              <h3 class="fs-5 fw-bold d-flex">
-                <i class="bi-stars"></i>
-                <p class="ms-2">Opiniones</p>
-              </h3>
-              <hr />
-              <div class="opinions_avg">
-                <iframe
-                  src="/src/components/opinions/opinions.html"
-                  frameborder="0"
-                ></iframe>
-              </div>
-              <div class="row all_opinions">
-                <a href="opinions.html" class="btn btn-primary"
-                  >Ver todas las opiniones</a
-                >
-              </div>
-            </div>
-          </div>
-          <!-- Mis posteos -->
-          <div class="section-container my-posts">
-            <h3 class="fs-5 fw-bold">Publicaciones</h3>
-            <hr />
-            <!-- Publicaciones -->
-            <div class="my-publication" id="article_id">
-              <!-- Perfil del Especialista -->
-              <div
-                class="my-profile d-flex justify-content-between align-items-center"
-                id="id_user"
-              >
-                <div class="profile-info d-flex">
-                  <div class="publication-profile-image d-flex">
-                    <img
-                      src="/src/resources/img/worker1.jpg"
-                      alt="profile_image"
-                      class="rounded-5"
-                    />
-                  </div>
-                  <div class="my-profile-details">
-                    <p class="fw-bold">
-                      <span id="name">Juan</span>,
-                      <span id="lastname">Vazquez</span>
-                    </p>
-                    <p class="fw-light">
-                      <span id="location">Córdoba, Argentina</span>
-                    </p>
-                    <!-- Categoría requerida -->
-                    <div class="required-category">
-                      <span id="id_category">Albañil</span>
-                    </div>
+        <!-- Mis posteos -->
+        <div class="section-container my-posts">
+          <h3 class="fs-5 fw-bold">Publicaciones</h3>
+          <hr />
+          <!-- Publicaciones -->
+          <div class="my-publication" id="article_id" hidden>
+            <!-- Perfil del Especialista -->
+            <div class="my-profile d-flex justify-content-between align-items-center" id="id_user">
+              <div class="profile-info d-flex">
+                <div class="publication-profile-image d-flex">
+                  <img src="/src/resources/img/worker1.jpg" id="profile_picture_2" alt="profile_image"
+                    class="rounded-5" />
+                </div>
+                <div class="my-profile-details">
+                  <p class="fw-bold">
+                    <span id="name_2">Juan</span>,
+                    <span id="last_name_2">Vazquez</span>
+                  </p>
+                  <p class="fw-light">
+                    <span id="location">Córdoba, Argentina</span>
+                  </p>
+                  <!-- Categoría requerida -->
+                  <div class="required-category">
+                    <span id="id_category">Albañil</span>
                   </div>
                 </div>
               </div>
-              <!-- Descripción del post -->
-              <div class="post-description" id="paragraph">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Similique velit molestias facere unde voluptas mollitia
-                  distinctio? Cum nam quas repudiandae id modi, autem fugit
-                  mollitia doloribus consequatur delectus hic facere!
-                </p>
-              </div>
-              <!-- Imagen del Posteo -->
-              <div
-                class="post_image d-flex justify-content-center"
-                id="post_image"
-              >
-                <img
-                  src="/src/resources/img/publication-image.jpg"
-                  alt="publication-image"
-                />
-              </div>
             </div>
-            <div class="d-flex justify-content-center">
-              <a
-                href="/src/page/customer/profile/publications.html"
-                class="btn btn-primary w-75 p-2"
-                >Ver más publicaciones</a
-              >
+            <!-- Descripción del post -->
+            <div class="post-description" id="paragraph">
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Similique velit molestias facere unde voluptas mollitia
+                distinctio? Cum nam quas repudiandae id modi, autem fugit
+                mollitia doloribus consequatur delectus hic facere!
+              </p>
+            </div>
+            <!-- Imagen del Posteo -->
+            <div class="post_image d-flex justify-content-center">
+              <img src="/src/resources/img/publication-image.jpg" id="post_image" alt="publication-image" />
             </div>
           </div>
-        </div>
-        <!-- ///////////////////////////////////////////////////////////////////////// -->
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div id="footer" class="container-fluid"></div>
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">
-              Crear tu solicitud
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="jobTitle" class="form-label fw-bold"
-                  >Título del trabajo</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="jobTitle"
-                  placeholder="Ingresa el título del trabajo"
-                  required
-                  maxlength="30"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="jobDescription" class="form-label fw-bold"
-                  >Descripción del trabajo</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="jobDescription"
-                  placeholder="Ingresa la descripción del trabajo"
-                  required
-                  maxlength="160"
-                />
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cancelar
-                </button>
-                <button type="submit" class="btn btn-primary">Aceptar</button>
-              </div>
-            </form>
+          <div class="d-flex justify-content-center">
+            <a href="#" id="publications-btn" class="btn btn-primary w-75 p-2" hidden>Ver más
+              publicaciones</a>
           </div>
         </div>
       </div>
+      <!-- ///////////////////////////////////////////////////////////////////////// -->
     </div>
+  </div>
 
-    <!-- Bootstrap & JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="scripts/modal.js"></script>
-    <!-- Scripts generales -->
-    <script src="/src/components/template/script-template-client.js"></script>
-    <script src="/src/components/template/script-ventana.js"></script>
+  <!-- Footer -->
+  <div id="footer" class="container-fluid"></div>
 
-    <!-- Scripts internos -->
-  </body>
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Crear tu solicitud
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="jobTitle" class="form-label fw-bold">Título del trabajo</label>
+              <input type="text" class="form-control" id="job_title" placeholder="Ingresa el título del trabajo"
+                required maxlength="30" />
+            </div>
+            <div class="mb-3">
+              <label for="jobDescription" class="form-label fw-bold">Descripción del trabajo</label>
+              <input type="text" class="form-control" id="job_description"
+                placeholder="Ingresa la descripción del trabajo" required maxlength="160" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="scripts/modal.js"></script>
+  <!-- Scripts generales -->
+  <script src="/src/components/template/script-template-client.js"></script>
+  <script src="/src/components/template/script-ventana.js"></script>
+
+  <!-- Scripts internos -->
+  <script src="scripts/profile.js"></script>
+</body>
+
 </html>

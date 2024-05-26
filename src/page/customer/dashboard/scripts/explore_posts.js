@@ -73,6 +73,9 @@ function fetchArticles() {
           newArticle.querySelector('.post_image img').src = article.image;
           newArticle.querySelector('.required-category span').textContent = article.category.name;
 
+          const profileButton = newArticle.querySelector('.show-profile');
+          profileButton.href = `/src/page/customer/profile/profile.html?id=${article.authorId}`;
+
           const container = document.querySelector('.container-fluid.specialist-search');
           if (container) {
             container.appendChild(newArticle);
@@ -89,6 +92,8 @@ document.querySelectorAll('.btn-check').forEach((checkbox) => {
   checkbox.addEventListener('change', fetchArticles);
 
 });
+
+
 
 });
 
