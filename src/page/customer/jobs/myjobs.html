@@ -69,6 +69,41 @@
   <!-- Footer -->
   <div id="footer" class="container-fluid"></div>
 
+  <!-- Modal opinar -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Opinar sobre el trabajo
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="description" class="form-label fw-bold">Opinion</label>
+              <input type="text" class="form-control" id="description" placeholder="Ingresa tu experiencia con el especialista"
+                required maxlength="30" />
+            </div>
+            <div class="mb-3">
+              <label for="rating" class="form-label fw-bold">Descripción</label>
+              <input type="number" class="form-control" id="rating"
+                placeholder="Cuantifica tu experiencia " required min="0" max="5" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal Cancelar (la cosa que se abre al apretar cancelar)-->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
