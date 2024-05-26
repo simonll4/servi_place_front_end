@@ -50,6 +50,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     .then(response => response.json())
     .then(data => {
 
+      if (data.article) {
+        document.querySelector('#article_id').removeAttribute('hidden');
+        document.querySelector('#publications-btn').removeAttribute('hidden');
+      }
+
       // profile details
       document.querySelector('#name_2').innerHTML = localStorage.getItem('name');
       document.querySelector('#last_name_2').innerHTML = localStorage.getItem('last_name');

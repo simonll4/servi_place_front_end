@@ -56,7 +56,16 @@ fetch(userUrl, {
 const logoutElement = document.querySelector('#log_out');
 logoutElement.addEventListener('click', (event) => {
     event.preventDefault();
-    localStorage.removeItem('token');
+
+    localStorage.clear();
+
+    if ('caches' in window) {
+        caches.keys().then(names => {
+            for (let name of names)
+                caches.delete(name);
+        });
+    }
+
     location.reload();
     window.location.href = "../../index.html";
 });
