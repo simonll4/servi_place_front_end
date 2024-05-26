@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then(response => response.json())
       .then(data => {
+        newContainer.querySelector('.specialist-card').id = data.id;
         newContainer.querySelector('#name').textContent = data.name;
         newContainer.querySelector('#lastname').textContent = data.last_name;
         if (data.profile_picture == '') {
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //funcion para obtener los contenedores para cada job state
   let existingContainer = [];
-  const templatePaths = ['models/pending-job.html', 'models/accepted-job.html', 'models/rejected-job.html', 'models/finished-job.html','models/commented-job.html'];
+  const templatePaths = ['models/pending-job.html', 'models/accepted-job.html', 'models/rejected-job.html', 'models/finished-job.html', 'models/commented-job.html'];
   const fetchPromises = templatePaths.map((path) => {
     return fetch(path)
       .then((response) => response.text())
@@ -91,10 +92,17 @@ document.addEventListener("DOMContentLoaded", function () {
             opinionButton.addEventListener('click', async (event) => { });
           }
 
+          newContainer.querySelector('.rounded-5').addEventListener('click', function (event) { });
+
           newContainer.dataset.jobId = job.id; // se guarda el id del trabajo en el contenedor como id del container-job id="data-job-id"
           getUserData(job.idSpecialist, newContainer);
           newContainer.querySelector('.problem_title.row h5').textContent = job.name;
           newContainer.querySelector('.problem-description p').textContent = job.description;
+          
+          //manejo de fecha
+          const date = new Date(job.createdAt);
+          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          newContainer.querySelector('#date').textContent = date.toLocaleDateString('es-ES', options);
 
 
           const statusText = {
@@ -109,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (['PENDING', 'ACCEPTED'].includes(job.state)) {
             document.querySelector('.jobs-in-progress').appendChild(newContainer);
-          } else if (['REJECTED', 'FINISHED','COMMENTED'].includes(job.state)) {
+          } else if (['REJECTED', 'FINISHED', 'COMMENTED'].includes(job.state)) {
             document.querySelector('#jobs-history').appendChild(newContainer);
           }
         }
@@ -213,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
       content: jobTitle,
       rating: Number(jobDescription)
     };
-    
+
     try {
       const response = await fetch(opinionUrl, {
         method: 'POST',
@@ -238,6 +246,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+  // evento para ir al perfil del especialista
+
+  document.addEventListener('click', async (event) => {
+    if (event.target.matches('.rounded-5')) {
+      console.log('click');
+      const specialistId = document.querySelector('.specialist-card').id;
+
+      window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
+    }
+  });
 
 
 
