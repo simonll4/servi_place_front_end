@@ -7,7 +7,7 @@ let data = [
 ];
 
 let total_rating = 0;
-rating_based_on_stars = 0;
+let rating_based_on_stars = 0;
 
 data.forEach(rating => {
     total_rating += rating.count;
