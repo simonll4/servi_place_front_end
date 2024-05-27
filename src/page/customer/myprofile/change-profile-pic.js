@@ -9,7 +9,5 @@ document.getElementById('upload-button').addEventListener('click', function(even
       document.getElementById('change-profile-pic').src = e.target.result;
     };
     reader.readAsDataURL(this.files[0]);
-    console.log(this.files[0]);
-    console.log(document.getElementById('change-profile-pic').src);
 
   });

@@ -99,12 +99,14 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
     const photoValue = document.querySelector('#image-upload')
     const descriptionValue = document.querySelector('#aboutme').value
 
+    console.log(photoValue.files[0]);
+
     if(nameValue !== "") data['name'] = nameValue;
     if(lastNameValue !== "") data['last_name'] = lastNameValue;
     if(emailValue !== "") data['email'] = emailValue;
     if(descriptionValue !== "") data['description'] = descriptionValue;
     if(photoValue.files.length > 0){
-        data['profilePhoto'] = await uploadProfilePicture(photoValue);
+        data['profile_picture'] = await uploadProfilePicture(photoValue);
     }
 
     fetch('http://127.0.0.1:5016/specialist/my-profile/my-information', {
