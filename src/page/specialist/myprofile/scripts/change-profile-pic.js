@@ -5,7 +5,7 @@ document.getElementById('upload-button').addEventListener('click', function() {
   document.getElementById('image-upload').addEventListener('change', function() {
     const reader = new FileReader();
     reader.onload = function(e) {
-      document.getElementById('profile-image').src = e.target.result;
+      document.getElementById('profile-image-upload').src = e.target.result;
     };
     reader.readAsDataURL(this.files[0]);
   });
