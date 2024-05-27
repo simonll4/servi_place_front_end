@@ -38,7 +38,7 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
     if(lastNameValue !== "") data['last_name'] = lastNameValue;
     if(emailValue !== "") data['email'] = emailValue;
     if(photoValue.files.length > 0){
-        data['profilePhoto'] = await uploadProfilePicture(photoValue);
+        data['profile_picture'] = await uploadProfilePicture(photoValue);
     }
 
     fetch('http://127.0.0.1:5016/customer/my-profile/my-information', {
