@@ -6,11 +6,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
     return;
   }
 
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
   let params = new URLSearchParams(window.location.search);
   const id = Number(params.get('id'));
 
   // indicar ruta del preview de la opiniones
   document.querySelector('#pre_view_opinions').src = `/src/components/opinions/opinions.html?id=${id}`;
+
+
+  // obtenemos la info del specialista
+  fetch(`http://127.0.0.1:5016/customer/profile/user-information/${id}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+
+      localStorage.setItem('profile_picture', data.profile_picture);
+      localStorage.setItem('name', data.name);
+      localStorage.setItem('last_name', data.last_name);
+
+      document.querySelector('.profile-image img').src = data.profile_picture;
+      document.querySelector('.profile-name').innerHTML = `${capitalize(data.name)}, ${capitalize(data.last_name)}`;
+    })
+    .catch(error => console.error('Error:', error));
+
 
 
   fetch(`http://127.0.0.1:5016/customer/profile/reviews/${id}`, {

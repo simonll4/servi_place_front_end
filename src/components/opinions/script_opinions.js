@@ -1,16 +1,22 @@
 
 const token = localStorage.getItem('token');
+
 let params = new URLSearchParams(window.location.search);
 let id = params.get('id');
 
-
-//const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzE2NjU3MjEyLCJleHAiOjE3MTY3NDM2MTJ9.CxZmNE5UXcvPNpiDNMDd8W5luQGN4s5TxNUbca0wu58";
-//const id = 10;
+const role = localStorage.getItem('role');
+let url
+if (localStorage.getItem('role') === 'CUSTOMER') {
+    url = `http://127.0.0.1:5016/customer/profile/summary-reviews/${id}`;
+}
+if (localStorage.getItem('role') === 'SPECIALIST') {
+    url = `http://127.0.0.1:5016/specialist/my-profile/summary-reviews/${id}`;
+}
 
 let opinionsSummary = [];
 const fetchOpinionsSummary = async () => {
     try {
-        const response = await fetch(`http://127.0.0.1:5016/customer/profile/summary-reviews/${id}`, {
+        const response = await fetch(url, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

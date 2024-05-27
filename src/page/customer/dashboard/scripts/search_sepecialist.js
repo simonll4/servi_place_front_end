@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
   //funcion para obtener el modelo de las tarjetas
   let existingCard = [];
   const templatePaths = ['models/specialist-cards.html',];
@@ -37,9 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
           const profileButton = newCard.querySelector('.show-profile');
           profileButton.href = `/src/page/customer/profile/profile.html?id=${specialist.id}`;
-
-          newCard.querySelector('#name').textContent = specialist.name;
-          newCard.querySelector('#lastname').textContent = specialist.last_name;
+          
+          newCard.querySelector('#name').textContent = `${capitalize(specialist.name)}`;
+          newCard.querySelector('#lastname').textContent = `${capitalize(specialist.last_name)}`;
           newCard.querySelector('.profile-image img').src = specialist.profile_picture;
           newCard.querySelector('#paragraph').textContent = specialist.description;
           newCard.querySelector('.specialist-profile').id = specialist.id;

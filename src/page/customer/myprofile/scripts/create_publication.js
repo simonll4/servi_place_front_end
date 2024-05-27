@@ -5,23 +5,31 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+
   async function uploadProfilePicture(profilePicture) {
     const formData = new FormData();
     formData.append("image", profilePicture.files[0]);
 
-    const response = await fetch("https://api.imgur.com/3/image", {
-      method: "POST",
-      headers: {
-        Authorization: "Client-ID cc588f3c8316e27",
-      },
-      body: formData,
-    });
+    document.getElementById('loading').style.display = 'block';
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+      const response = await fetch("https://api.imgur.com/3/image", {
+        method: "POST",
+        headers: {
+          Authorization: "Client-ID cc588f3c8316e27",
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const { data } = await response.json();
+      return data.link;
+    } finally {
+      // Ocultar el spinner independientemente de si se produce un error o no
+      document.getElementById('loading').style.display = 'none';
     }
-    const { data } = await response.json();
-    return data.link;
   }
 
   document.getElementById('publication-form').addEventListener('submit', async function (event) {
@@ -59,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+
         location.reload();
       })
       .catch(error => console.error('Error:', error));

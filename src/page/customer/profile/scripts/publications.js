@@ -22,9 +22,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
       localStorage.setItem('name', data.name);
       localStorage.setItem('last_name', data.last_name);
 
+      function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+      }
+      document.querySelector('.profile-name').innerHTML = `${capitalize(data.name)}, ${capitalize(data.last_name)}`;
       document.querySelector('.profile-image img').src = data.profile_picture;
-      document.querySelector('.profile-name').innerHTML = data.name;
-      document.querySelector('.profile-lastname').innerHTML = data.last_name;
+      document.querySelector('.profile-name').innerHTML = `${data.name}, ${data.last_name}`;
     })
     .catch(error => console.error('Error:', error));
 
