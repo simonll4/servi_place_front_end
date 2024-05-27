@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   async function uploadProfilePicture(profilePicture) {
     const formData = new FormData();
     formData.append("image", profilePicture.files[0]);
+    console.log(profilePicture.files[0])
 
     const response = await fetch("https://api.imgur.com/3/image", {
       method: "POST",
@@ -87,8 +88,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 
 });
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 

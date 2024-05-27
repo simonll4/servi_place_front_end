@@ -12,7 +12,7 @@ const backButton = document.getElementById('back-button');
 editProfileLink.addEventListener('click', function(event) {
   // Evita que el enlace realice su acción por defecto (navegar a "#edit-profile")
   event.preventDefault();
-
+  
   // Oculta el contenedor "action-buttons" y muestra el contenedor "edit-profile"
   actionButtons.hidden = true;
   editProfile.hidden = false;
@@ -22,7 +22,6 @@ editProfileLink.addEventListener('click', function(event) {
 backButton.addEventListener('click', function(event) {
   // Evita que el enlace realice su acción por defecto (navegar a "#")
   event.preventDefault();
-
   // Muestra el contenedor "action-buttons" y oculta el contenedor "edit-profile"
   actionButtons.hidden = false;
   editProfile.hidden = true;
