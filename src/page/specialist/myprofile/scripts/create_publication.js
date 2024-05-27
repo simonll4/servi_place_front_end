@@ -5,6 +5,28 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+
+
+  // // obtenemos la info DEL USER
+  fetch(`http://127.0.0.1:5016/specialist/my-profile/my-information`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+
+      localStorage.setItem('profile_picture', data.profile_picture);
+      localStorage.setItem('name', data.name);
+      localStorage.setItem('last_name', data.last_name);
+
+      document.querySelector('.profile-image img').src = data.profile_picture;
+      document.querySelector('.profile-name').innerHTML = data.name;
+      document.querySelector('.profile-lastname').innerHTML = data.last_name;
+    })
+    .catch(error => console.error('Error:', error));
+
+
   async function uploadProfilePicture(profilePicture) {
     const formData = new FormData();
     formData.append("image", profilePicture.files[0]);

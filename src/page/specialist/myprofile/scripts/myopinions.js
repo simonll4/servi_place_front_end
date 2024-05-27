@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     return;
   }
 
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+
   // indicar ruta del preview de la opiniones
   document.querySelector('#pre_view_opinions').src = `/src/components/opinions/opinions.html?id=${localStorage.getItem('id')}`;
 
@@ -25,12 +30,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const userProfilePhoto = document.querySelectorAll('#profile-image');
 
       // Actualiza el contenido de texto de los elementos seleccionados
-      profileName.textContent = user.name + ", " + user.last_name;
+      profileName.textContent = `${capitalize(user.name)}, ${capitalize(user.last_name)}`;
       // Actualiza el atributo src del elemento img del articulo tmb
       userProfilePhoto.forEach(element => {
         element.src = user.profile_picture;
       });
-      localStorage.setItem('id', user.id);
+      
     })
     .catch(error => {
       console.error('Hubo un problema con tu operación fetch:', error);
@@ -44,7 +49,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+
       var opinions = data.reviews;
       var container = document.querySelector(".opinions");
       var h6Element = container.querySelector("h6");

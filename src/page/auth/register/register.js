@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // send the register form data to the server
   document.querySelector('form').addEventListener('submit', async function (e) {
     e.preventDefault();
+
+    document.getElementById('loading').style.display = 'block';
+
+
     let data = {};
     let formElements = document.querySelectorAll('form input');
 
@@ -83,7 +87,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           alert('El correo ya está registrado')
         }
       });
-
+    document.getElementById('loading').style.display = 'none';
   });
 
 });

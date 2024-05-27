@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    document.getElementById('loading').style.display = 'block';
+
     // Crea un objeto FormData a partir del formulario y lo pasa a json
     const formData = new FormData(form);
     const jsonObject = {};
@@ -33,9 +35,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
       return response.json();
 
     }).then(data => {
-  
+
       localStorage.setItem('role', data.role);
-      console.log(localStorage.getItem('role'));
+      localStorage.setItem('id', data.id);
 
       if (data.role === 'SPECIALIST') {
         window.location.href = '../../specialist/dashboard/dashboard_specialist.html';
@@ -46,6 +48,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }).catch(error => {
       console.error('Error:', error);
     });
+
+    document.getElementById('loading').style.display = 'none';
   });
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
