@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
 
+   
     fetch('http://127.0.0.1:5016/customer/my-profile/my-information', {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -62,6 +63,7 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
         }
         // Handle successful response
         console.log('Profile updated successfully');
+        location.reload();
     }).catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     });

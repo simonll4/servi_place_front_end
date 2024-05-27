@@ -75,10 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+// creo que esta funcion esta por de mas
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
-    fetch('http://127.0.0.1:5016/customer/my-profile/my-information', {
+    fetch('http://127.0.0.1:5016/specialist/my-profile/my-information', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return response.json();
     }).then(data => {
-        document.querySelector('.profile-name').textContent = data.name + ", " + data.last_name;
+     
+        document.querySelector('.profile-name').textContent = `${capitalize(data.name)}, ${capitalize(data.last_name)}`;
         document.querySelector('#profile-pic').src = data.profile_picture;
 
     }).catch(error => {
