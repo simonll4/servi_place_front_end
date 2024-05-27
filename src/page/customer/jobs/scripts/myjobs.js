@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then(response => response.json())
       .then(data => {
+        newContainer.querySelector('.specialist-card').id = data.id;
         newContainer.querySelector('#name').textContent = data.name;
         newContainer.querySelector('#lastname').textContent = data.last_name;
         if (data.profile_picture == '') {
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //funcion para obtener los contenedores para cada job state
   let existingContainer = [];
-  const templatePaths = ['models/pending-job.html', 'models/accepted-job.html', 'models/rejected-job.html', 'models/finished-job.html'];
+  const templatePaths = ['models/pending-job.html', 'models/accepted-job.html', 'models/rejected-job.html', 'models/finished-job.html', 'models/commented-job.html'];
   const fetchPromises = templatePaths.map((path) => {
     return fetch(path)
       .then((response) => response.text())
@@ -53,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
           'PENDING': existingContainer[0],
           'ACCEPTED': existingContainer[1],
           'REJECTED': existingContainer[2],
-          'FINISHED': existingContainer[3]
+          'FINISHED': existingContainer[3],
+          'COMMENTED': existingContainer[4]
         };
       });
   };
@@ -90,24 +92,33 @@ document.addEventListener("DOMContentLoaded", function () {
             opinionButton.addEventListener('click', async (event) => { });
           }
 
+          // evento voton para ir al perfil del especialista
+          newContainer.querySelector('.rounded-5').addEventListener('click', function (event) { });
+
           newContainer.dataset.jobId = job.id; // se guarda el id del trabajo en el contenedor como id del container-job id="data-job-id"
           getUserData(job.idSpecialist, newContainer);
           newContainer.querySelector('.problem_title.row h5').textContent = job.name;
           newContainer.querySelector('.problem-description p').textContent = job.description;
+
+          //manejo de fecha
+          const date = new Date(job.createdAt);
+          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          newContainer.querySelector('#date').textContent = date.toLocaleDateString('es-ES', options);
 
 
           const statusText = {
             'PENDING': 'Pendiente',
             'ACCEPTED': 'Aceptado',
             'REJECTED': 'Rechazado',
-            'FINISHED': 'Finalizado'
+            'FINISHED': 'Finalizado',
+            'COMMENTED': 'Comentado'
           };
 
           newContainer.querySelector('#job-status').textContent = statusText[job.state];
 
           if (['PENDING', 'ACCEPTED'].includes(job.state)) {
             document.querySelector('.jobs-in-progress').appendChild(newContainer);
-          } else if (['REJECTED', 'FINISHED'].includes(job.state)) {
+          } else if (['REJECTED', 'FINISHED', 'COMMENTED'].includes(job.state)) {
             document.querySelector('#jobs-history').appendChild(newContainer);
           }
         }
@@ -148,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // boton para cancelar trabajo, se inserta el idJob en la url
-  let rejectUrl = `http://127.0.0.1:5016/customer/jobs/reject-job/`;
+  let rejectUrl = ``;
   document.addEventListener('click', async (event) => {
     if (event.target.matches('.btn-reject')) {
       const jobElement = event.target.closest('[data-job-id]');
@@ -186,8 +197,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // evento opinar sobre el trabajo
+  let opinionUrl = ``;
   document.addEventListener('click', async (event) => {
-    if (event.target.matches('.btn-opinion')) {
+    if (event.target.matches('.opinion-btn')) {
       const jobElement = event.target.closest('[data-job-id]');
       if (!jobElement) {
         console.error('No job container found');
@@ -195,36 +207,55 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       const jobId = jobElement.dataset.jobId;
       console.log(jobId);
+      opinionUrl = `http://127.0.0.1:5016/customer/jobs/create-review/${jobId}`;
+      console.log(opinionUrl);
+    }
+  });
 
-      // try {
-      //   const body = {
-      //     // Aquí van los datos que quieres enviar en el cuerpo de la solicitud
-      //   };
+  document.querySelector('form').addEventListener('submit', async event => {
+    event.preventDefault();
 
-      //   const response = await fetch('http://127.0.0.1:5016/customer/jobs/some-endpoint', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Authorization': `Bearer ${token}`,
-      //       'Content-Type': 'application/json'
-      //     },
-      //     body: JSON.stringify(body),
-      //   });
+    const jobTitle = document.querySelector('#description').value;
+    const jobDescription = document.querySelector('#rating').value;
 
-      //   if (!response.ok) {
-      //     throw new Error(`HTTP error! status: ${response.status}`);
-      //   }
-      //   location.reload();
-      // } catch (error) {
-      //   console.error('An error occurred:', error);
-      // }
+    const data = {
+      content: jobTitle,
+      rating: Number(jobDescription)
+    };
+
+    try {
+      const response = await fetch(opinionUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      console.log(result);
+
+      document.querySelector('.opinion-btn').setAttribute('hidden', '');
+      location.reload();
+    } catch (error) {
+      console.error('Error:', error);
     }
   });
 
 
+  // evento para ir al perfil del especialista
+  document.addEventListener('click', async (event) => {
+    if (event.target.matches('.rounded-5')) {
+      const specialistProfile = event.target.closest('.specialist-card');
+      const specialistId = specialistProfile ? specialistProfile.id : null;
+      window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
+    }
+  });
 
-  // document.querySelector('.btn.btn-secondary').addEventListener('click', function () {
-  //   location.reload();
-  // });
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });

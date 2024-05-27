@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
           data.profile_picture = `../../../resources/img/anonymous-user.jpg`;
         }
         newContainer.querySelector('.profile-image img').src = data.profile_picture;
+
       })
       .catch(error => console.error('Error:', error));
   }
@@ -91,6 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
     checkbox.addEventListener('change', fetchArticles);
 
   });
+
+ 
 
 
 
