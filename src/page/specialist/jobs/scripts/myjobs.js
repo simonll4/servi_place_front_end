@@ -51,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
           'PENDING': existingContainer[0],
           'ACCEPTED': existingContainer[1],
           'REJECTED': existingContainer[2],
-          'FINISHED': existingContainer[3]
+          'FINISHED': existingContainer[3],
+          'COMMENTED': existingContainer[3]
         };
       });
   };
@@ -69,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.json())
     .then(data => {
 
-      console.log(data);
 
       getJobContainers().then(jobContainers => {
         // se reccorre el objeto job devuelvo por el servidor y se les insertan los datos correspondientes
@@ -91,11 +91,17 @@ document.addEventListener("DOMContentLoaded", function () {
           newContainer.querySelector('.problem_title.row h5').textContent = job.name;
           newContainer.querySelector('.problem-description p').textContent = job.description;
 
+          //manejo de fecha
+          const date = new Date(job.createdAt);
+          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          newContainer.querySelector('#date').textContent = date.toLocaleDateString('es-ES', options);
+
           const statusText = {
             'PENDING': 'Pendiente',
             'ACCEPTED': 'Aceptado',
             'REJECTED': 'Rechazado',
-            'FINISHED': 'Finalizado'
+            'FINISHED': 'Finalizado',
+            'COMMENTED': 'Comentado'
           };
 
           newContainer.querySelector('#job-status').textContent = statusText[job.state];
@@ -103,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('#jobs-pending').appendChild(newContainer);
           } else if (job.state === 'ACCEPTED') {
             document.querySelector('#jobs-in-progress').appendChild(newContainer);
-          } else if (['REJECTED', 'FINISHED'].includes(job.state)) {
+          } else if (['REJECTED', 'FINISHED', 'COMMENTED'].includes(job.state)) {
             document.querySelector('#jobs-history').appendChild(newContainer);
           }
 

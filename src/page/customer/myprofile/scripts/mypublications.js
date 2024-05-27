@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
 })
   .then(response => response.json())
   .then(data => {
-    console.log(data);
 
     localStorage.setItem('profile_picture', data.profile_picture);
     localStorage.setItem('name', data.name);

@@ -31,12 +31,14 @@ if (!token) {
     })
       .then(response => response.json())
       .then(data => {
+   
         newContainer.querySelector('#name').textContent = data.name;
         newContainer.querySelector('#lastname').textContent = data.last_name;
         if (data.profile_picture == '') {
           data.profile_picture = `../../../resources/img/anonymous-user.jpg`;
         }
         newContainer.querySelector('.profile-image img').src = data.profile_picture;
+        newContainer.querySelector('.specialist-profile').id = data.id;
       })
       .catch(error => console.error('Error:', error));
   }
@@ -93,56 +95,13 @@ document.querySelectorAll('.btn-check').forEach((checkbox) => {
 
 });
 
-
+  // evento para ir al perfil del especialista
+  document.addEventListener('click', async (event) => {
+    if (event.target.matches('.rounded-5')) {
+      const specialistProfile = event.target.closest('.specialist-profile');
+      const specialistId = specialistProfile ? specialistProfile.id : null;
+      window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
+    }
+  });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const articlesUrl = 'http://127.0.0.1:5016/customer/dashboard/articles?categories=1,2,3,4,5'
-  
-//   fetch(articlesUrl, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': `Bearer ${token}`
-//     }
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-
-//       console.log(data);
-
-//       // Asegúrate de que data.sortedArticles existe y es un array
-//       if (Array.isArray(data.sortedArticles)) {
-//         data.sortedArticles.forEach((article, index) => {
-//           const newArticle = existingArticle[0].cloneNode(true);
-
-//           getUserData(article.authorId, newArticle);
-//           newArticle.querySelector('.article-title').textContent = article.title;
-//           newArticle.querySelector('.article-content').textContent = article.paragraph;
-//           newArticle.querySelector('.post_image img').src = article.image;
-//           newArticle.querySelector('.required-category span').textContent = article.category.name;
-
-//           const container = document.querySelector('.container-fluid.specialist-search');
-//           if (container) {
-//             container.appendChild(newArticle);
-//           }
-//         });
-//       }
-//     }).catch(error => console.error('Error:', error));

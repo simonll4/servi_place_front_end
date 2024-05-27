@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     .catch(error => console.error('Error:', error));
 
 
-
-
   //funcion para obtener el modelo de los articulos
   let existingArticle = [];
   const templatePaths = ['models/specialist-articles.html',];

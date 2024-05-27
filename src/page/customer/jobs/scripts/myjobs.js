@@ -92,13 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
             opinionButton.addEventListener('click', async (event) => { });
           }
 
+          // evento voton para ir al perfil del especialista
           newContainer.querySelector('.rounded-5').addEventListener('click', function (event) { });
 
           newContainer.dataset.jobId = job.id; // se guarda el id del trabajo en el contenedor como id del container-job id="data-job-id"
           getUserData(job.idSpecialist, newContainer);
           newContainer.querySelector('.problem_title.row h5').textContent = job.name;
           newContainer.querySelector('.problem-description p').textContent = job.description;
-          
+
           //manejo de fecha
           const date = new Date(job.createdAt);
           const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -247,17 +248,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // evento para ir al perfil del especialista
-
   document.addEventListener('click', async (event) => {
     if (event.target.matches('.rounded-5')) {
-      console.log('click');
-      const specialistId = document.querySelector('.specialist-card').id;
-
+      const specialistProfile = event.target.closest('.specialist-card');
+      const specialistId = specialistProfile ? specialistProfile.id : null;
       window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
     }
   });
-
-
 
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

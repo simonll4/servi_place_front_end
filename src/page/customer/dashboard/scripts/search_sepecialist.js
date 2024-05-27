@@ -42,6 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
           newCard.querySelector('#lastname').textContent = specialist.last_name;
           newCard.querySelector('.profile-image img').src = specialist.profile_picture;
           newCard.querySelector('#paragraph').textContent = specialist.description;
+          newCard.querySelector('.specialist-profile').id = specialist.id;
+
+          newCard.querySelector('.rounded-5').addEventListener('click', function (event) { });
 
 
           const container = document.querySelector('.container-fluid.specialist-search');
@@ -54,5 +57,15 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(error => {
       console.error(error);
     });
+
+
+  // evento para ir al perfil del especialista
+  document.addEventListener('click', async (event) => {
+    if (event.target.matches('.rounded-5')) {
+      const specialistProfile = event.target.closest('.specialist-profile');
+      const specialistId = specialistProfile ? specialistProfile.id : null;
+      window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
+    }
+  });
 
 });
