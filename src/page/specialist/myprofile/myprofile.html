@@ -1,318 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metadatos -->
-    <meta charset="UTF-8" />
-    <meta name="autor" content="john doe" />
-    <meta name="description" content="profile" />
-    <meta name="keywords" content="profile, serviplace, trabajos" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="referrer" content="no-referrer" />
 
-    <!-- Titulo e iconos -->
-    <title>Mi Perfil | Serviplace</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/src/resources/logos/logo_web_2.png"
-    />
+<head>
+  <!-- Metadatos -->
+  <meta charset="UTF-8" />
+  <meta name="autor" content="john doe" />
+  <meta name="description" content="profile" />
+  <meta name="keywords" content="profile, serviplace, trabajos" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Titulo e iconos -->
+  <title>Mi Perfil | Serviplace</title>
+  <link rel="icon" type="image/x-icon" href="/src/resources/logos/logo_web_2.png" />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet" />
 
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="/src/components/template/styles/template_styles.css"
-    />
-    <link rel="stylesheet" href="styles/profile_styles.css" />
-  </head>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-  <body>
-    <!-- Header (Navbar) -->
-    <header id="header-container" class="container-fluid"></header>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/components/template/styles/template_styles.css" />
+  <link rel="stylesheet" href="styles/profile_styles.css" />
+</head>
 
-    <!-- Contenedor principal -->
-    <div
-      id="page-container"
-      class="container-fluid justify-content-between d-flex"
-    >
-      <!-- Sidebar -->
-      <nav id="sidebar-container" class="navbar-header"></nav>
+<body>
+  <!-- Header (Navbar) -->
+  <header id="header-container" class="container-fluid"></header>
 
-      <!-- Main Content -->
-      <div id="main-container" class="container-fluid p-0 bg-transparent">
-        <!-- Profile header -->
-        <div class="profile-header container-fluid p-0">
-          <img src="/src/resources/img/portada-esp2.jpg" alt="wallpaper" />
-          <div class="profile-image">
-            <img
-              src="/src/resources/img/anonymous-user.jpg"
-              alt="profile-pic"
-              id="profile-image"
-            />
-            <button id="edit-profile-button">
-              <i class="bi-gear fw-light"> Configurar Perfil</i>
-            </button>
-          </div>
-          <!-- Detalles del Especialista -->
-          <div class="profile-details">
-            <h2 class="profile-name">Juan, Vasquez</h2>
-            <small>Córdoba, Argentina</small>
-          </div>
-          <!-- Insignias -->
-          <div class="badges row mb-3 ms-4">
-            <div class="insignia w-25 col-1">Cargando...</div>
-          </div>
+  <!-- Contenedor principal -->
+  <div id="page-container" class="container-fluid justify-content-between d-flex">
+    <!-- Sidebar -->
+    <nav id="sidebar-container" class="navbar-header"></nav>
+
+    <!-- Main Content -->
+    <div id="main-container" class="container-fluid p-0 bg-transparent">
+      <!-- Profile header -->
+      <div class="profile-header container-fluid p-0">
+        <img src="/src/resources/img/portada-esp2.jpg" alt="wallpaper" />
+        <div class="profile-image">
+          <img src="/src/resources/img/anonymous-user.jpg" alt="profile-pic" id="profile-image" />
+          <button id="edit-profile-button">
+            <i class="bi-gear fw-light"> Configurar Perfil</i>
+          </button>
         </div>
-
-        <!-- Editar perfil -->
-        <div
-          class="section-container profile-buttons container-fluid"
-          id="edit-profile"
-          hidden
-        >
-          <div class="d-flex align-items-center">
-            <a href="#" id="back-button">
-              <i class="bi-arrow-left"></i>
-            </a>
-            <h3>Editar Perfil</h3>
-          </div>
-          <hr />
-          <!-- EL SCRIPT ESTÁ HECHO DE TAL FORMA QUE SI SE EDITA UN CAMPO HABILITE EL BOTON -->
-          <form action="post" class="basic-info" id="basic-info-form" >
-            <div class="row">
-              <!-- Cambiar foto de perfil -->
-              <div
-                class="profile-image-config d-flex justify-content-center flex-column col-6"
-              >
-                <h3>Foto de perfil</h3>
-                <img
-                  src="/src/resources/img/anonymous-user.jpg"
-                  alt="profile-pic"
-                  id="profile-image-change"
-                />
-                <!-- Boton cambiar foto -->
-                <input
-                  type="file"
-                  id="image-upload"
-                  accept="image/*"
-                  style="display: none"
-                />
-
-                <!-- Botón para cargar la imagen -->
-                <button class="btn btn-light" id="upload-button">
-                  Cargar imagen
-                </button>
-              </div>
-              <!-- Información básica -->
-              <div class="container-fluid d-flex flex-column col-6">
-                <h3>Información básica</h3>
-                <hr />
-                <div class="row">
-                  <div class="form-group col">
-                    <label for="name">Nombre</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      placeholder="Nombre"
-                    />
-                  </div>
-                  <div class="form-group col">
-                    <label for="lastname">Apellido</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="lastname"
-                      placeholder="Apellido"
-                    />
-                  </div>
-                </div>
-                <div class="form-group d-flex flex-column">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    placeholder="Email"
-                  />
-                </div>
-                <div class="form-group d-flex flex-column">
-                  <label for="location">Ubicación</label>
-                  <input
-                    type="location"
-                    class="form-control"
-                    id="location"
-                    placeholder="Córdoba, Argentina"
-                    disabled
-                  />
-                </div>
-                <div class="form-group d-flex flex-column">
-                  <label for="aboutme">Acerca De Mí</label>
-                  <input
-                    type="location"
-                    class="form-control"
-                    id="aboutme"
-                    placeholder="Escribe un poco acerca de ti"
-                    maxlength="200"
-                  />
-                </div>
-              </div>
-            </div>
-            <!-- Seleccionar categorías -->
-            <div class="row">
-              <hr class="mt-5">
-              <h3>Seleccionar categorías</h3>
-              <p class="ms-0 p-0">Elige las especialidades que mejor se te dan. Puedes cambiar esta información cuando quieras.</p>
-              <div class="btn-group category-filter p-0" role="group" aria-label="filtro de categorias">
-                <input type="checkbox" class="btn-check" id="filter-albañil" autocomplete="off" />
-                <label class="btn btn-outline-primary rounded-5" for="filter-albañil">Albañil</label>
-      
-                <input type="checkbox" class="btn-check" id="filter-gasista" autocomplete="off" />
-                <label class="btn btn-outline-primary rounded-5" for="filter-gasista">Gasista</label>
-      
-                <input type="checkbox" class="btn-check" id="filter-plomero" autocomplete="off" />
-                <label class="btn btn-outline-primary rounded-5" for="filter-plomero">Plomero</label>
-      
-                <input type="checkbox" class="btn-check" id="filter-pintor" autocomplete="off" />
-                <label class="btn btn-outline-primary rounded-5" for="filter-pintor">Pintor</label>
-      
-                <input type="checkbox" class="btn-check" id="filter-Electricista" autocomplete="off" />
-                <label class="btn btn-outline-primary rounded-5" for="filter-Electricista">Electricista</label>
-              </div>
-            </div>
-            <!-- Boton submit -->
-            <button type="submit" id="submit-button" class="mt-5" disabled>
-              Aceptar
-            </button>
-          </form>
+        <!-- Detalles del Especialista -->
+        <div class="profile-details">
+          <h2 class="profile-name">Juan, Vasquez</h2>
+          <small>Córdoba, Argentina</small>
         </div>
-
-        <!-- Mi Perfil -->
-        <div class="d-flex justify-content-between" id="my-profile-section">
-          <div class="about-and-opinions-profile">
-            <!-- Acerca de -->
-            <div class="section-container about-me">
-              <h3 class="d-flex align-items-center">Acerca de</h3>
-              <hr />
-              <p id="about-me" class="fw-lighter">
-                ¡Agrega algo acerca de ti! Puedes hacerlo desde el boton de
-                <b class="fw-bold">configurar perfil</b>.
-              </p>
-            </div>
-            <!-- Opiniones -->
-            <div class="section-container opinions">
-              <h3 class="fs-5 fw-bold d-flex">
-                <i class="bi-stars"></i>
-                <p class="ms-2">Opiniones</p>
-              </h3>
-              <hr />
-              <div class="opinions_avg">
-                <iframe src="#" frameborder="0"></iframe>
-              </div>
-              <div class="row all_opinions">
-                <a href="myopinions.html" class="btn btn-primary"
-                  >Ver todas las opiniones</a
-                >
-              </div>
-            </div>
-          </div>
-          <!-- Mis posteos -->
-          <div class="section-container my-posts">
-            <h3 class="fs-5 fw-bold">Publicaciones</h3>
-            <hr />
-            <!-- Publicaciones -->
-            <div class="my-publication" id="article_id">
-              <!-- Perfil del Especialista -->
-              <div
-                class="my-profile d-flex justify-content-between align-items-center"
-                id="id_user"
-              >
-                <div class="profile-info d-flex">
-                  <div class="publication-profile-image d-flex">
-                    <img
-                      src="../../../resources/img/anonymous-user.jpg"
-                      alt="profile_image"
-                      class="rounded-5"
-                      id="profile-image"
-                    />
-                  </div>
-                  <div class="my-profile-details">
-                    <p class="fw-bold" id="article-name">Cargando...</p>
-                    <p class="fw-light">
-                      <span id="location">Córdoba, Argentina</span>
-                    </p>
-                    <!-- Categoría requerida -->
-                    <div class="required-category">
-                      <span id="id_category">Cargando...</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Descripción del post -->
-              <div class="post-description" id="paragraph">
-                <p id="article-data"></p>
-              </div>
-              <!-- Imagen del Posteo -->
-              <div
-                class="post_image d-flex justify-content-center"
-                id="post_image"
-              >
-                <img
-                  src="/src/resources/stock_images/photo_coming.jpg"
-                  alt="publication-image"
-                  id="publication-image"
-                />
-              </div>
-            </div>
-            <div class="d-flex justify-content-center">
-              <a href="mypublications.html" class="btn btn-primary w-75 p-2"
-                >Ver más publicaciones</a
-              >
-            </div>
-          </div>
+        <!-- Insignias -->
+        <div class="badges row mb-3 ms-4">
+          <div class="insignia w-25 col-1">Cargando...</div>
         </div>
-        <!-- ///////////////////////////////////////////////////////////////////////// -->
       </div>
+
+      <!-- Editar perfil -->
+      <div class="section-container profile-buttons container-fluid" id="edit-profile" hidden>
+        <div class="d-flex align-items-center">
+          <a href="#" id="back-button">
+            <i class="bi-arrow-left"></i>
+          </a>
+          <h3>Editar Perfil</h3>
+        </div>
+        <hr />
+        <!-- EL SCRIPT ESTÁ HECHO DE TAL FORMA QUE SI SE EDITA UN CAMPO HABILITE EL BOTON -->
+        <form action="post" class="basic-info" id="basic-info-form">
+          <div class="row">
+            <!-- Cambiar foto de perfil -->
+            <div class="profile-image-config d-flex justify-content-center flex-column col-6">
+              <h3>Foto de perfil</h3>
+              <img src="/src/resources/img/anonymous-user.jpg" alt="profile-pic" id="profile-image-change" />
+              <!-- Boton cambiar foto -->
+              <input type="file" id="image-upload" accept="image/*" style="display: none" />
+
+              <!-- Botón para cargar la imagen -->
+              <button class="btn btn-light" id="upload-button">
+                Cargar imagen
+              </button>
+            </div>
+            <!-- Información básica -->
+            <div class="container-fluid d-flex flex-column col-6">
+              <h3>Información básica</h3>
+              <hr />
+              <div class="row">
+                <div class="form-group col">
+                  <label for="name">Nombre</label>
+                  <input type="text" class="form-control" id="name" placeholder="Nombre" />
+                </div>
+                <div class="form-group col">
+                  <label for="lastname">Apellido</label>
+                  <input type="text" class="form-control" id="lastname" placeholder="Apellido" />
+                </div>
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" />
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="location">Ubicación</label>
+                <input type="location" class="form-control" id="location" placeholder="Córdoba, Argentina" disabled />
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="aboutme">Acerca De Mí</label>
+                <input type="location" class="form-control" id="aboutme" placeholder="Escribe un poco acerca de ti"
+                  maxlength="200" />
+              </div>
+            </div>
+          </div>
+          <!-- Seleccionar categorías -->
+          <div class="row">
+            <hr class="mt-5">
+            <h3>Seleccionar categorías</h3>
+            <p class="ms-0 p-0">Elige las especialidades que mejor se te dan. Puedes cambiar esta información cuando
+              quieras.</p>
+            <div class="btn-group category-filter p-0" role="group" aria-label="filtro de categorias">
+              <input type="checkbox" class="btn-check" id="1" autocomplete="off" />
+              <label class="btn btn-outline-primary rounded-5" for="1">Albañil</label>
+
+              <input type="checkbox" class="btn-check" id="2" autocomplete="off" />
+              <label class="btn btn-outline-primary rounded-5" for="2">Gasista</label>
+
+              <input type="checkbox" class="btn-check" id="3" autocomplete="off" />
+              <label class="btn btn-outline-primary rounded-5" for="3">Plomero</label>
+
+              <input type="checkbox" class="btn-check" id="4" autocomplete="off" />
+              <label class="btn btn-outline-primary rounded-5" for="4">Pintor</label>
+
+              <input type="checkbox" class="btn-check" id="5" autocomplete="off" />
+              <label class="btn btn-outline-primary rounded-5" for="5">Electricista</label>
+            </div>
+          </div>
+          <!-- Boton submit -->
+          <button type="submit" id="submit-button" class="mt-5" disabled>
+            Aceptar
+          </button>
+        </form>
+      </div>
+
+      <!-- Mi Perfil -->
+      <div class="d-flex justify-content-between" id="my-profile-section">
+        <div class="about-and-opinions-profile">
+          <!-- Acerca de -->
+          <div class="section-container about-me">
+            <h3 class="d-flex align-items-center">Acerca de</h3>
+            <hr />
+            <p id="about-me" class="fw-lighter">
+              ¡Agrega algo acerca de ti! Puedes hacerlo desde el boton de
+              <b class="fw-bold">configurar perfil</b>.
+            </p>
+          </div>
+          <!-- Opiniones -->
+          <div class="section-container opinions">
+            <h3 class="fs-5 fw-bold d-flex">
+              <i class="bi-stars"></i>
+              <p class="ms-2">Opiniones</p>
+            </h3>
+            <hr />
+            <div class="opinions_avg">
+              <iframe src="#" frameborder="0"></iframe>
+            </div>
+            <div class="row all_opinions">
+              <a href="myopinions.html" class="btn btn-primary">Ver todas las opiniones</a>
+            </div>
+          </div>
+        </div>
+        <!-- Mis posteos -->
+        <div class="section-container my-posts">
+          <h3 class="fs-5 fw-bold">Publicaciones</h3>
+          <hr />
+          <!-- Publicaciones -->
+          <div class="my-publication" id="article_id">
+            <!-- Perfil del Especialista -->
+            <div class="my-profile d-flex justify-content-between align-items-center" id="id_user">
+              <div class="profile-info d-flex">
+                <div class="publication-profile-image d-flex">
+                  <img src="../../../resources/img/anonymous-user.jpg" alt="profile_image" class="rounded-5"
+                    id="profile-image" />
+                </div>
+                <div class="my-profile-details">
+                  <p class="fw-bold" id="article-name">Cargando...</p>
+                  <p class="fw-light">
+                    <span id="location">Córdoba, Argentina</span>
+                  </p>
+                  <!-- Categoría requerida -->
+                  <div class="required-category">
+                    <span id="id_category">Cargando...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Descripción del post -->
+            <div class="post-description" id="paragraph">
+              <p id="article-data"></p>
+            </div>
+            <!-- Imagen del Posteo -->
+            <div class="post_image d-flex justify-content-center" id="post_image">
+              <img src="/src/resources/stock_images/photo_coming.jpg" alt="publication-image" id="publication-image" />
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <a href="mypublications.html" class="btn btn-primary w-75 p-2">Ver más publicaciones</a>
+          </div>
+        </div>
+      </div>
+      <!-- ///////////////////////////////////////////////////////////////////////// -->
     </div>
+  </div>
 
-    <!-- Footer -->
-    <div id="footer" class="container-fluid"></div>
+  <!-- Footer -->
+  <div id="footer" class="container-fluid"></div>
 
-    <!-- Bootstrap & JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Scripts generales -->
-    <script src="/src/components/template/script-template.js"></script>
-    <script src="/src/components/template/script-ventana.js"></script>
+  <!-- Bootstrap & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- Scripts generales -->
+  <script src="/src/components/template/script-template.js"></script>
+  <script src="/src/components/template/script-ventana.js"></script>
 
-    <!-- Scripts internos -->
-    <script src="scripts/action-buttons.js"></script>
-    <script src="scripts/change-profile-pic.js"></script>
-    <script src="scripts/form-script.js"></script>
-    <script src="scripts/dropzone.js"></script>
-    <script src="scripts/form-publication-script.js"></script>
-    <script src="scripts/myprofile.js"></script>
-  </body>
+  <!-- Scripts internos -->
+  <script src="scripts/action-buttons.js"></script>
+  <script src="scripts/change-profile-pic.js"></script>
+  <script src="scripts/form-script.js"></script>
+  <script src="scripts/dropzone.js"></script>
+  <script src="scripts/form-publication-script.js"></script>
+  <script src="scripts/myprofile.js"></script>
+</body>
+
 </html>

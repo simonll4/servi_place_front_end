@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return response.json();
     }).then(data => {
-     
+
         document.querySelector('.profile-name').textContent = `${capitalize(data.name)}, ${capitalize(data.last_name)}`;
         document.querySelector('#profile-pic').src = data.profile_picture;
 
@@ -116,11 +116,11 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
 
     console.log(photoValue.files[0]);
 
-    if(nameValue !== "") data['name'] = nameValue;
-    if(lastNameValue !== "") data['last_name'] = lastNameValue;
-    if(emailValue !== "") data['email'] = emailValue;
-    if(descriptionValue !== "") data['description'] = descriptionValue;
-    if(photoValue.files.length > 0){
+    if (nameValue !== "") data['name'] = nameValue;
+    if (lastNameValue !== "") data['last_name'] = lastNameValue;
+    if (emailValue !== "") data['email'] = emailValue;
+    if (descriptionValue !== "") data['description'] = descriptionValue;
+    if (photoValue.files.length > 0) {
         data['profile_picture'] = await uploadProfilePicture(photoValue);
     }
 
@@ -142,10 +142,6 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
     });
 
     location.reload();
-
-
-
-
 })
 
 
@@ -155,16 +151,129 @@ async function uploadProfilePicture(profilePicture) {
     console.log(profilePicture.files[0])
 
     const response = await fetch("https://api.imgur.com/3/image", {
-      method: "POST",
-      headers: {
-        Authorization: "Client-ID cc588f3c8316e27",
-      },
-      body: formData,
+        method: "POST",
+        headers: {
+            Authorization: "Client-ID cc588f3c8316e27",
+        },
+        body: formData,
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
     }
     const { data } = await response.json();
     return data.link;
 }
+
+//CATEGORIAS DEL ESPACILISTA
+
+async function setCategory(id) {
+    const url = `http://127.0.0.1:5016/specialist/my-profile/category/${id}`;
+
+    const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+}
+
+async function deleteCategory(id) {
+    const url = `http://127.0.0.1:5016/specialist/my-profile/category/${id}`;
+
+    const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+}
+
+document.getElementById('edit-profile-button').addEventListener('click', fetchAndCheckCategories);
+// traer las categorias que ya tiene el especialista
+async function fetchAndCheckCategories() {
+    const url = 'http://127.0.0.1:5016/specialist/my-profile/categories';
+    console.log('holaaaaaaaaaaaaaa')
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    data.forEach(item => {
+        const checkbox = document.getElementById(item.categoryId.toString());
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    });
+}
+
+
+// inputs de las categorias del espacialista
+const checkboxes = document.querySelectorAll('.btn-check');
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', async () => {
+        console.log(token)
+        switch (checkbox.id) {
+            case '1':
+                if (checkbox.checked) {
+                    await setCategory(checkbox.id);
+                } else {
+                    await deleteCategory(checkbox.id);
+                }
+                break;
+            case '2':
+                if (checkbox.checked) {
+                    await setCategory(checkbox.id);
+                } else {
+                    await deleteCategory(checkbox.id);
+                }
+                break;
+            case '3':
+                if (checkbox.checked) {
+                    await setCategory(checkbox.id);
+                } else {
+                    await deleteCategory(checkbox.id);
+                }
+                break;
+            case '4':
+                if (checkbox.checked) {
+                    await setCategory(checkbox.id);
+                } else {
+                    await deleteCategory(checkbox.id);
+                }
+                break;
+            case '5':
+                if (checkbox.checked) {
+                    await setCategory(checkbox.id);
+                } else {
+                    await deleteCategory(checkbox.id);
+                }
+                break;
+            default:
+                console.log('Unknown checkbox');
+                break;
+        }
+    });
+});
+
+
