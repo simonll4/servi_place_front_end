@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // url para mostrar el resumen de las opiniones
     document.querySelector('.opinions_avg iframe').src = `/src/components/opinions/opinions.html?id=${localStorage.getItem('id')}`;
 
+    // datos del user
     fetch('http://127.0.0.1:5016/specialist/my-profile/my-information', {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -71,33 +72,74 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Hubo un problema con tu operación fetch:', error);
     })
 
+    // set my categories
+    async function getMyCategories() {
+        const url = 'http://127.0.0.1:5016/specialist/my-profile/categories';
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const badgesContainer = document.querySelector('.badges');
+
+        const categoryTexts = {
+            1: 'Albañil',
+            2: 'Gasista',
+            3: 'Plomero',
+            4: 'Pintor',
+            5: 'Electricista'
+        };
+
+        badgesContainer.innerHTML = '';
+        data.forEach(item => {
+            const badge = document.createElement('div');
+            badge.className = 'insignia  col-1';
+
+            // Usa el ID de la categoría para obtener el texto correspondiente
+            badge.textContent = categoryTexts[item.categoryId];
+
+            badgesContainer.appendChild(badge);
+        });
+
+    }
+    getMyCategories();
+
+
 
 });
 
 
 // creo que esta funcion esta por de mas
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('token');
-    fetch('http://127.0.0.1:5016/specialist/my-profile/my-information', {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    }).then(data => {
+// document.addEventListener('DOMContentLoaded', () => {
+//     const token = localStorage.getItem('token');
+//     fetch('http://127.0.0.1:5016/specialist/my-profile/my-information', {
+//         headers: {
+//             'Authorization': `Bearer ${token}`
+//         }
+//     }).then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     }).then(data => {
 
-        document.querySelector('.profile-name').textContent = `${capitalize(data.name)}, ${capitalize(data.last_name)}`;
-        document.querySelector('#profile-pic').src = data.profile_picture;
+//         document.querySelector('.profile-name').textContent = `${capitalize(data.name)}, ${capitalize(data.last_name)}`;
+//         document.querySelector('#profile-pic').src = data.profile_picture;
 
-    }).catch(error => {
-        console.error('Hubo un problema con tu operación fetch:', error);
+//     }).catch(error => {
+//         console.error('Hubo un problema con tu operación fetch:', error);
+//     })
+// });
 
 
-    })
-})
+
+
 
 //MODIFICAR PERFIL...
 
@@ -204,10 +246,10 @@ async function deleteCategory(id) {
 }
 
 document.getElementById('edit-profile-button').addEventListener('click', fetchAndCheckCategories);
+
 // traer las categorias que ya tiene el especialista
 async function fetchAndCheckCategories() {
     const url = 'http://127.0.0.1:5016/specialist/my-profile/categories';
-    console.log('holaaaaaaaaaaaaaa')
     const response = await fetch(url, {
         method: 'GET',
         headers: {

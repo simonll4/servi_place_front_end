@@ -130,3 +130,12 @@ body {
   margin-top: 10px;
   margin-left: 20px;
 }
+
+
+#badges.row {
+  flex-wrap: nowrap;
+}
+
+.required-category {
+  width: auto; /* o puedes establecer un ancho específico que permita que varios elementos se ajusten en la línea */
+}
