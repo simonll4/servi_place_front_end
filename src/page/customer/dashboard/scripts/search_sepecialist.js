@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 
-
+  // trae a los especialistas
   fetch(`http://127.0.0.1:5016/customer/dashboard/specialists`, {
     headers: {
       'Authorization': `Bearer ${token}`
@@ -33,23 +33,26 @@ document.addEventListener('DOMContentLoaded', function () {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+
       if (Array.isArray(data.SPECIALIST)) {
-        data.SPECIALIST.forEach((specialist) => {
+        data.SPECIALIST.forEach(async (specialist) => {
           const newCard = existingCard[0].cloneNode(true);
 
 
           const profileButton = newCard.querySelector('.show-profile');
           profileButton.href = `/src/page/customer/profile/profile.html?id=${specialist.id}`;
-          
+
           newCard.querySelector('#name').textContent = `${capitalize(specialist.name)}`;
           newCard.querySelector('#lastname').textContent = `${capitalize(specialist.last_name)}`;
           newCard.querySelector('.profile-image img').src = specialist.profile_picture;
           newCard.querySelector('#paragraph').textContent = specialist.description;
           newCard.querySelector('.specialist-profile').id = specialist.id;
+          newCard.querySelector('.profile-image img').addEventListener('click', async function (event) { });
 
-          newCard.querySelector('.rounded-5').addEventListener('click', function (event) { });
-
+          const fakeEvent = {
+            target: newCard
+          };
+          await getSpecialistCategories(fakeEvent,newCard, specialist.id);
 
           const container = document.querySelector('.container-fluid.specialist-search');
           if (container) {
@@ -62,6 +65,45 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error(error);
     });
 
+  // setea las insignias del especialista
+  async function getSpecialistCategories(event,newCard, specialistId) {
+
+    const url = `http://127.0.0.1:5016/customer/profile/categories/${specialistId}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+
+    const categoryTexts = {
+      1: 'Albañil',
+      2: 'Gasista',
+      3: 'Plomero',
+      4: 'Pintor',
+      5: 'Electricista'
+    };
+
+
+    const badgesContainer = newCard.querySelector('#badges');
+    badgesContainer.style.display = 'flex';
+    badgesContainer.innerHTML = '';
+
+    data.forEach(category => {
+      const badge = document.createElement('div');
+      badge.className = 'required-category col-1';
+      const span = document.createElement('span');
+      span.id = 'id_category';
+      span.textContent = categoryTexts[category.categoryId];
+      badge.appendChild(span);
+      badgesContainer.appendChild(badge);
+    });
+  }
 
   // evento para ir al perfil del especialista
   document.addEventListener('click', async (event) => {
@@ -71,5 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
     }
   });
+
 
 });
