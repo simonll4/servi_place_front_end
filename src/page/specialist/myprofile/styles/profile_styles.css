@@ -392,6 +392,7 @@ body {
   margin-top: 5px;
   margin-left: 10px;
   width: 60%;
+  padding: 5px;
   background-color: #e8e8e8;
   border: 0.5px solid #8d8b8b;
   border-radius: 20px;
@@ -446,4 +447,16 @@ body {
 .stars-inner::before {
   content: "\2605\2605\2605\2605\2605";
   color: gold;
+}
+.insignia{
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  margin-left: 10px;
+  padding: 7px;
+  background-color: #4978f0;
+  border: 0.5px solid #fff;
+  border-radius: 20px;
+  color: #f4f1ff;
+  font-weight: bold;
 }
