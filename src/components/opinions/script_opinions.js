@@ -10,7 +10,7 @@ if (localStorage.getItem('role') === 'CUSTOMER') {
     url = `http://127.0.0.1:5016/customer/profile/summary-reviews/${id}`;
 }
 if (localStorage.getItem('role') === 'SPECIALIST') {
-    url = `http://127.0.0.1:5016/specialist/my-profile/summary-reviews/${id}`;
+    url = `http://127.0.0.1:5016/specialist/my-profile/summary-reviews`;
 }
 
 let opinionsSummary = [];
