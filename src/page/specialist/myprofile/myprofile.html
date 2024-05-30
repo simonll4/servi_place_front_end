@@ -56,12 +56,38 @@
           <small>Córdoba, Argentina</small>
         </div>
         <!-- Insignias -->
-        <div class="badges row mb-3 ms-4">
-          <div class="insignia  col-1">Cargando...</div>
+        <div class="badges row mb-3 ms-4 d-flex flex-wrap">
+          <div class="insignia bg-primary me-2 mb-2 col-2">Cargando...</div>
         </div>
       </div>
 
       <!-- Editar perfil -->
+      <div class="section-container" id="edit-categories" hidden>
+        <!-- Seleccionar categorías -->
+        <div class="row">
+          <h5 class="fw-bold">Seleccionar categorías</h5>
+          <hr>
+          <p class="ms-3 p-0">Elige las especialidades que mejor se te dan. Puedes cambiar esta información cuando
+            quieras.</p>
+          <div class="btn-group flex-wrap category-filter p-0 ms-1 me-1" role="group" aria-label="filtro de categorias">
+            <input type="checkbox" class="btn-check" id="1" autocomplete="off" />
+            <label class="btn btn-outline-primary rounded-5 me-2 mb-2" for="1">Albañil</label>
+          
+            <input type="checkbox" class="btn-check" id="2" autocomplete="off" />
+            <label class="btn btn-outline-primary rounded-5 me-2 mb-2" for="2">Gasista</label>
+          
+            <input type="checkbox" class="btn-check" id="3" autocomplete="off" />
+            <label class="btn btn-outline-primary rounded-5 me-2 mb-2" for="3">Plomero</label>
+          
+            <input type="checkbox" class="btn-check" id="4" autocomplete="off" />
+            <label class="btn btn-outline-primary rounded-5 me-2 mb-2" for="4">Pintor</label>
+          
+            <input type="checkbox" class="btn-check" id="5" autocomplete="off" />
+            <label class="btn btn-outline-primary rounded-5 me-2 mb-2" for="5">Electricista</label>
+          </div>
+        </div>
+      </div>
+
       <div class="section-container profile-buttons container-fluid" id="edit-profile" hidden>
         <div class="d-flex align-items-center">
           <a href="#" id="back-button">
@@ -114,31 +140,8 @@
               </div>
             </div>
           </div>
-          <!-- Seleccionar categorías -->
-          <div class="row">
-            <hr class="mt-5">
-            <h3>Seleccionar categorías</h3>
-            <p class="ms-0 p-0">Elige las especialidades que mejor se te dan. Puedes cambiar esta información cuando
-              quieras.</p>
-            <div class="btn-group category-filter p-0" role="group" aria-label="filtro de categorias">
-              <input type="checkbox" class="btn-check" id="1" autocomplete="off" />
-              <label class="btn btn-outline-primary rounded-5" for="1">Albañil</label>
-
-              <input type="checkbox" class="btn-check" id="2" autocomplete="off" />
-              <label class="btn btn-outline-primary rounded-5" for="2">Gasista</label>
-
-              <input type="checkbox" class="btn-check" id="3" autocomplete="off" />
-              <label class="btn btn-outline-primary rounded-5" for="3">Plomero</label>
-
-              <input type="checkbox" class="btn-check" id="4" autocomplete="off" />
-              <label class="btn btn-outline-primary rounded-5" for="4">Pintor</label>
-
-              <input type="checkbox" class="btn-check" id="5" autocomplete="off" />
-              <label class="btn btn-outline-primary rounded-5" for="5">Electricista</label>
-            </div>
-          </div>
           <!-- Boton submit -->
-          <button type="submit" id="submit-button" class="mt-5" disabled>
+          <button type="submit" id="submit-button" class="mt-5 me-4" disabled>
             Aceptar
           </button>
         </form>

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const editProfileButton = document.getElementById("edit-profile-button");
   const backButton = document.getElementById("back-button");
   const editProfile = document.getElementById("edit-profile");
+  const editCategories = document.getElementById("edit-categories");
   const myProfile = document.getElementById("my-profile-section");
 
   // Agrega un evento de escucha al botón "edit-profile-button"
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     
     myProfile.hidden = true;
     editProfile.hidden = false;
+    editCategories.hidden = false;
   });
 
   // Agrega un evento de escucha al botón "back-button"
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     // Oculta el contenedor "edit-profile" y muestra el contenedor "my-profile"
     editProfile.hidden = true;
+    editCategories.hidden = true;
     myProfile.hidden = false;
   });
 });
