@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  // Loading spinner
+  document.getElementById("loading").hidden = false;
+  
   // // obtenemos la info DEL USER
   fetch(`http://127.0.0.1:5016/specialist/my-profile/my-information`, {
     headers: {
@@ -77,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
             container.appendChild(newArticle);
           }
         });
+        // Ocultar el spinner después de procesar los datos del usuario
+        document.getElementById('loading').hidden = true;
       }
 
 
@@ -86,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch(error => {
       console.error(error);
+      // Ocultar el spinner después de procesar los datos del usuario
+      document.getElementById('loading').hidden = true;
     });
 
 });

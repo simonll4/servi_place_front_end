@@ -313,5 +313,3 @@ checkboxes.forEach(checkbox => {
         }
     });
 });
-
-

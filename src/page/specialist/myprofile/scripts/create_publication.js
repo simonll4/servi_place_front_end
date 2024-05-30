@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   document.getElementById('publication-form').addEventListener('submit', async function (event) {
+    //Loading spinner
+    document.getElementById('loading').style.display = 'block';
     event.preventDefault();
 
     const urlPhoto = await uploadProfilePicture(document.getElementById('profilePhoto'));
@@ -88,5 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
         location.reload();
       })
       .catch(error => console.error('Error:', error));
+      // Ocultar el spinner independientemente de si se produce un error o no
+      document.getElementById('loading').style.display = 'none';
   });
 });

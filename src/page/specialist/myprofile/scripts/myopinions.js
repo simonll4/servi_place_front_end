@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // indicar ruta del preview de la opiniones
   document.querySelector('#pre_view_opinions').src = `/src/components/opinions/opinions.html?id=${localStorage.getItem('id')}`;
 
+  // Loading spinner
+  document.getElementById("loading").hidden = false;
+
   fetch('http://127.0.0.1:5016/specialist/my-profile/my-information', {
     headers: {
       'Authorization': `Bearer ${token}`
@@ -35,10 +38,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
       userProfilePhoto.forEach(element => {
         element.src = user.profile_picture;
       });
+
+      // Ocultar el spinner después de procesar los datos del usuario
+      document.getElementById('loading').hidden = true;
       
     })
     .catch(error => {
       console.error('Hubo un problema con tu operación fetch:', error);
+      // Ocultar el spinner después de procesar los datos del usuario
+      document.getElementById('loading').hidden = true;
     });
 
 

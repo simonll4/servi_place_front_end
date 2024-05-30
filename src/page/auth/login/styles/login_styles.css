@@ -131,3 +131,6 @@ body {
 .password-label a:hover{
     color: #2a49ff;
 }
+.spinner-border{
+    font-size: 8px;
+}
