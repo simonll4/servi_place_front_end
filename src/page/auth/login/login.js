@@ -1,3 +1,5 @@
+import { showToast } from "../../../components/toast/toast.js";
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
 
@@ -30,11 +32,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         localStorage.setItem('token', token);
         console.log(localStorage.getItem('token'));
       } else {
-        console.error('No Authorization header in response');
+        throw new Error(`Error: ${response.status}`);
       }
       return response.json();
 
     }).then(data => {
+
+      //Esto no se ve, es muy rapido...
+      showToast("¡Login exitoso!", true);
 
       localStorage.setItem('role', data.role);
       localStorage.setItem('id', data.id);
@@ -45,13 +50,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
         window.location.href = '../../customer/dashboard/explore_posts.html';
       }
 
-    }).catch(error => {
-      console.error('Error:', error);
+    }).catch((error) => {
+      console.log(error)
+      const statusCode = error.message.split(' ')[1]; // Extract the status code from the error message
+      if (statusCode === '401') {
+        showToast("¡Credenciales invalidas!", false);
+      } else {
+        showToast("El servidor no respondio", false);
+      }
     });
 
-    document.getElementById('loading').style.display = 'none';
+    document.getElementById('loading').style.cssText = 'display: none !important;';
   });
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });

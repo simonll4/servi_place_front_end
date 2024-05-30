@@ -1,4 +1,4 @@
-
+import { showToast } from "../../../components/toast/toast.js";
 document.addEventListener('DOMContentLoaded', (event) => {
 
   // upload the profile picture to imgur
@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     if (!response.ok) {
+      showToast("La imagen no pudo ser subida", false);
       throw new Error(`HTTP error! status: ${response.status}`);
+
     }
     const { data } = await response.json();
     return data.link;
@@ -66,6 +68,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
           localStorage.setItem('token', token);
           console.log(localStorage.getItem('token'));
         } else {
+          console.log(response.status);
+          throw new Error(`Error: ${response.status}`);
           console.error('No Authorization header in response');
         }
         return response.json();
@@ -83,11 +87,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
       }).catch((error) => {
         console.error('Error:', error);
-        if (error.status === 409) {
-          alert('El correo ya está registrado')
+        const statusCode = error.message.split(' ')[1]; // Extract the status code from the error message
+        if (statusCode === '409') {
+          showToast("¡El correo ya esta en uso!", false);
+        } else {
+          showToast("El servidor no respondio", false);
         }
       });
-    document.getElementById('loading').style.display = 'none';
+    document.getElementById('loading').style.cssText = 'display: none !important;';
   });
 
 });

@@ -16,6 +16,4 @@ document.addEventListener("DOMContentLoaded", function () {
     password.addEventListener("input", validatePasswords);
     confirmPassword.addEventListener("input", validatePasswords);
 
-    //////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////
 });
