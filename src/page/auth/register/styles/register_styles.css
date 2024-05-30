@@ -166,3 +166,6 @@ body {
   height: 100px; /* Ajusta este valor a lo que necesites */
   object-fit: cover; /* Esto asegura que la imagen se redimensione correctamente */
 }
+.spinner-border{
+  font-size: 8px;
+}
