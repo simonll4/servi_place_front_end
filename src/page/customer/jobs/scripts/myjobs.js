@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  //token (esto se deberia obtener del localStorage)
-  //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzE2NDIxMTYxLCJleHAiOjE3MTY1MDc1NjF9.ma15hbXlBwC-ImUquWhJm9XEjRvkATPFAe72MJ7nAKU'
-  //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzE2NDk1NzYyLCJleHAiOjE3MTY1ODIxNjJ9.qIvMIGb55rWfS2oQZ1Ac5H_-kI_vZUYfsR2muJzdt4E';
-
   const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = "../../index.html";
+    return;
+  }
 
 
   //funcion para obtener los datos del usuario (nombre, apellido, imagen de perfil)
@@ -122,10 +122,31 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('#jobs-history').appendChild(newContainer);
           }
         }
+
+
+        const jobsInProgressContainer = document.querySelector('.jobs-in-progress');
+        const jobsHistoryContainer = document.querySelector('.jobs-history');
+
+        if (jobsInProgressContainer.children.length <= 1) {
+          jobsInProgressContainer.innerHTML = `
+            <h3>Trabajos en curso</h3>
+            <div class="section-container text-center example">
+              <p class="fw-light p-5">No hay trabajos en curso</p>
+            </div>
+          `;
+        }
+
+        if (jobsHistoryContainer.children.length <= 1) {
+          jobsHistoryContainer.innerHTML = `
+            <h3 class="mt-3 mb-2 history-title">Historial de Trabajos</h3>
+            <div class="section-container text-center example">
+              <p class="fw-light p-5">Los trabajos realizados aparecerán aquí</p>
+            </div>
+          `;
+        }
       });
     })
-    .catch(error => console.error('Error:', error));
-
+    .catch(error => console.error('Error:', error))
 
   ////////////////////////////////EVENTOS//////////////////////////////////////////////////////
 

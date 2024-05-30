@@ -114,6 +114,39 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
         }
+
+        const jobsInProgressContainer = document.querySelector('#jobs-in-progress');
+        const jobsPendingContainer = document.querySelector('#jobs-pending');
+        const jobsHistoryContainer = document.querySelector('#jobs-history');
+        // Verifica si hay trabajos en curso
+        if (jobsInProgressContainer.children.length <= 1) {
+          jobsInProgressContainer.innerHTML = `
+            <h3>Trabajos en curso</h3>
+            <div class="section-container text-center example">
+              <p class="fw-light p-5">No hay trabajos en curso</p>
+            </div>
+          `;
+        }
+
+        // Verifica si hay trabajos pendientes
+        if (jobsPendingContainer.children.length <= 1) {
+          jobsPendingContainer.innerHTML = `
+            <h3 class="mt-3">Por confirmar</h3>
+            <div class="section-container text-center example">
+              <p class="fw-light p-5">No hay trabajos para confirmar</p>
+            </div>
+          `;
+        }
+
+        // Verifica si hay trabajos en el historial
+        if (jobsHistoryContainer.children.length <= 1) {
+          jobsHistoryContainer.innerHTML = `
+            <h3 class="mt-3 mb-2 history-title">Historial de Trabajos</h3>
+            <div class="section-container text-center example">
+              <p class="fw-light p-5">Los trabajos que realices aparecerán aquí</p>
+            </div>
+          `;
+        }
       });
 
     })

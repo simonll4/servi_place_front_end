@@ -14,9 +14,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   let params = new URLSearchParams(window.location.search);
   const id = Number(params.get('id'));
 
-  //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzE2NjU3MjEyLCJleHAiOjE3MTY3NDM2MTJ9.CxZmNE5UXcvPNpiDNMDd8W5luQGN4s5TxNUbca0wu58";
-  //const id = 2;
-
   // url para mostrar el resumen de las opiniones
   document.querySelector('.opinions_avg iframe').src = `/src/components/opinions/opinions.html?id=${id}`;
 
@@ -59,6 +56,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelector('#publications-btn').removeAttribute('hidden');
       }
 
+
+
+
       // profile details
       document.querySelector('#name_2').innerHTML = localStorage.getItem('name');
       document.querySelector('#last_name_2').innerHTML = localStorage.getItem('last_name');
@@ -72,7 +72,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
       postDescription.innerHTML = data.article.paragraph;
       postImage.src = data.article.image;
     })
-    .catch(error => console.error('Error:', error));
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 
 
 

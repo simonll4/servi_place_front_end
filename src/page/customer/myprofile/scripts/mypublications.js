@@ -52,6 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
   })
     .then(response => response.json())
     .then(data => {
+      
+
+      if (data.articles.length == 0) {
+        const container = document.querySelector('.section-container');
+        container.innerHTML = ' <div class="section-container text-center"> <p class="fw-light p-5">No hay publicaciones para mostrar</p> </div>';
+      }
 
       if (Array.isArray(data.articles)) {
         data.articles.forEach((article) => {

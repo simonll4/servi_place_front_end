@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // url para mostrar el resumen de las opiniones
     document.querySelector('.opinions_avg iframe').src = `/src/components/opinions/opinions.html?id=${localStorage.getItem('id')}`;
-
     // datos del user
     fetch('http://127.0.0.1:5016/specialist/my-profile/my-information', {
         headers: {
@@ -109,9 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
     getMyCategories();
-
-
-
 });
 
 
