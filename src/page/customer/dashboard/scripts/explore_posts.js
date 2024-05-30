@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       .then(response => response.json())
       .then(data => {
 
+
         newContainer.querySelector('#name').textContent = data.name;
         newContainer.querySelector('#lastname').textContent = data.last_name;
         if (data.profile_picture == '') {
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
         newContainer.querySelector('.profile-image img').src = data.profile_picture;
         newContainer.querySelector('.specialist-profile').id = data.id;
+
       })
       .catch(error => console.error('Error:', error));
   }
@@ -81,6 +83,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
           });
         }
+
+        const specialistSearchContainer = document.querySelector('.container-fluid.specialist-search');
+        if (specialistSearchContainer.children.length <= 3) {
+          specialistSearchContainer.innerHTML += `<div class="section-container text-center"> <p class="fw-light p-5">No hay publicaciones para mostrar</p></div>`;
+        }
+
       }).catch(error => console.error('Error:', error));
   }
 
@@ -99,6 +107,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const specialistId = specialistProfile ? specialistProfile.id : null;
       window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
     }
-    });
+  });
 
 });

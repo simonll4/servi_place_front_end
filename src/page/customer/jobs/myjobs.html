@@ -1,216 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metadatos -->
-    <meta charset="UTF-8" />
-    <meta name="autor" content="john doe" />
-    <meta name="description" content="profile" />
-    <meta name="keywords" content="profile, serviplace, trabajos" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="referrer" content="no-referrer" />
 
-    <!-- Titulo e iconos -->
-    <title>Mis trabajos | Serviplace</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/src/resources/logos/logo_web_2.png"
-    />
+<head>
+  <!-- Metadatos -->
+  <meta charset="UTF-8" />
+  <meta name="autor" content="john doe" />
+  <meta name="description" content="profile" />
+  <meta name="keywords" content="profile, serviplace, trabajos" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Titulo e iconos -->
+  <title>Mis trabajos | Serviplace</title>
+  <link rel="icon" type="image/x-icon" href="/src/resources/logos/logo_web_2.png" />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet" />
 
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="/src/components/template/styles/template_styles.css"
-    />
-    <link rel="stylesheet" href="styles/myjobs_styles.css" />
-  </head>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-  <body>
-    <!-- Header (Navbar) -->
-    <header id="header-container" class="container-fluid"></header>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/components/template/styles/template_styles.css" />
+  <link rel="stylesheet" href="styles/myjobs_styles.css" />
+</head>
 
-    <!-- Contenedor principal -->
-    <div
-      id="page-container"
-      class="container-fluid justify-content-between d-flex"
-    >
-      <!-- Sidebar -->
-      <nav id="sidebar-container" class="navbar-header"></nav>
+<body>
+  <!-- Header (Navbar) -->
+  <header id="header-container" class="container-fluid"></header>
 
-      <!-- Main Content -->
-      <div id="main-container" class="container-fluid p-0 bg-transparent">
-        <!-- Mis trabajos -->
-        <div class="section-container">
-          <h2 class="fw-bold">Mis trabajos</h2>
-          <hr />
-          <!-- Trabajos en curso -->
-          <div class="jobs-in-progress" id="jobs-in-progress">
-            <h3>Trabajos en curso</h3>
+  <!-- Contenedor principal -->
+  <div id="page-container" class="container-fluid justify-content-between d-flex">
+    <!-- Sidebar -->
+    <nav id="sidebar-container" class="navbar-header"></nav>
 
-            <!-- aca van los accepted y pending jobs-->
-            <div class="section-container text-center example">
-              <p class="fw-light p-5">No hay trabajos en curso</p>
+    <!-- Main Content -->
+    <div id="main-container" class="container-fluid p-0 bg-transparent">
+      <!-- Mis trabajos -->
+      <div class="section-container">
+        <h2 class="fw-bold">Mis trabajos</h2>
+        <hr />
+
+        <!-- Trabajos en curso -->
+        <div class="jobs-in-progress" id="jobs-in-progress">
+          <h3>Trabajos en curso</h3>
+          <!-- aca van los accepted y pending jobs-->
+        </div>
+
+        <!-- Historial de trabajos -->
+        <div class="jobs-history" id="jobs-history">
+          <h3 class="mt-3 mb-2 history-title">Historial de Trabajos</h3>
+
+          <!-- aca van los finished y rejected jobs-->
+        </div>
+
+      </div>
+      <!-- ///////////////////////////////////////////////////////////////////////// -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer" class="container-fluid"></div>
+
+  <!-- Modal opinar -->
+  <div class="modal fade" id="static_backdrop_accept" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Opinar sobre el trabajo
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="description" class="form-label fw-bold">Opinion</label>
+              <input type="text" class="form-control" id="description"
+                placeholder="Ingresa tu experiencia con el especialista" required maxlength="30" />
             </div>
-          </div>
-
-          <!-- Historial de trabajos -->
-          <div class="jobs-history" id="jobs-history">
-            <h3 class="mt-3 mb-2 history-title">Historial de Trabajos</h3>
-
-            <!-- aca van los finished y rejected jobs-->
-            <div class="section-container text-center example">
-              <p class="fw-light p-5">Los trabajos realizados aparecerán aquí</p>
+            <div class="mb-3">
+              <label for="rating" class="form-label fw-bold">Descripción</label>
+              <input type="number" class="form-control" id="rating" placeholder="Cuantifica tu experiencia " required
+                min="0" max="5" />
             </div>
-          </div>
-        </div>
-        <!-- ///////////////////////////////////////////////////////////////////////// -->
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div id="footer" class="container-fluid"></div>
-
-    <!-- Modal opinar -->
-    <div
-      class="modal fade"
-      id="static_backdrop_accept"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">
-              Opinar sobre el trabajo
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="description" class="form-label fw-bold"
-                  >Opinion</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="description"
-                  placeholder="Ingresa tu experiencia con el especialista"
-                  required
-                  maxlength="30"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="rating" class="form-label fw-bold"
-                  >Descripción</label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="rating"
-                  placeholder="Cuantifica tu experiencia "
-                  required
-                  min="0"
-                  max="5"
-                />
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cancelar
-                </button>
-                <button type="submit" class="btn btn-primary">Aceptar</button>
-              </div>
-            </form>
-          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Modal Cancelar (la cosa que se abre al apretar cancelar)-->
-    <div
-      class="modal fade"
-      id="static_backdrop_reject"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">
-              Cancelar trabajo
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>¿Estás seguro que deseas cancelar el trabajo?</p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Volver
-            </button>
-            <button id="rejected_btn" type="button" class="btn btn-danger">
-              Aceptar
-            </button>
-          </div>
+  <!-- Modal Cancelar (la cosa que se abre al apretar cancelar)-->
+  <div class="modal fade" id="static_backdrop_reject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Cancelar trabajo
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro que deseas cancelar el trabajo?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Volver
+          </button>
+          <button id="rejected_btn" type="button" class="btn btn-danger">
+            Aceptar
+          </button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap & JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Scripts generales -->
-    <script src="/src/components/template/script-template-client.js"></script>
-    <script src="/src/components/template/script-ventana.js"></script>
-    <!-- Scripts internos -->
-    <script src="scripts/modal.js"></script>
-    <script src="scripts/myjobs.js"></script>
-  </body>
+  <!-- Bootstrap & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- Scripts generales -->
+  <script src="/src/components/template/script-template-client.js"></script>
+  <script src="/src/components/template/script-ventana.js"></script>
+  <!-- Scripts internos -->
+  <script src="scripts/modal.js"></script>
+  <script src="scripts/myjobs.js"></script>
+</body>
+
 </html>

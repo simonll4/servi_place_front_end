@@ -82,6 +82,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
           });
         }
+
+
+        const specialistSearchContainer = document.querySelector('.container-fluid.latest-services');
+        if (data.articles.length == 0) {
+          specialistSearchContainer.innerHTML += `<div class="section-container text-center"> <p class="fw-light p-5">No hay publicaciones para mostrar</p></div>`;
+        }
+
       }).catch(error => console.error('Error:', error));
   }
 
@@ -93,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   });
 
- 
+
 
 
 
