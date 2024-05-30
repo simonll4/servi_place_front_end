@@ -46,15 +46,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function fetchArticles() {
     const activeIds = Array.from(document.querySelectorAll('.btn-check:checked')).map(checkbox => checkbox.id);
-
-    // borra los articulos existentes para mostrar los nuevos
     const existingArticles = document.querySelectorAll('.specialist-publication');
     existingArticles.forEach((article) => {
       article.remove();
     });
 
     const articlesUrl = `http://127.0.0.1:5016/customer/dashboard/articles?categories=${activeIds}`;
-
     fetch(articlesUrl, {
       method: 'GET',
       headers: {

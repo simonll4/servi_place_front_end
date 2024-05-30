@@ -11,63 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
 
-  //funcion para obtener el modelo de las tarjetas
-  let existingCard = [];
-  const templatePaths = ['models/specialist-cards.html',];
-  const fetchPromises = templatePaths.map((path) => {
-    return fetch(path)
-      .then((response) => response.text())
-      .then((html) => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const jobContainer = doc.querySelector('.specialist-publication');
-        existingCard.push(jobContainer);
-      });
-  });
-
-  // trae a los especialistas
-  fetch(`http://127.0.0.1:5016/customer/dashboard/specialists`, {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  })
-    .then(response => response.json())
-    .then(data => {
-
-      if (Array.isArray(data.SPECIALIST)) {
-        data.SPECIALIST.forEach(async (specialist) => {
-          const newCard = existingCard[0].cloneNode(true);
-
-
-          const profileButton = newCard.querySelector('.show-profile');
-          profileButton.href = `/src/page/customer/profile/profile.html?id=${specialist.id}`;
-
-          newCard.querySelector('#name').textContent = `${capitalize(specialist.name)}`;
-          newCard.querySelector('#lastname').textContent = `${capitalize(specialist.last_name)}`;
-          newCard.querySelector('.profile-image img').src = specialist.profile_picture;
-          newCard.querySelector('#paragraph').textContent = specialist.description;
-          newCard.querySelector('.specialist-profile').id = specialist.id;
-          newCard.querySelector('.profile-image img').addEventListener('click', async function (event) { });
-
-          const fakeEvent = {
-            target: newCard
-          };
-          await getSpecialistCategories(fakeEvent,newCard, specialist.id);
-
-          const container = document.querySelector('.container-fluid.specialist-search');
-          if (container) {
-            container.appendChild(newCard);
-          }
-        });
-      }
-    })
-    .catch(error => {
-      console.error(error);
-    });
-
   // setea las insignias del especialista
-  async function getSpecialistCategories(event,newCard, specialistId) {
-
+  async function getSpecialistCategories(newCard) {
+    const specialistId = newCard.querySelector('.specialist-profile').id
     const url = `http://127.0.0.1:5016/customer/profile/categories/${specialistId}`;
     const response = await fetch(url, {
       method: 'GET',
@@ -89,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
       5: 'Electricista'
     };
 
-
     const badgesContainer = newCard.querySelector('#badges');
     badgesContainer.style.display = 'flex';
     badgesContainer.innerHTML = '';
@@ -105,9 +50,79 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  //funcion para obtener el modelo de las tarjetas
+  let existingCard = [];
+  const templatePaths = ['models/specialist-cards.html',];
+  const fetchPromises = templatePaths.map((path) => {
+    return fetch(path)
+      .then((response) => response.text())
+      .then((html) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const jobContainer = doc.querySelector('.specialist-publication');
+        existingCard.push(jobContainer);
+      });
+  });
+
+  // trae a las cards de especialistas
+
+
+  function fetchSpecialists() {
+    console.log('fetching specialists');
+
+    const activeIds = Array.from(document.querySelectorAll('.btn-check:checked')).map(checkbox => checkbox.id);
+    const existingCards = document.querySelectorAll('.specialist-publication');
+    existingCards.forEach((card) => {
+      card.remove();
+    });
+
+    const specialistsUrl = `http://127.0.0.1:5016/customer/dashboard/specialists?categories=${activeIds}`;
+    fetch(specialistsUrl, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+
+
+        if (Array.isArray(data.specialists)) {
+          data.specialists.forEach(async (specialist) => {
+            const newCard = existingCard[0].cloneNode(true);
+            const profileButton = newCard.querySelector('.show-profile');
+
+            profileButton.href = `/src/page/customer/profile/profile.html?id=${specialist.id}`;
+            newCard.querySelector('#name').textContent = `${capitalize(specialist.name)}`;
+            newCard.querySelector('#lastname').textContent = `${capitalize(specialist.last_name)}`;
+            newCard.querySelector('.profile-image img').src = specialist.profile_picture;
+            newCard.querySelector('#paragraph').textContent = specialist.description;
+            newCard.querySelector('.specialist-profile').id = specialist.id;
+            newCard.querySelector('.profile-image img').addEventListener('click', async function (event) { });
+
+            await getSpecialistCategories(newCard, specialist.id);
+
+            const container = document.querySelector('.container-fluid.specialist-search');
+            if (container) {
+              container.appendChild(newCard);
+            }
+          });
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  // se llama al principio para que se muestren los especialistas (get all)
+  fetchSpecialists();
+  // dependiendo los filtros seleccionado me trae los especialistas
+  document.querySelectorAll('.btn-check').forEach((checkbox) => {
+    checkbox.addEventListener('change', fetchSpecialists);
+  });
+
+
   // evento para ir al perfil del especialista
   document.addEventListener('click', async (event) => {
-    if (event.target.matches('.rounded-5')) {
+    if (event.target.matches('.profile-image img')) {
       const specialistProfile = event.target.closest('.specialist-profile');
       const specialistId = specialistProfile ? specialistProfile.id : null;
       window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
