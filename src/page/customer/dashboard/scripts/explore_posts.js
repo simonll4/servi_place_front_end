@@ -48,10 +48,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function fetchArticles() {
     const activeIds = Array.from(document.querySelectorAll('.btn-check:checked')).map(checkbox => checkbox.id);
+
+    //borra los articulos existentes para mostrar los nuevos
     const existingArticles = document.querySelectorAll('.specialist-publication');
     existingArticles.forEach((article) => {
       article.remove();
     });
+
+    // borra el mensaje de no hay articulos
+    const existingMessage = document.querySelector('.section-container.text-center');
+    if (existingMessage) {
+      existingMessage.remove();
+    }
 
     const articlesUrl = `http://127.0.0.1:5016/customer/dashboard/articles?categories=${activeIds}`;
     fetch(articlesUrl, {
@@ -82,6 +90,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
               container.appendChild(newArticle);
             }
           });
+
+          // agregado de mensaje si no hay articulos
+          const articlesContainer = document.querySelector('.container-fluid.specialist-search');
+          if (articlesContainer.children.length <= 3) {
+            let div = document.createElement('div');
+            div.className = "section-container text-center";
+            let p = document.createElement('p');
+            p.className = "fw-light p-5";
+            p.textContent = "No hay publicaciones para mostrar";
+            div.appendChild(p);
+            articlesContainer.appendChild(div);
+          }
+
+
+
         }
 
         const specialistSearchContainer = document.querySelector('.container-fluid.specialist-search');
