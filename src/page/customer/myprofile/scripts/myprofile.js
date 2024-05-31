@@ -35,6 +35,7 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
     //Evito que redirija...
     event.preventDefault();
 
+
     //Tendriamos que verificar primero todo...
     let data = {}
     const token = localStorage.getItem('token');
@@ -62,10 +63,12 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
             throw new Error('Network response was not ok');
         }
         // Handle successful response
-        console.log('Profile updated successfully');
-        location.reload();
+        const toast = new CustomEvent('toast', { detail: { message: 'Perfil editado con exito! Actualice la pagina.', success: true } });
+        window.dispatchEvent(toast);
+        // location.reload();
     }).catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
+        const toast = new CustomEvent('toast', { detail: { message: 'Error al actualizar el perfil.', success: false } });
+        window.dispatchEvent(toast);
     });
 
 

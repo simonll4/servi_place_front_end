@@ -2,7 +2,6 @@
 export function showToast(message, isSuccess) {
     
     if (!document.querySelector('.toast-container')) {
-        console.log("fasfasf")
         const toastContainer = document.createElement('div');
         toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';
         toastContainer.style.zIndex = '1050';

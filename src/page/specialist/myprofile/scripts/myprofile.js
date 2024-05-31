@@ -143,7 +143,6 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
     //Evito que redirija...
     event.preventDefault();
 
-    //Tendriamos que verificar primero todo...
     let data = {}
     const token = localStorage.getItem('token');
     const nameValue = document.querySelector('#name').value

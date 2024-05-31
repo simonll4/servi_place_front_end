@@ -1,4 +1,4 @@
-
+import { showToast } from '../toast/toast.js'
 
 // manejo de efectos de dropdown
 const profile = document.querySelector('.profile');
@@ -72,4 +72,7 @@ logoutElement.addEventListener('click', (event) => {
 
 
 
-
+// Evento para imprimir el toast.
+window.addEventListener('toast', (event) => {
+    showToast(event.detail.message, event.detail.success);
+});
