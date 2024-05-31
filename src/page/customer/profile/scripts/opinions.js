@@ -47,20 +47,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
     .then(response => response.json())
     .then(data => {
 
-      var opinions = data.reviews;
-      var container = document.querySelector(".opinions");
-      var h6Element = container.querySelector("h6");
-      var lastRow;
+      let opinions = data.reviews;
+      let container = document.querySelector(".opinions");
+      let h6Element = container.querySelector("h6");
+      let lastRow;
 
-      var opinionsNumberSpan = document.querySelector("#opinions_number");
+      let opinionsNumberSpan = document.querySelector("#opinions_number");
       opinionsNumberSpan.textContent = `(${opinions.length})`;
 
       opinions.forEach(function (opinion, index) {
-        var opinionDiv = document.createElement("div");
+        let opinionDiv = document.createElement("div");
         opinionDiv.className = "client_opinion col";
 
-        var starPercentage = (opinion.reviewRating / 5) * 100;
-        var starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+        let starPercentage = (opinion.reviewRating / 5) * 100;
+        let starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
 
         opinionDiv.innerHTML = `
         <div class="row">
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 // Supongamos que estas son las opiniones obtenidas del servidor
-// var opinions = [
+// let opinions = [
 //   {
 //     name: "Juan",
 //     lastname: "Vazquez",
@@ -182,29 +182,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
 // ];
 
 // // Obtén el contenedor de opiniones
-// var container = document.querySelector(".opinions");
+// let container = document.querySelector(".opinions");
 
 // // Encuentra el elemento h6
-// var h6Element = container.querySelector("h6");
+// let h6Element = container.querySelector("h6");
 
-// // Crea una variable para almacenar la última row
-// var lastRow;
+// // Crea una letiable para almacenar la última row
+// let lastRow;
 
 // // Encuentra el span con id "opinions_number" y establece su contenido de texto al número de opiniones
-// var opinionsNumberSpan = document.querySelector("#opinions_number");
+// let opinionsNumberSpan = document.querySelector("#opinions_number");
 // opinionsNumberSpan.textContent = `(${opinions.length})`;
 
 // // Itera sobre las opiniones
 // opinions.forEach(function (opinion, index) {
 //   // Crea un nuevo div para la opinión
-//   var opinionDiv = document.createElement("div");
+//   let opinionDiv = document.createElement("div");
 //   opinionDiv.className = "client_opinion col"; // Cambiado de 'col-5' a 'col'
 
 //   // Calcula el porcentaje de la puntuación
-//   var starPercentage = (opinion.score / 5) * 100;
+//   let starPercentage = (opinion.score / 5) * 100;
 
 //   // Redondea al 10% más cercano
-//   var starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+//   let starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
 
 //   // Agrega el contenido de la opinión al div
 //   opinionDiv.innerHTML = `
