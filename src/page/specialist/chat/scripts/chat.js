@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 
- 
+
 
   function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
     .then(response => response.json())
     .then(data => {
-      
+
       document.querySelector('#name').textContent = `${capitalize(data.name)} ${capitalize(data.last_name)}`;
       document.querySelector('.user_img').src = data.profile_picture;
       localStorage.setItem('received_img', data.profile_picture);

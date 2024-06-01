@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const span = item.querySelector('span');
     span.textContent = new Date().toLocaleTimeString(); // Ajustar esto para usar la hora del mensaje si está disponible
 
-    item.querySelector('#received_img').src = localStorage.getItem('received_img');
+    //item.querySelector('#received_img').src = localStorage.getItem('received_img');
 
     // Añadir el mensaje al contenedor de mensajes
     messages.appendChild(item);
