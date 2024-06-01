@@ -84,7 +84,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             const profileButton = newArticle.querySelector('.show-profile');
             profileButton.href = `/src/page/customer/profile/profile.html?id=${article.authorId}`;
-
+            const contactButton = newArticle.querySelector('.btn.btn-primary.contact');
+            contactButton.href = `/src/page/customer/chat/chat.html?id=${article.authorId}`;
+            
             const container = document.querySelector('.container-fluid.specialist-search');
             if (container) {
               container.appendChild(newArticle);

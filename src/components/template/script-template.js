@@ -18,5 +18,6 @@ window.onload = async function () {
 
   const scriptNavBar = document.createElement("script");
   scriptNavBar.src = "/src/components/navBar/script-navBar.js";
+  scriptNavBar.type = "module";
   document.body.appendChild(scriptNavBar);
 };

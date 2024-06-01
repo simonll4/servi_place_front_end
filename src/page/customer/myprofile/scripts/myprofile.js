@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+
     const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = "../../index.html";
@@ -9,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
 
-   
+
     fetch('http://127.0.0.1:5016/customer/my-profile/my-information', {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -44,10 +46,10 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
     const emailValue = document.querySelector('#email').value
     const photoValue = document.querySelector('#image-upload')
 
-    if(nameValue !== "") data['name'] = nameValue;
-    if(lastNameValue !== "") data['last_name'] = lastNameValue;
-    if(emailValue !== "") data['email'] = emailValue;
-    if(photoValue.files.length > 0){
+    if (nameValue !== "") data['name'] = nameValue;
+    if (lastNameValue !== "") data['last_name'] = lastNameValue;
+    if (emailValue !== "") data['email'] = emailValue;
+    if (photoValue.files.length > 0) {
         data['profile_picture'] = await uploadProfilePicture(photoValue);
     }
 
@@ -83,15 +85,15 @@ async function uploadProfilePicture(profilePicture) {
     console.log(profilePicture.files[0])
 
     const response = await fetch("https://api.imgur.com/3/image", {
-      method: "POST",
-      headers: {
-        Authorization: "Client-ID cc588f3c8316e27",
-      },
-      body: formData,
+        method: "POST",
+        headers: {
+            Authorization: "Client-ID cc588f3c8316e27",
+        },
+        body: formData,
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
     }
     const { data } = await response.json();
     return data.link;

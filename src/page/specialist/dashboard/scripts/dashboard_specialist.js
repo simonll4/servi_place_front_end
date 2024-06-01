@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
           data.articles.forEach((article) => {
             const newArticle = existingArticle[0].cloneNode(true);
 
+            newArticle.querySelector('#contact').href = `../chat/chat.html?id=${article.authorId}`;
+
             getUserData(article.authorId, newArticle);
             newArticle.querySelector('.article-title').textContent = article.title;
             newArticle.querySelector('.article-content').textContent = article.paragraph;

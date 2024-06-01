@@ -90,9 +90,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (Array.isArray(data.specialists)) {
           data.specialists.forEach(async (specialist) => {
             const newCard = existingCard[0].cloneNode(true);
-            const profileButton = newCard.querySelector('.show-profile');
 
-            profileButton.href = `/src/page/customer/profile/profile.html?id=${specialist.id}`;
+
+            newCard.querySelector('.show-profile').href = `/src/page/customer/profile/profile.html?id=${specialist.id}`;
+            newCard.querySelector('#contact').href = `/src/page/customer/chat/chat.html?id=${specialist.id}`;
+
             newCard.querySelector('#name').textContent = `${capitalize(specialist.name)}`;
             newCard.querySelector('#lastname').textContent = `${capitalize(specialist.last_name)}`;
             newCard.querySelector('.profile-image img').src = specialist.profile_picture;
