@@ -166,6 +166,7 @@ body{
 
 .msg_time {
 	position: absolute;
+	width: 100%;
 	left: 0;
 	bottom: -15px;
 	color: #000;

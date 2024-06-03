@@ -273,7 +273,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-
   // evento para ir al perfil del especialista
   document.addEventListener('click', async (event) => {
     if (event.target.matches('.rounded-5')) {
@@ -282,7 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = `/src/page/customer/profile/profile.html?id=${specialistId}`
     }
   });
-
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });

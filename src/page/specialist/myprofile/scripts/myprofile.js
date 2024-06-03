@@ -1,4 +1,4 @@
-import { ip } from '../../../../config.js'
+import { ip, clientImgur } from '../../../../config.js'
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         category.textContent = data.article.category.name;
 
     }).catch(error => {
+        
         console.error('Hubo un problema con tu operación fetch:', error);
     })
 
@@ -112,10 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     getMyCategories();
 
-
-
     //MODIFICAR PERFIL...
-
     document.querySelector('#submit-button').addEventListener('click', async (event) => {
         //Evito que redirija...
         event.preventDefault();
@@ -149,8 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            // Handle successful response
-            console.log('Profile updated successfully');
         }).catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
@@ -167,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const response = await fetch("https://api.imgur.com/3/image", {
             method: "POST",
             headers: {
-                Authorization: "Client-ID cc588f3c8316e27",
+                'Authorization': clientImgur,
             },
             body: formData,
         });
@@ -180,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     //CATEGORIAS DEL ESPACILISTA
-
     async function setCategory(id) {
         const url = `${ip}/specialist/my-profile/category/${id}`;
 
@@ -218,7 +213,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('edit-profile-button').addEventListener('click', fetchAndCheckCategories);
-
     // traer las categorias que ya tiene el especialista
     async function fetchAndCheckCategories() {
         const url = `${ip}/specialist/my-profile/categories`;
@@ -289,9 +283,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
-
-
 
     //////////////////////////////////////////////////////////////////
 });

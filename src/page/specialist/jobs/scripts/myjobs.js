@@ -1,8 +1,6 @@
 import { ip } from '../../../../config.js'
 document.addEventListener("DOMContentLoaded", function () {
 
-  //token (esto se deberia obtener del localStorage)
-  //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJTUEVDSUFMSVNUIiwiaWF0IjoxNzE2NDg2NTI0LCJleHAiOjE3MTY1NzI5MjR9.6TOE-SU_SHggfRTXkkqLKIGKwi9kAXkzU-07zhyChUs'
   const token = localStorage.getItem('token');
 
 
@@ -222,7 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
   });
-
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });

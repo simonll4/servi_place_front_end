@@ -1,6 +1,6 @@
-// toast.js
+
 export function showToast(message, isSuccess) {
-    
+
     if (!document.querySelector('.toast-container')) {
         const toastContainer = document.createElement('div');
         toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';
@@ -29,19 +29,13 @@ export function showToast(message, isSuccess) {
     </div>
   `;
 
-    // Añadir el toast al contenedor
     document.querySelector('.toast-container').appendChild(toastEl);
-
     // Mostrar el toast
     const toast = new bootstrap.Toast(toastEl);
     toast.show();
-
     // Eliminar el toast del DOM cuando se oculta
     toastEl.addEventListener('hidden.bs.toast', () => {
         toastEl.remove();
     });
 
-
-
 }
-  

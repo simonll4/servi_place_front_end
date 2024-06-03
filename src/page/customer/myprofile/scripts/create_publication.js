@@ -1,4 +1,4 @@
-import { ip } from '../../../../config.js';
+import { ip, clientImgur } from '../../../../config.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   const token = localStorage.getItem('token');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const response = await fetch("https://api.imgur.com/3/image", {
         method: "POST",
         headers: {
-          Authorization: "Client-ID cc588f3c8316e27",
+          'Authorization': clientImgur,
         },
         body: formData,
       });

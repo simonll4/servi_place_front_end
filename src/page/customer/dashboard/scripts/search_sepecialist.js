@@ -2,8 +2,6 @@ import {ip} from '../../../../config.js'
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  console.log(ip);
-
   const token = localStorage.getItem('token');
   if (!token) {
     window.location.href = "../../index.html";
@@ -68,10 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // trae a las cards de especialistas
-
-
   function fetchSpecialists() {
-    console.log('fetching specialists');
 
     const activeIds = Array.from(document.querySelectorAll('.btn-check:checked')).map(checkbox => checkbox.id);
     const existingCards = document.querySelectorAll('.specialist-publication');
@@ -88,12 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
     })
       .then(response => response.json())
       .then(data => {
-
-
         if (Array.isArray(data.specialists)) {
           data.specialists.forEach(async (specialist) => {
             const newCard = existingCard[0].cloneNode(true);
-
 
             newCard.querySelector('.show-profile').href = `/src/page/customer/profile/profile.html?id=${specialist.id}`;
             newCard.querySelector('#contact').href = `/src/page/customer/chat/chat.html?id=${specialist.id}`;
@@ -123,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.btn-check').forEach((checkbox) => {
     checkbox.addEventListener('change', fetchSpecialists);
   });
-
 
   // evento para ir al perfil del especialista
   document.addEventListener('click', async (event) => {

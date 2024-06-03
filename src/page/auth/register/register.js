@@ -1,5 +1,5 @@
 import { showToast } from "../../../components/toast/toast.js";
-import {ip} from '../../../config.js'
+import {ip,clientImgur} from '../../../config.js'
 document.addEventListener('DOMContentLoaded', (event) => {
 
   // upload the profile picture to imgur
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const response = await fetch("https://api.imgur.com/3/image", {
       method: "POST",
       headers: {
-        Authorization: "Client-ID cc588f3c8316e27",
+        Authorization: clientImgur,
       },
       body: formData,
     });

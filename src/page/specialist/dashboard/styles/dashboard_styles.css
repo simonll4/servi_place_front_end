@@ -68,8 +68,11 @@ body {
   margin-bottom: 15px;
   border-radius: 20px;
 }
+.article-title{
+  font-weight: bold;
+}
 .problem-description {
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px 10px 1rem;
 }
 .post_image {
   margin-left: 20px;

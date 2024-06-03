@@ -1,4 +1,4 @@
-import { ip } from '../../../../config.js'
+import { ip, clientImgur } from '../../../../config.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -63,10 +63,10 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        // Handle successful response
+        
         const toast = new CustomEvent('toast', { detail: { message: 'Perfil editado con exito! Actualice la pagina.', success: true } });
         window.dispatchEvent(toast);
-        // location.reload();
+       
     }).catch(error => {
         const toast = new CustomEvent('toast', { detail: { message: 'Error al actualizar el perfil.', success: false } });
         window.dispatchEvent(toast);
@@ -82,7 +82,7 @@ async function uploadProfilePicture(profilePicture) {
     const response = await fetch("https://api.imgur.com/3/image", {
         method: "POST",
         headers: {
-            Authorization: "Client-ID cc588f3c8316e27",
+            'Authorization': clientImgur,
         },
         body: formData,
     });

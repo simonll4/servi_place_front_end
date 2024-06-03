@@ -84,21 +84,23 @@ document.addEventListener('DOMContentLoaded', function () {
   socket.on('set message', (msg) => {
     console.log('set mensaje:', msg);
 
-    // Obtener una referencia al contenedor de mensajes
+   
     const messages = document.querySelector('.msg_card_body');
 
-    // Clonar el template correspondiente
     const item = (msg.authorId == userId ? messagesMockups[0] : messagesMockups[1]).cloneNode(true);
-
-    // Configurar el contenido del mensaje
     const p = item.querySelector('p');
     p.textContent = msg.content;
-
-    // Configurar la hora del mensaje
     const span = item.querySelector('span');
-    span.textContent = new Date().toLocaleTimeString(); // Ajustar esto para usar la hora del mensaje si está disponible
 
-    // Añadir el mensaje al contenedor de mensajes
+    const date = new Date(msg.createdAt);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const formattedDate = `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year}`;
+    const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+
     messages.appendChild(item);
 
     messages.scrollTop = messages.scrollHeight;
@@ -109,28 +111,31 @@ document.addEventListener('DOMContentLoaded', function () {
   socket.on('set chat history', (msgs) => {
     console.log(msgs);
 
-    // Obtener una referencia al contenedor de mensajes
     const messages = document.querySelector('.msg_card_body');
 
     msgs.forEach(msg => {
       // Clonar el template correspondiente
       const item = (msg.authorId == userId ? messagesMockups[0] : messagesMockups[1]).cloneNode(true);
 
-      // Configurar el contenido del mensaje
       const p = item.querySelector('p');
       p.textContent = msg.content;
 
-      // Configurar la hora del mensaje
       const span = item.querySelector('span');
-      span.textContent = new Date().toLocaleTimeString(); // Ajustar esto para usar la hora del mensaje si está disponible
+
+      const date = new Date(msg.createdAt);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const formattedDate = `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year}`;
+      const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 
       //item.querySelector('#received_img').src = localStorage.getItem('received_img');
 
-      // Añadir el mensaje al contenedor de mensajes
       messages.appendChild(item);
     });
 
-    //window.scrollTo(0, document.body.scrollHeight);
     messages.scrollTop = messages.scrollHeight;
   });
 

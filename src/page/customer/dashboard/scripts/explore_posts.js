@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     return;
   }
 
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
   //funcion para obtener el modelo de los articulos
   let existingArticle = [];
   const templatePaths = ['models/specialist-articles.html',];
@@ -105,9 +110,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             div.appendChild(p);
             articlesContainer.appendChild(div);
           }
-
-
-
         }
 
         const specialistSearchContainer = document.querySelector('.container-fluid.specialist-search');

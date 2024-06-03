@@ -30,9 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch(error => console.error('Error:', error));
 
-
-
-
   //funcion para obtener el modelo de los articulos
   let existingArticle = [];
   const templatePaths = ['./models/specialist-articles.html',];
@@ -46,8 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
         existingArticle.push(jobContainer);
       });
   });
-
-
 
   // trae los articulos del user
   fetch(`${ip}/specialist/my-profile/articles`, {
@@ -85,10 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Ocultar el spinner después de procesar los datos del usuario
         document.getElementById('loading').hidden = true;
       }
-
-
-
-
 
     })
     .catch(error => {
