@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
   // Loading spinner
   document.getElementById("loading").hidden = false;
   
@@ -25,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('last_name', data.last_name);
 
       document.querySelector('.profile-image img').src = data.profile_picture;
-      document.querySelector('.profile-name').innerHTML = data.name;
-      document.querySelector('.profile-lastname').innerHTML = data.last_name;
+      document.querySelector('.profile-name').innerHTML = capitalize(data.name);
+      document.querySelector('.profile-lastname').innerHTML = capitalize(data.last_name);
     })
     .catch(error => console.error('Error:', error));
 

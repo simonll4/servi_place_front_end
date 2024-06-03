@@ -70,6 +70,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     const serviceId = serviceToId[service];
 
+    console.log('serviceId', description);
+
     const data = {
       image: urlPhoto,
       categoryId: Number(serviceId),
