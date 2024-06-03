@@ -1,3 +1,5 @@
+import { ip } from '../../../../config.js'
+
 document.addEventListener('DOMContentLoaded', function () {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -11,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // // obtenemos la info DEL USER
-  fetch(`http://127.0.0.1:5016/specialist/my-profile/my-information`, {
+  fetch(`${ip}/specialist/my-profile/my-information`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -76,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
       paragraph: description
     };
 
-    fetch('http://127.0.0.1:5016/specialist/dashboard/create-article', {
+    fetch(`${ip}/specialist/dashboard/create-article`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

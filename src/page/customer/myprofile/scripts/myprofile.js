@@ -1,5 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+import { ip } from '../../../../config.js'
 
+document.addEventListener('DOMContentLoaded', () => {
 
     const token = localStorage.getItem('token');
     if (!token) {
@@ -11,8 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
 
-
-    fetch('http://127.0.0.1:5016/customer/my-profile/my-information', {
+    fetch(`${ip}/customer/my-profile/my-information`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -37,7 +37,6 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
     //Evito que redirija...
     event.preventDefault();
 
-
     //Tendriamos que verificar primero todo...
     let data = {}
     const token = localStorage.getItem('token');
@@ -53,7 +52,7 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
         data['profile_picture'] = await uploadProfilePicture(photoValue);
     }
 
-    fetch('http://127.0.0.1:5016/customer/my-profile/my-information', {
+    fetch(`${ip}/customer/my-profile/my-information`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -73,11 +72,7 @@ document.querySelector('#submit-button').addEventListener('click', async (event)
         window.dispatchEvent(toast);
     });
 
-
-
-
 })
-
 
 async function uploadProfilePicture(profilePicture) {
     const formData = new FormData();

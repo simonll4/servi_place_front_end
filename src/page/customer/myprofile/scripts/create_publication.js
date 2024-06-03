@@ -1,3 +1,5 @@
+import { ip } from '../../../../config.js';
+
 document.addEventListener('DOMContentLoaded', function () {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
       paragraph: description
     };
 
-    fetch('http://127.0.0.1:5016/customer/dashboard/createarticle', {
+    fetch(`${ip}/customer/dashboard/createarticle`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

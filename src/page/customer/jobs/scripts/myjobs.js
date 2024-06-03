@@ -1,3 +1,6 @@
+import { ip } from '../../../../config.js'
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
   const token = localStorage.getItem('token');
@@ -10,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //funcion para obtener los datos del usuario (nombre, apellido, imagen de perfil)
   //se obtiene el id del especialista y el contenedor donde se insertaran los datos
   function getUserData(specialistId, newContainer) {
-    const userUrl = `http://127.0.0.1:5016/customer/profile/user-information/${specialistId}`;
+    const userUrl = `${ip}/customer/profile/user-information/${specialistId}`;
     fetch(userUrl, {
       method: 'GET',
       headers: {
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // se obtienen los trabajos del usuario y se insertan en los contenedores correspondientes
-  const jobUrl = 'http://127.0.0.1:5016/customer/jobs/my-jobs';
+  const jobUrl = `${ip}/customer/jobs/my-jobs`;
   fetch(jobUrl, {
     method: 'GET',
     headers: {
@@ -161,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(jobId);
 
       try {
-        const response = await fetch(`http://127.0.0.1:5016/customer/jobs/finish-job/${jobId}`, {
+        const response = await fetch(`${ip}/customer/jobs/finish-job/${jobId}`, {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -189,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
       const jobId = jobElement.dataset.jobId;
-      rejectUrl = `http://127.0.0.1:5016/customer/jobs/reject-job/${jobId}`;
+      rejectUrl = `${ip}/customer/jobs/reject-job/${jobId}`;
       console.log(rejectUrl);
     }
   });
@@ -219,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // evento opinar sobre el trabajo
   let opinionUrl = ``;
+  let idJob;
   document.addEventListener('click', async (event) => {
     if (event.target.matches('.opinion-btn')) {
       const jobElement = event.target.closest('[data-job-id]');
@@ -227,8 +231,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
       const jobId = jobElement.dataset.jobId;
+      idJob = jobId;
       console.log(jobId);
-      opinionUrl = `http://127.0.0.1:5016/customer/jobs/create-review/${jobId}`;
+      opinionUrl = `${ip}/customer/jobs/create-review`;
       console.log(opinionUrl);
     }
   });
@@ -240,6 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const jobDescription = document.querySelector('#rating').value;
 
     const data = {
+      jobId:Number(idJob) ,
       content: jobTitle,
       rating: Number(jobDescription)
     };

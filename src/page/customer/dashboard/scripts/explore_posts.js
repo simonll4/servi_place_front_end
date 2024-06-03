@@ -1,3 +1,5 @@
+import { ip } from '../../../../config.js'
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
   const token = localStorage.getItem('token');
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 
   function getUserData(specialistId, newContainer) {
-    const userUrl = `http://127.0.0.1:5016/customer/profile/user-information/${specialistId}`;
+    const userUrl = `${ip}/customer/profile/user-information/${specialistId}`;
     fetch(userUrl, {
       method: 'GET',
       headers: {
@@ -31,7 +33,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     })
       .then(response => response.json())
       .then(data => {
-
 
         newContainer.querySelector('#name').textContent = data.name;
         newContainer.querySelector('#lastname').textContent = data.last_name;
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       existingMessage.remove();
     }
 
-    const articlesUrl = `http://127.0.0.1:5016/customer/dashboard/articles?categories=${activeIds}`;
+    const articlesUrl = `${ip}/customer/dashboard/articles?categories=${activeIds}`;
     fetch(articlesUrl, {
       method: 'GET',
       headers: {
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             profileButton.href = `/src/page/customer/profile/profile.html?id=${article.authorId}`;
             const contactButton = newArticle.querySelector('.btn.btn-primary.contact');
             contactButton.href = `/src/page/customer/chat/chat.html?id=${article.authorId}`;
-            
+
             const container = document.querySelector('.container-fluid.specialist-search');
             if (container) {
               container.appendChild(newArticle);

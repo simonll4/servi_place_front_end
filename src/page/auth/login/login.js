@@ -1,4 +1,5 @@
 import { showToast } from "../../../components/toast/toast.js";
+import {ip} from '../../../config.js'
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const jsonString = JSON.stringify(jsonObject);
 
     // Envía la cadena JSON al servidor
-    fetch('http://localhost:5016/auth/login', {
+    fetch(`${ip}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

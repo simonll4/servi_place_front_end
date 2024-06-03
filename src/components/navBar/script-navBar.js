@@ -1,4 +1,5 @@
 import { showToast } from '../toast/toast.js'
+import { ip } from '../../config.js';
 
 // manejo de efectos de dropdown
 const profile = document.querySelector('.profile');
@@ -30,7 +31,7 @@ logoCompanyElement.addEventListener('click', () => {
 const token = localStorage.getItem('token');
 const role = localStorage.getItem('role');
 
-const userUrl = `http://127.0.0.1:5016/${role.toLowerCase()}/my-profile/my-information`;
+const userUrl = `${ip}/${role.toLowerCase()}/my-profile/my-information`;
 fetch(userUrl, {
     method: 'GET',
     headers: {

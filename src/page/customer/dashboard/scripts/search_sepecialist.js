@@ -1,5 +1,8 @@
+import {ip} from '../../../../config.js'
+
 document.addEventListener('DOMContentLoaded', function () {
 
+  console.log(ip);
 
   const token = localStorage.getItem('token');
   if (!token) {
@@ -14,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // setea las insignias del especialista
   async function getSpecialistCategories(newCard) {
     const specialistId = newCard.querySelector('.specialist-profile').id
-    const url = `http://127.0.0.1:5016/customer/profile/categories/${specialistId}`;
+    const url = `${ip}/customer/profile/categories/${specialistId}`;
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -76,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
       card.remove();
     });
 
-    const specialistsUrl = `http://127.0.0.1:5016/customer/dashboard/specialists?categories=${activeIds}`;
+    const specialistsUrl = `${ip}/customer/dashboard/specialists?categories=${activeIds}`;
     fetch(specialistsUrl, {
       method: 'GET',
       headers: {

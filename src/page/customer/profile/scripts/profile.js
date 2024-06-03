@@ -1,3 +1,5 @@
+import { ip } from '../../../../config.js';
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   document.querySelector('#publications-btn').href = `/src/page/customer/profile/publications.html?id=${id}`;
 
   // obtenemos la info del specialista
-  fetch(`http://127.0.0.1:5016/customer/profile/user-information/${id}`, {
+  fetch(`${ip}/customer/profile/user-information/${id}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     .catch(error => console.error('Error:', error));
 
   // preview de los articulos
-  fetch(`http://127.0.0.1:5016/customer/profile/last-article/${id}`, {
+  fetch(`${ip}/customer/profile/last-article/${id}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -55,9 +57,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelector('#article_id').removeAttribute('hidden');
         document.querySelector('#publications-btn').removeAttribute('hidden');
       }
-
-
-
 
       // profile details
       document.querySelector('#name_2').innerHTML = localStorage.getItem('name');
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
 
 
-    fetch(`http://127.0.0.1:5016/customer/jobs/create-job/${id}`, {
+    fetch(`${ip}/customer/jobs/create-job/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

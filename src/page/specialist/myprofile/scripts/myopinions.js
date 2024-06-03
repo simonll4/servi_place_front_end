@@ -1,3 +1,5 @@
+import { ip } from '../../../../config.js'
+
 document.addEventListener("DOMContentLoaded", (event) => {
 
   const token = localStorage.getItem('token');
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // Loading spinner
   document.getElementById("loading").hidden = false;
 
-  fetch('http://127.0.0.1:5016/specialist/my-profile/my-information', {
+  fetch(`${ip}/specialist/my-profile/my-information`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -50,7 +52,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
 
-  fetch("http://127.0.0.1:5016/specialist/my-profile/my-reviews", {
+  fetch(`${ip}/specialist/my-profile/my-reviews`, {
     headers: {
       Authorization: `Bearer ${token}`
     }

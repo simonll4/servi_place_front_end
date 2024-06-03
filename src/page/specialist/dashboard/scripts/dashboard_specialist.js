@@ -1,3 +1,4 @@
+import { ip } from '../../../../config.js';
 document.addEventListener('DOMContentLoaded', function () {
 
   const token = localStorage.getItem('token');
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // obtiene los datos del usuario y los guarda en el articulo
   function getUserData(customerId, newContainer) {
-    const userUrl = `http://127.0.0.1:5016/specialist/profile/user-information/${customerId}`;
+    const userUrl = `${ip}/specialist/profile/user-information/${customerId}`;
     fetch(userUrl, {
       method: 'GET',
       headers: {
@@ -45,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function fetchArticles() {
     const activeIds = Array.from(document.querySelectorAll('.btn-check:checked')).map(checkbox => checkbox.id);
-    console.log('dsfsdfsd');
 
     // borra los articulos existentes para mostrar los nuevos
     const existingArticles = document.querySelectorAll('.client-publication');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    const articlesUrl = `http://127.0.0.1:5016/specialist/dashboard/articles?categories=${activeIds}`;
+    const articlesUrl = `${ip}/specialist/dashboard/articles?categories=${activeIds}`;
     fetch(articlesUrl, {
       method: 'GET',
       headers: {

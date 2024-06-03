@@ -1,3 +1,4 @@
+import { ip } from '../../../../config.js'
 document.addEventListener("DOMContentLoaded", function () {
 
   //token (esto se deberia obtener del localStorage)
@@ -8,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //funcion para obtener los datos del usuario (nombre, apellido, imagen de perfil)
   //se obtiene el id del especialista y el contenedor donde se insertaran los datos
   function getUserData(customerId, newContainer) {
-    const userUrl = `http://127.0.0.1:5016/specialist/profile/user-information/${customerId}`;
+    const userUrl = `${ip}/specialist/profile/user-information/${customerId}`;
     fetch(userUrl, {
       method: 'GET',
       headers: {
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // se obtienen los trabajos del usuario y se insertan en los contenedores correspondientes
-  const jobUrl = 'http://127.0.0.1:5016/specialist/jobs/my-jobs';
+  const jobUrl = `${ip}/specialist/jobs/my-jobs`;
   fetch(jobUrl, {
     method: 'GET',
     headers: {
@@ -157,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ////////////////////////////////EVENTOS//////////////////////////////////////////////////////
 
   // boton para cancelar trabajo, se inserta el idJob en la url
-  let rejectUrl = `http://127.0.0.1:5016/specialist/jobs/reject-job/`;
+  let rejectUrl = `${ip}/specialist/jobs/reject-job/`;
   document.addEventListener('click', async (event) => {
     if (event.target.matches('.btn-reject')) {
       const jobElement = event.target.closest('[data-job-id]');
@@ -166,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
       const jobId = jobElement.dataset.jobId;
-      rejectUrl = `http://127.0.0.1:5016/specialist/jobs/reject-job/${jobId}`;
+      rejectUrl = `${ip}/specialist/jobs/reject-job/${jobId}`;
       console.log(rejectUrl);
     }
   });
@@ -204,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const jobId = jobElement.dataset.jobId;
 
       try {
-        const response = await fetch(`http://127.0.0.1:5016/specialist/jobs/accept-job/${jobId}`, {
+        const response = await fetch(`${ip}/specialist/jobs/accept-job/${jobId}`, {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${token}`

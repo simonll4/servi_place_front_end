@@ -1,4 +1,5 @@
 import { showToast } from "../../../components/toast/toast.js";
+import {ip} from '../../../config.js'
 document.addEventListener('DOMContentLoaded', (event) => {
 
   // upload the profile picture to imgur
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     // send the register form data to the server
-    fetch('http://127.0.0.1:5016/auth/register', {
+    fetch(`${ip}/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

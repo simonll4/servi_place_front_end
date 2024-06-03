@@ -1,5 +1,7 @@
 import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
 
+import {ip} from '../../../../config.js'
+
 
 document.addEventListener('DOMContentLoaded', function () {
   const token = localStorage.getItem('token');
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // obtenemos la info del user
-  fetch(`http://127.0.0.1:5016/customer/profile/user-information/${userId}`, {
+  fetch(`${ip}/customer/profile/user-information/${userId}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // establezco conexión con el servidor de socket
-  const socket = io('http://localhost:5016', {
+  const socket = io(`${ip}`, {
     query: {
       token: token
     }
@@ -102,73 +104,33 @@ document.addEventListener('DOMContentLoaded', function () {
     messages.scrollTop = messages.scrollHeight;
   });
 
-  // socket.on('set message', (msg) => {
-  //   console.log('set mensaje:', msg);
-
-  //   const item = document.createElement('li');
-  //   item.textContent = msg.content;
-
-  //   console.log('idSesion:', sesionId);
-  //   console.log('id:', userId);
-
-  //   if (msg.authorId == sesionId) {
-  //     item.classList.add('repaly');
-  //     messages.appendChild(item);
-  //   }
-  //   else if (msg.authorId == userId) {
-  //     item.classList.add('sender');
-  //     messages.appendChild(item);
-  //   }
-  //   window.scrollTo(0, document.body.scrollHeight);
-  // });
-
 
   // si hay un historial de mensajes, los muestro en el chat  
   socket.on('set chat history', (msgs) => {
     console.log(msgs);
 
-    // Obtener una referencia al contenedor de mensajes
+    
     const messages = document.querySelector('.msg_card_body');
 
     msgs.forEach(msg => {
-      // Clonar el template correspondiente
+    
       const item = (msg.authorId == userId ? messagesMockups[0] : messagesMockups[1]).cloneNode(true);
 
-      // Configurar el contenido del mensaje
       const p = item.querySelector('p');
       p.textContent = msg.content;
 
-      // Configurar la hora del mensaje
       const span = item.querySelector('span');
       span.textContent = new Date().toLocaleTimeString(); // Ajustar esto para usar la hora del mensaje si está disponible
 
 
       //item.querySelector('#received_img').src = localStorage.getItem('received_img');
 
-      // Añadir el mensaje al contenedor de mensajes
+ 
       messages.appendChild(item);
     });
 
-    //window.scrollTo(0, document.body.scrollHeight);
     messages.scrollTop = messages.scrollHeight;
   });
-
-  // socket.on('set chat history', (msgs) => {
-  //   console.log(msgs);
-
-  //   msgs.forEach(msg => {
-  //     const item = document.createElement('li');
-  //     item.textContent = msg.content;
-  //     if (msg.authorId == userId) {
-  //       item.classList.add('repaly');
-  //     }
-  //     else {
-  //       item.classList.add('sender');
-  //     }
-  //     messages.appendChild(item);
-  //   });
-  //   window.scrollTo(0, document.body.scrollHeight);
-  // });
 
 
   // evento manejo de errores

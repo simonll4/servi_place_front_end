@@ -1,4 +1,5 @@
 import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
+import { ip } from '../../../../config.js'
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // obtenemos la info del user
-  fetch(`http://127.0.0.1:5016/specialist/profile/user-information/${userId}`, {
+  fetch(`${ip}/specialist/profile/user-information/${userId}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // establezco conexión con el servidor de socket
-  const socket = io('http://localhost:5016', {
+  const socket = io(`${ip}`, {
     query: {
       token: token
     }
