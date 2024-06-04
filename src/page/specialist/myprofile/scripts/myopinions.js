@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
       // Ocultar el spinner después de procesar los datos del usuario
       document.getElementById('loading').hidden = true;
-      
+
     })
     .catch(error => {
       console.error('Hubo un problema con tu operación fetch:', error);
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         <div class="row">
           <div class="profile-info d-flex">
             <div class="publication-profile-image d-flex">
-              <img src="${opinion.reviewClientPicture}" alt="profile_image" class="rounded-5" />
+              <img src="${opinion.reviewClientPicture ? opinion.reviewClientPicture : '/src/resources/img/anonymous-user.jpg'}" alt="profile_image" class="rounded-5" />
             </div>
             <div class="my-profile-details">
               <p class="fw-bold">
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             </div>
           </div>
           <div class="post-description">
-            <p>${opinion.reviewContent}</p>
+            <p class="ps-3">${opinion.reviewContent}</p>
           </div>
         </div>
       `;
