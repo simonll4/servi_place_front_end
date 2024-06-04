@@ -48,7 +48,10 @@ fetch(userUrl, {
 
         userNameElement.textContent = data.name;
         emailElement.textContent = data.email;
-        profileImageElement.src = data.profile_picture;
+        if (typeof data.profile_picture === 'string' && data.profile_picture.trim() !== '') {
+            profileImageElement.src = data.profile_picture;
+        }
+        //profileImageElement.src = data.profile_picture;
 
     })
     .catch(error => console.error('Error:', error));

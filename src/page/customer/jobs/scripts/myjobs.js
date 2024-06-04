@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (const job of data.jobs) {
           const newContainer = jobContainers[job.state].cloneNode(true);
 
+          console.log(job);
           //EVENTOS para lops botones dentro del jopbs (solo se agregan los eventos para usarlos en el futuro)
           const rejectButton = newContainer.querySelector('.btn-reject');
           if (rejectButton) {
@@ -94,7 +95,13 @@ document.addEventListener("DOMContentLoaded", function () {
           if (opinionButton) {
             opinionButton.addEventListener('click', async (event) => { });
           }
+          const contactButton = newContainer.querySelector('#contact');
+          if (contactButton) {
+            contactButton.setAttribute('href', `../chat/chat.html?id=${job.idSpecialist}`);
+          }
 
+
+          
           // evento voton para ir al perfil del especialista
           newContainer.querySelector('.rounded-5').addEventListener('click', function (event) { });
 

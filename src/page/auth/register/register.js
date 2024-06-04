@@ -1,5 +1,5 @@
 import { showToast } from "../../../components/toast/toast.js";
-import {ip,clientImgur} from '../../../config.js'
+import { ip, clientImgur } from '../../../config.js'
 document.addEventListener('DOMContentLoaded', (event) => {
 
   // upload the profile picture to imgur
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     if (!response.ok) {
       showToast("La imagen no pudo ser subida", false);
+      document.getElementById('loading').style.cssText = 'display: none !important;';
       throw new Error(`HTTP error! status: ${response.status}`);
 
     }

@@ -31,8 +31,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
       localStorage.setItem('profile_picture', data.profile_picture);
       localStorage.setItem('name', data.name);
       localStorage.setItem('last_name', data.last_name);
+      
+      if (typeof data.profile_picture === 'string' && data.profile_picture.trim() !== '') {
+        document.querySelector('.profile-image img').src = data.profile_picture;
+      }
 
-      document.querySelector('.profile-image img').src = data.profile_picture;
       document.querySelector('.profile-name').innerHTML = `${capitalize(data.name)}, ${capitalize(data.last_name)}`;
     })
     .catch(error => console.error('Error:', error));
@@ -68,7 +71,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         <div class="row">
           <div class="profile-info d-flex">
             <div class="publication-profile-image d-flex">
-              <img src="${opinion.reviewClientPicture}" alt="profile_image" class="rounded-5" />
+              <img src="${opinion.reviewClientPicture ? opinion.reviewClientPicture : '/src/resources/img/anonymous-user.jpg'}" alt="profile_image" class="rounded-5" />
             </div>
             <div class="my-profile-details">
               <p class="fw-bold">

@@ -35,9 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const userProfilePhoto = document.querySelectorAll('#profile-image');
             const description = document.querySelector('#about-me');
 
+            console.log(user);
             if (user.description !== "") {
                 description.textContent = user.description;
             }
+
+
             const articleName = document.querySelector('#article-name');
             articleName.textContent = `${capitalize(user.name)}, ${capitalize(user.last_name)}`;
 
@@ -66,12 +69,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const publicationImage = document.querySelector('#publication-image');
         const category = document.querySelector('#id_category');
 
+
         articleData.textContent = data.article.paragraph;
         publicationImage.src = data.article.image;
         category.textContent = data.article.category.name;
 
     }).catch(error => {
-        
+
         console.error('Hubo un problema con tu operación fetch:', error);
     })
 

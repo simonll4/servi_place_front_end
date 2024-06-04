@@ -28,8 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       const { data } = await response.json();
       return data.link;
-    } finally {
-      // Ocultar el spinner independientemente de si se produce un error o no
+    } catch (error) {
       document.getElementById('loading').style.display = 'none';
     }
   }

@@ -84,6 +84,11 @@ document.addEventListener("DOMContentLoaded", function () {
           if (acceptButton) {
             acceptButton.addEventListener('click', async (event) => { });
           }
+          const contactButton = newContainer.querySelector('#contact');
+          if (contactButton) {
+            contactButton.setAttribute('href', `../chat/chat.html?id=${job.idCustomer}`);
+          }
+          
 
           newContainer.dataset.jobId = job.id; // se guarda el id del trabajo en el contenedor como id del container-job id="data-job-id"
           getUserData(job.idCustomer, newContainer);
@@ -220,6 +225,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
   });
+
+
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });
