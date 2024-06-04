@@ -18,6 +18,19 @@ body {
   font-family: Mulish, sans-serif;
 }
 
+/* Cambia el color de fondo y el color del texto del input durante la autocompletación */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #9c9fa5 inset !important;
+  color: white !important;
+  font-family: 'Mulish', sans-serif !important;
+  -webkit-text-fill-color: white !important;
+}
+
+/* /////////////////////////////////////////////////// */
+
 /* Formulario Register */
 .logo-title {
   width: 60%;
@@ -169,3 +182,4 @@ body {
 .spinner-border{
   font-size: 8px;
 }
+

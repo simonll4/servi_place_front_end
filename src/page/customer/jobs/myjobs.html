@@ -87,8 +87,11 @@
             </div>
             <div class="mb-3">
               <label for="rating" class="form-label fw-bold">Descripción</label>
-              <input type="number" class="form-control" id="rating" placeholder="Cuantifica tu experiencia " required
-                min="0" max="5" />
+              <div class="d-flex align-items-center">
+                <i class="bi-star-fill me-2"></i>
+                <input type="number" class="form-control" id="rating" placeholder="Cuantifica tu experiencia (1-5)" required
+                min="1" max="5" />
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
