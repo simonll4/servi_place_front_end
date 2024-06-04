@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const { data } = await response.json();
       return data.link;
     } catch (error) {
-      document.getElementById('loading').style.display = 'none';
+      document.getElementById('loading').style.cssText = 'display: none !important;';
     }
   }
 
@@ -69,8 +69,10 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => response.json())
       .then(data => {
 
-        location.reload();
+        //location.reload();
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        console.error('Error:', error)
+      });
   });
 });
