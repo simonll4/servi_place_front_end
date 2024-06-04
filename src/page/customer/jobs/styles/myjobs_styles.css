@@ -135,3 +135,6 @@ body {
 .job-actions p {
   margin-top: 10px;
 }
+.bi-star-fill {
+  color: rgb(255, 213, 0);
+}

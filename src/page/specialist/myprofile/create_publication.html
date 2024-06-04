@@ -70,7 +70,7 @@
           </div>
           <div class="publication-form container">
             <div class="service-dropdown">
-              <label for="service" class="fw-bold">Servicio solicitado</label>
+              <label for="service" class="fw-bold">Servicio</label>
               <select class="form-select" name="service" aria-label="service selection" required>
                 <option selected>Selecciona una opcion</option>
                 <option value="albañil">Albañil</option>
@@ -81,15 +81,15 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="title" class="form-label fw-bold">Descripción del trabajo</label>
+              <label for="title" class="form-label fw-bold">Título de la publicación</label>
               <input type="text" class="form-control" id="title" placeholder="Ingresa el titulo de tu publicacion"
-                required maxlength="160" />
+                required maxlength="160" minlength="4"/>
             </div>
             <div class="publication-description">
               <label for="paragraph" class="fw-bold">Descripción</label>
               <br />
-              <textarea id="paragraph" name="paragraph" placeholder="Describe tu problema de forma breve..." required
-                maxlength="360" aria-required="true"></textarea>
+              <textarea id="paragraph" name="paragraph" placeholder="Añade una breve descripción..." required
+                maxlength="360" aria-required="true" minlength="4"></textarea>
             </div>
             <button type="submit" id="submit-publication-button" disabled>
               Crear Publicacion

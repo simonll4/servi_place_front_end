@@ -33,11 +33,10 @@ body {
   border: 5px solid white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.profile-image button {
+.profile-image button{
   position: absolute;
   width: 14.5rem;
   height: 2.5rem;
-  margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
   border-radius: 10px;
@@ -51,6 +50,34 @@ body {
   transition: all 0.3s ease;
   bottom: -30px;
   right: 20px;
+}
+.profile-image a{
+  position: absolute;
+  width: 14.5rem;
+  height: 2.5rem;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: lighter;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  bottom: -30px;
+  right: 270px;
+  text-decoration: none;
+}
+.profile-image a:hover{
+  background-color: #3eaeff;
+  color: #fff;
+}
+
+.profile-image button:hover{
+  background-color: #000;
+  color: #fff;
 }
 .button i {
   padding: 10px;
