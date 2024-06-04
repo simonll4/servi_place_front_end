@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // url para mostrar los articulos
   document.querySelector('#publications-btn').href = `/src/page/customer/profile/publications.html?id=${id}`;
 
+  // url para mostrar el chat
+  document.querySelector('#btn_contact').href = `../chat/chat.html?id=${id}`;
+
   // obtenemos la info del specialista
   fetch(`${ip}/customer/profile/user-information/${id}`, {
     headers: {

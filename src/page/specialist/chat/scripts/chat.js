@@ -4,6 +4,10 @@ import { ip } from '../../../../config.js'
 
 document.addEventListener('DOMContentLoaded', function () {
   const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = "../../index.html";
+    return;
+  }
 
   let params = new URLSearchParams(window.location.search);
   const userId = Number(params.get('id'));
@@ -84,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
   socket.on('set message', (msg) => {
     console.log('set mensaje:', msg);
 
-   
+
     const messages = document.querySelector('.msg_card_body');
 
     const item = (msg.authorId == userId ? messagesMockups[0] : messagesMockups[1]).cloneNode(true);

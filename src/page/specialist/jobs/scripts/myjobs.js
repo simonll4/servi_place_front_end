@@ -2,6 +2,10 @@ import { ip } from '../../../../config.js'
 document.addEventListener("DOMContentLoaded", function () {
 
   const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = "../../index.html";
+    return;
+  }
 
 
   //funcion para obtener los datos del usuario (nombre, apellido, imagen de perfil)
@@ -88,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (contactButton) {
             contactButton.setAttribute('href', `../chat/chat.html?id=${job.idCustomer}`);
           }
-          
+
 
           newContainer.dataset.jobId = job.id; // se guarda el id del trabajo en el contenedor como id del container-job id="data-job-id"
           getUserData(job.idCustomer, newContainer);

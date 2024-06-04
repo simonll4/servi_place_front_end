@@ -5,6 +5,11 @@ import { ip } from '../../../../config.js'
 
 document.addEventListener('DOMContentLoaded', function () {
   const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = "../../index.html";
+    return;
+  }
+
   let params = new URLSearchParams(window.location.search);
   const userId = Number(params.get('id'));
   let sesionId;
