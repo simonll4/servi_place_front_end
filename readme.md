@@ -2,6 +2,8 @@
 
 Este proyecto es una aplicación cliente desarrollada en HTML, CSS, Bootstrap y JavaScript para una API Node.js para la materia Ingenieria Web II. La aplicación tiene como objetivo proporcionar una plataforma donde se ofrecen diversos servicios, como servicios eléctricos, de plomería y más.
 
+Puedes encontrar el repositorio del servidor [aquí](https://github.com/simonll4/servi_place_back_end/tree/Demo-ing-web-II).
+
 ## Características principales
 
 - Interfaz de usuario intuitiva y fácil de usar.
